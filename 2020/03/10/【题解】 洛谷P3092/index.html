@@ -6,14 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Archives: 1970/1 | UM&#39;s blog</title>
+  <title>【题解】 洛谷P3092 [USACO13NOV G]No Change | UM&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="UM&#39;s blog">
-<meta property="og:url" content="http://example.com/archives/1970/01/index.html">
+  <meta name="description" content="其实这题代码真的很短 我们来换一种dp方式（当然这种dp方式题解里好像有，但是讲的不太详细，于是我来补充一下） 仍然是状压dp 令 $f[st]$ 为当前硬币使用状态为 $st$ 时多买到几号物品">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【题解】 洛谷P3092 [USACO13NOV G]No Change">
+<meta property="og:url" content="http://example.com/2020/03/10/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20%E6%B4%9B%E8%B0%B7P3092/index.html">
 <meta property="og:site_name" content="UM&#39;s blog">
+<meta property="og:description" content="其实这题代码真的很短 我们来换一种dp方式（当然这种dp方式题解里好像有，但是讲的不太详细，于是我来补充一下） 仍然是状压dp 令 $f[st]$ 为当前硬币使用状态为 $st$ 时多买到几号物品">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-03-09T16:00:00.000Z">
+<meta property="article:modified_time" content="2024-10-06T13:17:38.888Z">
 <meta property="article:author" content="UMqwq">
+<meta property="article:tag" content="题解">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="UM&#39;s blog" type="application/atom+xml">
@@ -146,49 +151,189 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-【题解】 洛谷P3092" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/1970" class="archive-year">1970</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/1970/01/01/hello-world/" class="archive-article-date">
-  	<time datetime="1970-01-01T00:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>1970-01-01</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/1970/01/01/hello-world/">Hello World</a>
+    <h1 class="article-title" itemprop="name">
+      【题解】 洛谷P3092 [USACO13NOV G]No Change
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
+        
+        <a href="/2020/03/10/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20%E6%B4%9B%E8%B0%B7P3092/" class="archive-article-date">
+  	<time datetime="2020-03-09T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-10</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>其实这题代码真的很短</p>
+<p>我们来换一种dp方式（当然这种dp方式题解里好像有，但是讲的不太详细，于是我来补充一下）</p>
+<p>仍然是状压dp</p>
+<p>令 $f[st]$ 为当前硬币使用状态为 $st$ 时多买到几号物品</p>
+<span id="more"></span>
 
+<p>我们考虑 $f[i]$ 能转移到那些地方</p>
+<p>显然，$f[i]\rightarrow f[j]$ 当 $j&#x3D;i+2^k$ 且 $2^k&amp;i&#x3D;0$ 的时候可以转移</p>
+<p>其中，$&amp;$ 表示按位与运算</p>
+<p>接下来，考虑转移多少</p>
+<p>设当前转移使用的硬币是第 $k$ 个硬币，价值为 $w_k$</p>
+<p>那么，我们可以写出转移方程：$f[i\ xor \ (2^k)]&#x3D;\max(f[i\ xor\ (2^k)],p)$ 其中 $p$ 为满足 $\sum_{i&#x3D;f[i]}^{p}val_i\leq w_k$ 的最大值</p>
+<p>注：xor 为按位异或运算，$val_i$ 为 $i$ 商品的价值</p>
+<p>接下来，我们用前缀和优化，发现还可以用二分查找找到这个 $p$ 于是这题就作完啦</p>
+<p>时间复杂度：$O(2^kk\log n)$</p>
+<p>附上我简短的代码：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> MAXN 100010</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="type">int</span> n,K,ans;</span><br><span class="line"><span class="type">int</span> sum[MAXN],mon[MAXN];</span><br><span class="line"><span class="type">int</span> f[<span class="number">1</span>&lt;&lt;<span class="number">17</span>];</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">find</span><span class="params">(<span class="type">int</span> l,<span class="type">int</span> r,<span class="type">int</span> s)</span><span class="comment">//二分查找</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="type">int</span> now=sum[l],ret=l;</span><br><span class="line">	<span class="keyword">while</span>(l&lt;=r)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="type">int</span> mid=l+r&gt;&gt;<span class="number">1</span>;</span><br><span class="line">		<span class="keyword">if</span>(sum[mid]-now&lt;=s)ret=mid,l=mid<span class="number">+1</span>;</span><br><span class="line">		<span class="keyword">else</span> r=mid<span class="number">-1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> ret;</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">int</span> fl=<span class="number">0</span>;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%d%d&quot;</span>,&amp;K,&amp;n);</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=K;i++)<span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;mon[i]);</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)<span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;sum[i]),sum[i]+=sum[i<span class="number">-1</span>];</span><br><span class="line">	<span class="type">int</span> max_state=(<span class="number">1</span>&lt;&lt;K)<span class="number">-1</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;=max_state;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">1</span>;j&lt;=K;j++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>((i&gt;&gt;j<span class="number">-1</span>)&amp;<span class="number">1</span>)<span class="keyword">continue</span>;</span><br><span class="line">			f[i|(<span class="number">1</span>&lt;&lt;j<span class="number">-1</span>)]=<span class="built_in">max</span>(f[i|(<span class="number">1</span>&lt;&lt;j<span class="number">-1</span>)],<span class="built_in">find</span>(f[i],n,mon[j]));<span class="comment">//转移</span></span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(f[i]==n)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="type">int</span> a=i,cnt=<span class="number">0</span>;fl=<span class="number">1</span>;</span><br><span class="line">			<span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">1</span>;j&lt;=K;j++)</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">if</span>((i&gt;&gt;j<span class="number">-1</span>)&amp;<span class="number">1</span>)<span class="keyword">continue</span>;</span><br><span class="line">				cnt+=mon[j];</span><br><span class="line">			&#125;</span><br><span class="line">			ans=<span class="built_in">max</span>(ans,cnt);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(!fl)<span class="built_in">printf</span>(<span class="string">&quot;-1&quot;</span>);</span><br><span class="line">	<span class="keyword">else</span> <span class="built_in">printf</span>(<span class="string">&quot;%d&quot;</span>,ans);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>还有一个转移顺序问题，我想了好长时间，但是后来想想是我考虑多了。</p>
+<p>我们考虑状态 $st$，能转移到它的一定是它的一个子集 $st’$ 所以，很明显 $st&gt;st’$ 于是当我们从小到大枚举时，枚举到 $st$ 时 $st$ 一定被转移完了，也就是到达最终状态了，我们就可以放心的用状态 $st$ 来转移其他的状态啦~</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">题解</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2020/03/10/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20%E6%B4%9B%E8%B0%B7P3092/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2020/03/11/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20%E6%B4%9B%E8%B0%B7P5962/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          【题解】 洛谷P5962 [BOI2004]ships
+        
+      </div>
+    </a>
   
   
-    </div></section>
+    <a href="/2020/03/05/%E3%80%90%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%91%E8%8E%AB%E6%AF%94%E4%B9%8C%E6%96%AF%E5%8F%8D%E6%BC%94/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">【学习笔记】 莫比乌斯反演</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+
+  
+  <div id="gitment-ctn"></div> 
+<link rel="stylesheet" href="//imsun.github.io/gitment/style/default.css">
+<script src="//imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+var gitment = new Gitment({
+  id: "http://example.com/2020/03/10/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20%E6%B4%9B%E8%B0%B7P3092/",
+  owner: 'UltiMadow',
+  repo: 'comments',
+  oauth: {
+    client_id: 'Ov23lix4Aj3qhD7NKeNo',
+    client_secret: '45bfe55456622fe89dedb0e6b02876bf30cda095',
+  },
+})
+gitment.render('gitment-ctn')
+</script>
+  
 
 
           </div>
@@ -211,8 +356,8 @@
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

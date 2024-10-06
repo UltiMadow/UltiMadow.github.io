@@ -6,14 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Archives: 1970/1 | UM&#39;s blog</title>
+  <title>【题解】 洛谷P6419 [COCI 2015]Kamp | UM&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="UM&#39;s blog">
-<meta property="og:url" content="http://example.com/archives/1970/01/index.html">
+  <meta name="description" content="首先，第一眼，这是一道换根dp 接下来我们就要看两次dfs要处理什么">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【题解】 洛谷P6419 [COCI 2015]Kamp">
+<meta property="og:url" content="http://example.com/2020/02/23/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20%E6%B4%9B%E8%B0%B7P6419/index.html">
 <meta property="og:site_name" content="UM&#39;s blog">
+<meta property="og:description" content="首先，第一眼，这是一道换根dp 接下来我们就要看两次dfs要处理什么">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-02-22T16:00:00.000Z">
+<meta property="article:modified_time" content="2024-10-06T13:20:37.698Z">
 <meta property="article:author" content="UMqwq">
+<meta property="article:tag" content="题解">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="UM&#39;s blog" type="application/atom+xml">
@@ -146,49 +151,200 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-【题解】 洛谷P6419" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/1970" class="archive-year">1970</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/1970/01/01/hello-world/" class="archive-article-date">
-  	<time datetime="1970-01-01T00:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>1970-01-01</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/1970/01/01/hello-world/">Hello World</a>
+    <h1 class="article-title" itemprop="name">
+      【题解】 洛谷P6419 [COCI 2015]Kamp
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
+        
+        <a href="/2020/02/23/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20%E6%B4%9B%E8%B0%B7P6419/" class="archive-article-date">
+  	<time datetime="2020-02-22T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-23</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>首先，第一眼，这是一道换根dp</p>
+<p>接下来我们就要看两次dfs要处理什么</p>
+<span id="more"></span>
 
+<h4 id="The-first-dfs"><a href="#The-first-dfs" class="headerlink" title="The first dfs"></a>The first dfs</h4><p><del>按照换根dp的老套路</del>，我们要处理子树里的信息</p>
+<p>我们令 $g_u$ 为以 $u$ 为根的子树中从 $u$ 开始把所有家在这个子树内的人送回家<strong>并回到 $u$ 节点</strong>的最短路程</p>
+<p>再令 $sz_u$ 为家在以 $u$ 为根的子树中的人数</p>
+<p>显然，我们珂以得到 $g_u&#x3D;\sum g_v+2\times w_{u\rightarrow v}$ 其中 $v$ 为 $u$ 的子节点，且 $sz_v\neq 0$</p>
+<p>其中 $w$ 为边权</p>
+<p>刚做这道题的我天真地以为这就是第一次 dfs 需要处理的东西，当我写完之后测样例时，发现挂掉了，所以，我们还需要处理一些东西</p>
+<p>我们手算了一遍样例，发现我们的车可以送完人了之后不返回开始点；也就是说再我们这么算回到起始点的树值之后还要减去一个最长链的长度</p>
+<p>这里的最长链就表示离一个点最远的人的家</p>
+<p>那么我们令 $len_u$ 为从 $u$ 开始的最长链，$id_u$ 为从 $u$ 开始的最长链所经过的第一个节点（也就是 $u$ 的一个子节点或者 $u$ 的父亲节点），$slen_u$ 为从 $u$ 开始的次长链</p>
+<p>次长链是干啥的待会再说</p>
+<p>当然了，第一次dfs我们还是只处理子树内的最长链，次长链</p>
+<p>先放第一次dfs的代码：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">dfs</span><span class="params">(<span class="type">int</span> u,<span class="type">int</span> fa)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(pos[u])sz[u]=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=Head[u];i;i=Edge[i].next)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="type">int</span> v=Edge[i].to,w=Edge[i].val;</span><br><span class="line">		<span class="keyword">if</span>(v==fa)<span class="keyword">continue</span>;</span><br><span class="line">		<span class="built_in">dfs</span>(v,u);</span><br><span class="line">		<span class="keyword">if</span>(sz[v])<span class="comment">//当v的子树中有人才更新</span></span><br><span class="line">		&#123;</span><br><span class="line">			g[u]+=g[v]<span class="number">+2</span>*w;</span><br><span class="line">			<span class="type">int</span> now=len[v]+w;</span><br><span class="line">			<span class="keyword">if</span>(now&gt;=len[u])slen[u]=len[u],len[u]=now,id[u]=v;<span class="comment">//最长链</span></span><br><span class="line">			<span class="keyword">else</span> <span class="keyword">if</span>(now&gt;slen[u])slen[u]=now;<span class="comment">//次长链</span></span><br><span class="line">		&#125;</span><br><span class="line">		sz[u]+=sz[v];</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="the-second-dfs"><a href="#the-second-dfs" class="headerlink" title="the second dfs"></a>the second dfs</h4><p>第二次dfs我们就要处理全局的事情了qwq</p>
+<p>令 $f_u$ 为对于整棵树从 $u$ 开始送人<strong>最后回到 $u$ 的最短距离</strong></p>
+<p>接下来我们就要开始分类了qwq</p>
+<p>1、当以 $u$ 为根的子树中没有人的家，即 $sz_u&#x3D;0$ 时，我们发现 $f_v&#x3D;f_u+2\times w_{u\rightarrow v}$ ，很好理解，不多说了（画画图就好了<br>2、当除了以 $u$ 为根的子树其他地方没有人的家，即 $K-sz_u&#x3D;0$ 时（$K$ 即题面中的 $K$），可以发现 $f_v&#x3D;g_v$<br>3、其他情况，即 $sz_u\neq 0$ 且 $K-sz_u\neq 0$ 时，发现 $f_v&#x3D;f_u$</p>
+<p>那么，更新完 $f$ 之后，我们就要考虑如何更新最长链和次长链了</p>
+<p>这也是本题最烦的地方了</p>
+<p>依旧分类讨论，依旧是上面三类（这里编号就代表上面的情况）</p>
+<p>1、这种情况可以发现 $len_v&#x3D;len_u+w_{u\rightarrow v}$，很简单<br>2、这种情况很容易发现完全没有必要更新<br>3、最烦的情况来了，这种情况下我们还要分类讨论<br>1）当 $len_u+w\ge len_v$ 且 $id_u\neq v$ 时，说明 $u$ 的最长链可以更新 $v$ 的最长链，那么直接更新即可<br>2）当 $len_u+w\ge len_v$ 且 $id_u&#x3D; v$ 时，说明虽然 $u$ 的最长链的长度可以更新 $v$，但是若更新了这就不是一条链了，所以也不可以来更新<br>3）当 $slen_u+w\ge len_v$ 时，说明 $u$ 的次长链可以用来更新 $v$ 的最长链，直接更新即可<br>4）当 $len_u+w\ge slen_v$ 且 $id_u\neq v$ 时，说明 $u$ 的最长链可以更新 $v$ 的次长链，直接更新即可<br>5）当 $len_u+w\ge slen_v$ 且 $id_u&#x3D; v$ 时，这时与2）同理，不可以更新<br>6）当 $slen_u+w\ge slen_v$ 时，说明 $u$ 的次长链可以更新 $v$ 的次长链，直接更新即可</p>
+<p>到这里，第二次dfs就做完了</p>
+<p>贴个代码：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">dp</span><span class="params">(<span class="type">int</span> u,<span class="type">int</span> fa)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=Head[u];i;i=Edge[i].next)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="type">int</span> v=Edge[i].to,w=Edge[i].val;</span><br><span class="line">		<span class="keyword">if</span>(v==fa)<span class="keyword">continue</span>;</span><br><span class="line">		<span class="keyword">if</span>(!sz[v])f[v]=f[u]<span class="number">+2</span>*w,len[v]=len[u]+w;<span class="comment">//对应1</span></span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(K-sz[v])<span class="comment">//对应3</span></span><br><span class="line">		&#123;</span><br><span class="line">			f[v]=f[u];</span><br><span class="line">			<span class="keyword">if</span>(id[u]!=v&amp;&amp;len[v]&lt;len[u]+w)<span class="comment">//对应1）</span></span><br><span class="line">				slen[v]=len[v],len[v]=len[u]+w,id[v]=u;</span><br><span class="line">			<span class="keyword">else</span> <span class="keyword">if</span>(len[v]&lt;slen[u]+w)<span class="comment">//对应3）</span></span><br><span class="line">				slen[v]=len[v],len[v]=slen[u]+w,id[v]=<span class="number">1</span>;</span><br><span class="line">			<span class="keyword">else</span> <span class="keyword">if</span>(slen[v]&lt;len[u]+w&amp;&amp;id[u]!=v)<span class="comment">//对应4）</span></span><br><span class="line">				slen[v]=len[u]+w;</span><br><span class="line">			<span class="keyword">else</span> <span class="keyword">if</span>(slen[v]&lt;slen[u]+w)<span class="comment">//对应6）</span></span><br><span class="line">				slen[v]=slen[u]+w;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> f[v]=g[v];<span class="comment">//对应2</span></span><br><span class="line">		<span class="built_in">dp</span>(v,u);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>接下来，这题就可以愉快的AC啦，记得开long long就行啦</p>
+<p>完整的无注释代码：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> MAXN 500010</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> int long long</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="type">int</span> n,K;</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">Node</span>&#123;<span class="type">int</span> to,next,val;&#125;Edge[MAXN&lt;&lt;<span class="number">1</span>];</span><br><span class="line"><span class="type">int</span> Head[MAXN],cnt_Edge;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">Add_Edge</span><span class="params">(<span class="type">int</span> u,<span class="type">int</span> v,<span class="type">int</span> w)</span></span>&#123;Edge[++cnt_Edge]=&#123;v,Head[u],w&#125;;Head[u]=cnt_Edge;&#125;</span><br><span class="line"><span class="type">int</span> pos[MAXN];</span><br><span class="line"><span class="type">int</span> sz[MAXN],g[MAXN],f[MAXN];</span><br><span class="line"><span class="type">int</span> len[MAXN],id[MAXN],slen[MAXN];</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">dfs</span><span class="params">(<span class="type">int</span> u,<span class="type">int</span> fa)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(pos[u])sz[u]=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=Head[u];i;i=Edge[i].next)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="type">int</span> v=Edge[i].to,w=Edge[i].val;</span><br><span class="line">		<span class="keyword">if</span>(v==fa)<span class="keyword">continue</span>;</span><br><span class="line">		<span class="built_in">dfs</span>(v,u);</span><br><span class="line">		<span class="keyword">if</span>(sz[v])</span><br><span class="line">		&#123;</span><br><span class="line">			g[u]+=g[v]<span class="number">+2</span>*w;</span><br><span class="line">			<span class="type">int</span> now=len[v]+w;</span><br><span class="line">			<span class="keyword">if</span>(now&gt;=len[u])slen[u]=len[u],len[u]=now,id[u]=v;</span><br><span class="line">			<span class="keyword">else</span> <span class="keyword">if</span>(now&gt;slen[u])slen[u]=now;</span><br><span class="line">		&#125;</span><br><span class="line">		sz[u]+=sz[v];</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">dp</span><span class="params">(<span class="type">int</span> u,<span class="type">int</span> fa)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=Head[u];i;i=Edge[i].next)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="type">int</span> v=Edge[i].to,w=Edge[i].val;</span><br><span class="line">		<span class="keyword">if</span>(v==fa)<span class="keyword">continue</span>;</span><br><span class="line">		<span class="keyword">if</span>(!sz[v])f[v]=f[u]<span class="number">+2</span>*w,len[v]=len[u]+w;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(K-sz[v])</span><br><span class="line">		&#123;</span><br><span class="line">			f[v]=f[u];</span><br><span class="line">			<span class="keyword">if</span>(id[u]!=v&amp;&amp;len[v]&lt;len[u]+w)</span><br><span class="line">				slen[v]=len[v],len[v]=len[u]+w,id[v]=u;</span><br><span class="line">			<span class="keyword">else</span> <span class="keyword">if</span>(len[v]&lt;slen[u]+w)</span><br><span class="line">				slen[v]=len[v],len[v]=slen[u]+w,id[v]=<span class="number">1</span>;</span><br><span class="line">			<span class="keyword">else</span> <span class="keyword">if</span>(slen[v]&lt;len[u]+w&amp;&amp;id[u]!=v)</span><br><span class="line">				slen[v]=len[u]+w;</span><br><span class="line">			<span class="keyword">else</span> <span class="keyword">if</span>(slen[v]&lt;slen[u]+w)</span><br><span class="line">				slen[v]=slen[u]+w;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> f[v]=g[v];</span><br><span class="line">		<span class="built_in">dp</span>(v,u);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">signed</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%lld%lld&quot;</span>,&amp;n,&amp;K);</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;n;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="type">int</span> u,v,w;<span class="built_in">scanf</span>(<span class="string">&quot;%lld%lld%lld&quot;</span>,&amp;u,&amp;v,&amp;w);</span><br><span class="line">		<span class="built_in">Add_Edge</span>(u,v,w);<span class="built_in">Add_Edge</span>(v,u,w);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=K;i++)&#123;<span class="type">int</span> x;<span class="built_in">scanf</span>(<span class="string">&quot;%lld&quot;</span>,&amp;x);pos[x]=<span class="number">1</span>;&#125;</span><br><span class="line">	<span class="built_in">dfs</span>(<span class="number">1</span>,<span class="number">0</span>);f[<span class="number">1</span>]=g[<span class="number">1</span>];<span class="built_in">dp</span>(<span class="number">1</span>,<span class="number">0</span>);</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)<span class="built_in">printf</span>(<span class="string">&quot;%lld\n&quot;</span>,f[i]-len[i]);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">题解</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2020/02/23/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20%E6%B4%9B%E8%B0%B7P6419/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2020/02/23/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20%E6%B4%9B%E8%B0%B7P4262/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          【题解】 洛谷P4262 [Code+#3]白金元首与莫斯科
+        
+      </div>
+    </a>
   
   
-    </div></section>
+    <a href="/2020/02/12/%E3%80%90%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%91%20%E5%B7%AE%E5%88%86%E7%BA%A6%E6%9D%9F/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">【学习笔记】 差分约束</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+
+  
+  <div id="gitment-ctn"></div> 
+<link rel="stylesheet" href="//imsun.github.io/gitment/style/default.css">
+<script src="//imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+var gitment = new Gitment({
+  id: "http://example.com/2020/02/23/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20%E6%B4%9B%E8%B0%B7P6419/",
+  owner: 'UltiMadow',
+  repo: 'comments',
+  oauth: {
+    client_id: 'Ov23lix4Aj3qhD7NKeNo',
+    client_secret: '45bfe55456622fe89dedb0e6b02876bf30cda095',
+  },
+})
+gitment.render('gitment-ctn')
+</script>
+  
 
 
           </div>
@@ -211,8 +367,8 @@
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
