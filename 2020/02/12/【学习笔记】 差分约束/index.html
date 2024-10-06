@@ -6,15 +6,27 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Archives: 1970/1 | UM&#39;s blog</title>
+  <title>【学习笔记】 差分约束 | UM&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="UM&#39;s blog">
-<meta property="og:url" content="http://example.com/archives/1970/01/index.html">
+  <meta name="description" content="最近刚学了差分约束这种神奇的东西 算是查缺补漏了qwq 其实差分约束这东西也不难">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【学习笔记】 差分约束">
+<meta property="og:url" content="http://example.com/2020/02/12/%E3%80%90%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%91%20%E5%B7%AE%E5%88%86%E7%BA%A6%E6%9D%9F/index.html">
 <meta property="og:site_name" content="UM&#39;s blog">
+<meta property="og:description" content="最近刚学了差分约束这种神奇的东西 算是查缺补漏了qwq 其实差分约束这东西也不难">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.luogu.com.cn/upload/image_hosting/ktzrptbt.png">
+<meta property="og:image" content="https://cdn.luogu.com.cn/upload/image_hosting/rd7cy5ul.png">
+<meta property="og:image" content="https://cdn.luogu.com.cn/upload/image_hosting/bmbqpaih.png">
+<meta property="og:image" content="https://cdn.luogu.com.cn/upload/image_hosting/1klh4h07.png">
+<meta property="og:image" content="https://cdn.luogu.com.cn/upload/image_hosting/aad3niha.png">
+<meta property="og:image" content="https://cdn.luogu.com.cn/upload/image_hosting/2jwarkez.png">
+<meta property="article:published_time" content="2020-02-11T16:00:00.000Z">
+<meta property="article:modified_time" content="2024-10-06T12:38:15.290Z">
 <meta property="article:author" content="UMqwq">
+<meta property="article:tag" content="学习笔记">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.luogu.com.cn/upload/image_hosting/ktzrptbt.png">
   
     <link rel="alternative" href="/atom.xml" title="UM&#39;s blog" type="application/atom+xml">
   
@@ -146,49 +158,229 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-【学习笔记】 差分约束" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/1970" class="archive-year">1970</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/1970/01/01/hello-world/" class="archive-article-date">
-  	<time datetime="1970-01-01T00:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>1970-01-01</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/1970/01/01/hello-world/">Hello World</a>
+    <h1 class="article-title" itemprop="name">
+      【学习笔记】 差分约束
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
+        
+        <a href="/2020/02/12/%E3%80%90%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%91%20%E5%B7%AE%E5%88%86%E7%BA%A6%E6%9D%9F/" class="archive-article-date">
+  	<time datetime="2020-02-11T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-12</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>最近刚学了差分约束这种神奇的东西</p>
+<p>算是查缺补漏了qwq</p>
+<p>其实差分约束这东西也不难</p>
+<span id="more"></span>
 
+<h3 id="0-前置芝士"><a href="#0-前置芝士" class="headerlink" title="0 前置芝士"></a>0 前置芝士</h3><p>你需要一个好用的最短路算法</p>
+<p>这里推荐大家用SPFA或者Bellmanford</p>
+<p>因为我们很有可能（而且是极大的可能）要处理负权边</p>
+<p>如果不会SPFA，请左转至<a target="_blank" rel="noopener" href="https://www.luogu.com.cn/blog/83547/spfa-suan-fa-jiao-xue">这篇日报</a></p>
+<h3 id="1-啥是差分约束"><a href="#1-啥是差分约束" class="headerlink" title="1 啥是差分约束"></a>1 啥是差分约束</h3><p>其实差分约束是用来求一组形如 $x_i-x_j\le c$ 的不等式组</p>
+<p>显然有许多这种不等式都会有无数解，我们差分约束系统主要是用来求一组可行解</p>
+<p>接下来，我们来看一组不等式：<br>$$<br>x_1 -x_3\le 5<br>$$<br>$$<br>x_1-x_2\le 2<br>$$<br>$$<br>x_2-x_1\le 0<br>$$<br>$$<br>x_2-x_3\le 2<br>$$<br>$$<br>x_3-x_2\le -1<br>$$<br>$$<br>x_3-x_1\le -1<br>$$<br>面对这么6个不等式，直接手动枚举一下就好了qwq</p>
+<p>而面对60个这样的不等式呢？</p>
+<p><del>数学大佬：这什么破题，秒了秒了</del></p>
+<p>这时我们的差分约束就要登场了</p>
+<h3 id="2-构建差分约束"><a href="#2-构建差分约束" class="headerlink" title="2 构建差分约束"></a>2 构建差分约束</h3><p>（以下图均为自己在电脑上手绘，比较丑）</p>
+<p>首先，我们把这些未知数都想象成点：</p>
+<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/ktzrptbt.png" alt="1"></p>
+<p>接下来，我们来看这些不等式：<br>$$<br>x_1 -x_3\le 5<br>$$<br>于是，我们连一条 $3\rightarrow 1$的长度为5有向边</p>
+<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/rd7cy5ul.png" alt="2"></p>
+<p>我们发现，从 $3\rightarrow1$ 的最短路为5，也就说明了当 $x_3&#x3D;k$ 时，$x_1$ 最大取 $k+5$</p>
+<p>我们接着看：<br>$$<br>x_1-x_2\le 2<br>$$<br>于是，我们连一条从 $2\rightarrow 1$ 的长度为2的有向边</p>
+<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/bmbqpaih.png" alt="3"></p>
+<p>重复上述步骤，我们最后可以建出这样一个图：</p>
+<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/1klh4h07.png" alt="4"></p>
+<p>接下来，对于这个差分约束系统，我们对任意一个点作为源点跑最短路就可以求出一组可行解了</p>
+<h3 id="2-超级源点"><a href="#2-超级源点" class="headerlink" title="2 超级源点"></a>2 超级源点</h3><p>我们发现，不是所有的不等式组建成图之后都是联通的</p>
+<p>这时候，我们就需要超级源点这种东西了</p>
+<p>为了方便理解，我还是用上面那个图</p>
+<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/aad3niha.png" alt="5"></p>
+<p>中间那个圆圈里是 $S$ 不是5（字丑qwq）</p>
+<p>这里 $S$ 是超级源点</p>
+<p>这样，我们以 $S$ 为源点跑最短路就可以了，$x_S&#x3D;0$</p>
+<p>这时，$S$ 到所有点的最短路就是一组可行解了</p>
+<p>那么有一个问题，就是源点 $S$ 到其他点的权值是什么呢？</p>
+<p>其实在题目没有限制时我们是可以随便赋值的</p>
+<p>那我们随便赋个值试试：</p>
+<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/2jwarkez.png" alt="6"></p>
+<p>我们发现，当赋了0这个值的时候源点到所有点的最短路最长就不会超过0了（很好理解吧qwq）</p>
+<p>于是我们发现假设赋 $S$ 到所有点的边权为 $a$ ,那么我们通过源点 $S$ 求出的最短路就是一组最大的且小于 $a$ 的解</p>
+<p>同理，如果我们跑最长路，我们就可以求出一组最小且大于 $a$ 的解</p>
+<p>那么我们什么时候跑最长路呢？很简单，当我们面对形如 $x_i-x_j\ge c$ 的不等式的时候</p>
+<h3 id="3-无解情况与负环"><a href="#3-无解情况与负环" class="headerlink" title="3 无解情况与负环"></a>3 无解情况与负环</h3><p>当我们跑最短路出现负环时，就是无解；当我们跑最长路出现正环时，就是无解</p>
+<p>这里给出一组不等式：<br>$$<br>x_1-x_2\le -1<br>$$<br>$$<br>x_2-x_1\le -2<br>$$<br>这两个不等式明显无解，我们构建出来的图也有负环</p>
+<p><del>其实我也不会严谨证明，随便举几个例子口胡一下</del></p>
+<h3 id="4-无数解情况与非联通图"><a href="#4-无数解情况与非联通图" class="headerlink" title="4 无数解情况与非联通图"></a>4 无数解情况与非联通图</h3><p>当一个图中有孤立的一个点（即没有点和它相关）就为无数解情况</p>
+<p>这时这个未知数的取值其实就是你赋的源点到所有点的边权</p>
+<h3 id="5-不等式的处理"><a href="#5-不等式的处理" class="headerlink" title="5 不等式的处理"></a>5 不等式的处理</h3><p>当我们面对 $x_1-x_2&lt;2$ 这样的不等式时，就做一些处理，把它变成 $x_1-x_2\le 1$</p>
+<p>大于号同理</p>
+<p>当我们面对 $x_1-x_2&#x3D;2$ 这样一个等式时，我们可以强行把它转换成不等式即 $x_1-x_2\le 2$ 和 $x_2-x_1\le 2$</p>
+<p>当我们面对一个给你小于等于的不等式而又要求大于 $a$ 的最小解怎么办呢？</p>
+<p>我们可以把小于等于转换成大于等于，在不等式两边同时乘以-1即可</p>
+<hr>
+<p>插播一则广告：<a target="_blank" rel="noopener" href="https://sflsrick.blog.luogu.org/">我的博客</a></p>
+<hr>
+<h3 id="6-例题"><a href="#6-例题" class="headerlink" title="6 例题"></a>6 例题</h3><p>来一道模板：<a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P3275">糖果</a></p>
+<p>我们根据<code>不等式的处理</code>中讲的技巧，把题目中的不等式转换一下：<br>$$<br>X&#x3D;1 \quad x_A-x_B\ge 0,x_B-x_A\ge 0<br>$$<br>$$<br>X&#x3D;2 \quad x_B-x_A\ge 1<br>$$<br>$$<br>X&#x3D;3 \quad x_A-x_B\ge 0<br>$$<br>$$<br>X&#x3D;4 \quad x_A-x_B\ge 1<br>$$<br>$$<br>X&#x3D;5 \quad x_B-x_A\ge 0<br>$$<br>代码：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> MAXN 100010</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> int long long</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="type">int</span> n,K;</span><br><span class="line"><span class="type">int</span> dis[MAXN];<span class="type">bool</span> vis[MAXN];</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">Node</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="type">int</span> to,next,val;</span><br><span class="line">&#125;Edge[MAXN&lt;&lt;<span class="number">2</span>];</span><br><span class="line"><span class="type">int</span> Head[MAXN],cnt_Edge;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">Add_Edge</span><span class="params">(<span class="type">int</span> u,<span class="type">int</span> v,<span class="type">int</span> w)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	Edge[++cnt_Edge].to=v;</span><br><span class="line">	Edge[cnt_Edge].next=Head[u];</span><br><span class="line">	Edge[cnt_Edge].val=w;</span><br><span class="line">	Head[u]=cnt_Edge;</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">int</span> cnt[MAXN];</span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">SPFA</span><span class="params">(<span class="type">int</span> s)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">memset</span>(dis,<span class="number">-0x3f</span>,<span class="built_in">sizeof</span>(dis));<span class="built_in">memset</span>(vis,<span class="literal">false</span>,<span class="built_in">sizeof</span>(vis));</span><br><span class="line">	queue&lt;<span class="type">int</span>&gt;Q;</span><br><span class="line">	Q.<span class="built_in">push</span>(s);dis[s]=<span class="number">0</span>;vis[s]=<span class="literal">true</span>;</span><br><span class="line">	<span class="keyword">while</span>(!Q.<span class="built_in">empty</span>())</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="type">int</span> u=Q.<span class="built_in">front</span>();Q.<span class="built_in">pop</span>();</span><br><span class="line">		vis[u]=<span class="literal">false</span>;cnt[u]++;<span class="comment">//如果一个点遍历超过n次就是负环</span></span><br><span class="line">		<span class="keyword">if</span>(cnt[u]&gt;n)<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> i=Head[u];i;i=Edge[i].next)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="type">int</span> v=Edge[i].to,w=Edge[i].val;</span><br><span class="line">			<span class="keyword">if</span>(dis[v]&lt;dis[u]+w)</span><br><span class="line">			&#123;</span><br><span class="line">				dis[v]=dis[u]+w;</span><br><span class="line">				<span class="keyword">if</span>(!vis[v])vis[v]=<span class="literal">true</span>,Q.<span class="built_in">push</span>(v);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">signed</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%lld%lld&quot;</span>,&amp;n,&amp;K);</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=K;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="type">int</span> opt,u,v;<span class="built_in">scanf</span>(<span class="string">&quot;%lld%lld%lld&quot;</span>,&amp;opt,&amp;u,&amp;v);</span><br><span class="line">		<span class="keyword">if</span>(opt==<span class="number">1</span>)<span class="built_in">Add_Edge</span>(u,v,<span class="number">0</span>),<span class="built_in">Add_Edge</span>(v,u,<span class="number">0</span>);</span><br><span class="line">		<span class="keyword">if</span>(opt==<span class="number">2</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>(u==v)&#123;<span class="built_in">printf</span>(<span class="string">&quot;-1&quot;</span>);<span class="keyword">return</span> <span class="number">0</span>;&#125;</span><br><span class="line">			<span class="built_in">Add_Edge</span>(u,v,<span class="number">1</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(opt==<span class="number">3</span>)<span class="built_in">Add_Edge</span>(v,u,<span class="number">0</span>);</span><br><span class="line">		<span class="keyword">if</span>(opt==<span class="number">4</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>(u==v)&#123;<span class="built_in">printf</span>(<span class="string">&quot;-1&quot;</span>);<span class="keyword">return</span> <span class="number">0</span>;&#125;</span><br><span class="line">			<span class="built_in">Add_Edge</span>(v,u,<span class="number">1</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(opt==<span class="number">5</span>)<span class="built_in">Add_Edge</span>(u,v,<span class="number">0</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=n;i&gt;=<span class="number">1</span>;i--)<span class="built_in">Add_Edge</span>(<span class="number">0</span>,i,<span class="number">1</span>);<span class="comment">//玄学SPFA，倒序建边速度飞起</span></span><br><span class="line">	<span class="keyword">if</span>(!<span class="built_in">SPFA</span>(<span class="number">0</span>))<span class="built_in">printf</span>(<span class="string">&quot;-1&quot;</span>);</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="type">int</span> ans=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)ans+=dis[i];</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;%lld&quot;</span>,ans);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>再来一道：<a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/CF241E">flights</a></p>
+<p><del>这道题完全看不出是差分约束，直到老师讲了思路</del></p>
+<p>我们令 $d_i$ 为 $1\rightarrow i$ 的最短路</p>
+<p>然后我们可以得出一条重要的性质：</p>
+<p>1到n权值和相等，等价于从1到每个点权值和相等</p>
+<p>于是 $d_i$ 又有了一种新的定义：$1\rightarrow i$ 的权值和</p>
+<p>接着我们就可以得到这个不等式：$1\le d[v]-d[u]\le 2$</p>
+<p>其中，u和v之间有边</p>
+<p>我们只要把所有1到不了的点和所有到不了n的点踢出去（与这些点相连的边都随便取值）</p>
+<p>代码：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> MAXN 5010</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="type">int</span> n,m;</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">Node</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="type">int</span> to,next,val;</span><br><span class="line">&#125;Edge[MAXN&lt;&lt;<span class="number">3</span>];</span><br><span class="line"><span class="type">int</span> cnt_Edge,Head[MAXN];</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">Add_Edge</span><span class="params">(<span class="type">int</span> u,<span class="type">int</span> v,<span class="type">int</span> w)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	Edge[++cnt_Edge].to=v;</span><br><span class="line">	Edge[cnt_Edge].next=Head[u];</span><br><span class="line">	Edge[cnt_Edge].val=w;</span><br><span class="line">	Head[u]=cnt_Edge;</span><br><span class="line">&#125;</span><br><span class="line">vector&lt;<span class="type">int</span>&gt;G[MAXN][<span class="number">2</span>];</span><br><span class="line"><span class="type">int</span> U[MAXN],V[MAXN];</span><br><span class="line"><span class="type">int</span> vis[MAXN][<span class="number">2</span>];</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">bfs</span><span class="params">(<span class="type">int</span> s,<span class="type">int</span> dir)</span><span class="comment">//看哪些点1能到&amp;能到n</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	queue&lt;<span class="type">int</span>&gt;Q;</span><br><span class="line">	Q.<span class="built_in">push</span>(s);vis[s][dir]=<span class="literal">true</span>;</span><br><span class="line">	<span class="keyword">while</span>(!Q.<span class="built_in">empty</span>())</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="type">int</span> u=Q.<span class="built_in">front</span>();Q.<span class="built_in">pop</span>();</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;G[u][dir].<span class="built_in">size</span>();i++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="type">int</span> v=G[u][dir][i];</span><br><span class="line">			<span class="keyword">if</span>(!vis[v][dir])vis[v][dir]=<span class="literal">true</span>,Q.<span class="built_in">push</span>(v);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">int</span> dis[MAXN],cnt[MAXN];<span class="type">bool</span> inq[MAXN];</span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">SPFA</span><span class="params">(<span class="type">int</span> s)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">memset</span>(dis,<span class="number">-0x3f</span>,<span class="built_in">sizeof</span>(dis));<span class="built_in">memset</span>(inq,<span class="literal">false</span>,<span class="built_in">sizeof</span>(inq));</span><br><span class="line">	queue&lt;<span class="type">int</span>&gt;Q;</span><br><span class="line">	Q.<span class="built_in">push</span>(s);dis[s]=<span class="number">0</span>;inq[s]=<span class="literal">true</span>;</span><br><span class="line">	<span class="keyword">while</span>(!Q.<span class="built_in">empty</span>())</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="type">int</span> u=Q.<span class="built_in">front</span>();Q.<span class="built_in">pop</span>();</span><br><span class="line">		inq[u]=<span class="literal">false</span>;cnt[u]++;</span><br><span class="line">		<span class="keyword">if</span>(cnt[u]&gt;n)<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> i=Head[u];i;i=Edge[i].next)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="type">int</span> v=Edge[i].to,w=Edge[i].val;</span><br><span class="line">			<span class="keyword">if</span>(dis[v]&lt;dis[u]+w)</span><br><span class="line">			&#123;</span><br><span class="line">				dis[v]=dis[u]+w;</span><br><span class="line">				<span class="keyword">if</span>(!inq[v])inq[v]=<span class="literal">true</span>,Q.<span class="built_in">push</span>(v);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">int</span> ans[MAXN];</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">srand</span>(<span class="built_in">time</span>(<span class="number">0</span>));</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%d%d&quot;</span>,&amp;n,&amp;m);</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=m;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="type">int</span> u,v;<span class="built_in">scanf</span>(<span class="string">&quot;%d%d&quot;</span>,&amp;u,&amp;v);</span><br><span class="line">		U[i]=u;V[i]=v;</span><br><span class="line">		G[u][<span class="number">0</span>].<span class="built_in">push_back</span>(v);</span><br><span class="line">		G[v][<span class="number">1</span>].<span class="built_in">push_back</span>(u);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">bfs</span>(<span class="number">1</span>,<span class="number">0</span>);<span class="built_in">bfs</span>(n,<span class="number">1</span>);</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=m;i++)</span><br><span class="line">		<span class="keyword">if</span>(vis[U[i]][<span class="number">0</span>]&amp;&amp;vis[V[i]][<span class="number">0</span>]&amp;&amp;vis[U[i]][<span class="number">1</span>]&amp;&amp;vis[V[i]][<span class="number">1</span>])</span><br><span class="line">			<span class="built_in">Add_Edge</span>(U[i],V[i],<span class="number">1</span>),<span class="built_in">Add_Edge</span>(V[i],U[i],<span class="number">-2</span>);<span class="comment">//差分约束</span></span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">		<span class="keyword">if</span>(vis[i][<span class="number">0</span>]&amp;&amp;vis[i][<span class="number">1</span>])<span class="built_in">Add_Edge</span>(<span class="number">0</span>,i,<span class="number">0</span>);</span><br><span class="line">	<span class="keyword">if</span>(!<span class="built_in">SPFA</span>(<span class="number">0</span>))<span class="built_in">printf</span>(<span class="string">&quot;No&quot;</span>);</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;Yes&quot;</span>);</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=m;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>(!vis[U[i]][<span class="number">0</span>]||!vis[V[i]][<span class="number">0</span>]||!vis[U[i]][<span class="number">1</span>]||!vis[V[i]][<span class="number">1</span>])</span><br><span class="line">				ans[i]=<span class="built_in">rand</span>()%<span class="number">2</span><span class="number">+1</span>;<span class="comment">//随便取</span></span><br><span class="line">			<span class="keyword">else</span> ans[i]=dis[V[i]]-dis[U[i]];</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=m;i++)<span class="built_in">printf</span>(<span class="string">&quot;\n%d&quot;</span>,ans[i]);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">学习笔记</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2020/02/12/%E3%80%90%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%91%20%E5%B7%AE%E5%88%86%E7%BA%A6%E6%9D%9F/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2020/01/30/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20%E6%B4%9B%E8%B0%B7P3990/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">【题解】 洛谷P3990 [SHOI2013]超级跳马</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+
+  
+  <div id="gitment-ctn"></div> 
+<link rel="stylesheet" href="//imsun.github.io/gitment/style/default.css">
+<script src="//imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+var gitment = new Gitment({
+  id: "http://example.com/2020/02/12/%E3%80%90%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%91%20%E5%B7%AE%E5%88%86%E7%BA%A6%E6%9D%9F/",
+  owner: 'UltiMadow',
+  repo: 'comments',
+  oauth: {
+    client_id: 'Ov23lix4Aj3qhD7NKeNo',
+    client_secret: '45bfe55456622fe89dedb0e6b02876bf30cda095',
+  },
+})
+gitment.render('gitment-ctn')
+</script>
+  
 
 
           </div>
@@ -211,8 +403,8 @@
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

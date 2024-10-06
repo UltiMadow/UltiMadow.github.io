@@ -6,14 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Archives: 1970/1 | UM&#39;s blog</title>
+  <title>【题解】 洛谷P2345 奶牛集会 | UM&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="UM&#39;s blog">
-<meta property="og:url" content="http://example.com/archives/1970/01/index.html">
+  <meta name="description" content="这两天在学cdq分治，于是用cdq分治A了这道题 cdq分治就是通过前一半的数据去计算前一半对后一半的影响（或者说贡献）">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【题解】 洛谷P2345 奶牛集会">
+<meta property="og:url" content="http://example.com/2019/12/03/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20%E6%B4%9B%E8%B0%B7P2345/index.html">
 <meta property="og:site_name" content="UM&#39;s blog">
+<meta property="og:description" content="这两天在学cdq分治，于是用cdq分治A了这道题 cdq分治就是通过前一半的数据去计算前一半对后一半的影响（或者说贡献）">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-12-02T16:00:00.000Z">
+<meta property="article:modified_time" content="2024-10-06T12:26:47.696Z">
 <meta property="article:author" content="UMqwq">
+<meta property="article:tag" content="题解">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="UM&#39;s blog" type="application/atom+xml">
@@ -146,49 +151,197 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-【题解】 洛谷P2345" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/1970" class="archive-year">1970</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/1970/01/01/hello-world/" class="archive-article-date">
-  	<time datetime="1970-01-01T00:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>1970-01-01</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/1970/01/01/hello-world/">Hello World</a>
+    <h1 class="article-title" itemprop="name">
+      【题解】 洛谷P2345 奶牛集会
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
+        
+        <a href="/2019/12/03/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20%E6%B4%9B%E8%B0%B7P2345/" class="archive-article-date">
+  	<time datetime="2019-12-02T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-03</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>这两天在学cdq分治，于是用cdq分治A了这道题</p>
+<p>cdq分治就是通过前一半的数据去计算前一半对后一半的影响（或者说贡献）</p>
+<span id="more"></span>
 
+<p>首先，我们还是先对$v$排序（当然是升序啦）</p>
+<p>这样，我们后面计算的时候就只要考虑$x$了（因为是$max(v_i,v_j)$，排完序之后$v_j&gt;v_i(i&lt;j)$，所以直接乘后面那个的$v$就好了）</p>
+<p>接下来我们就要考虑一下$x$的事情了</p>
+<p>我们来看看与$x$有关的式子：<br>$$<br>|x_i-x_j|<br>$$<br>看起来我们可以去掉绝对值呢</p>
+<p>去掉再来看看：<br>$$<br>x_i-x_j(x_i&gt;x_j)<br>$$<br>$$<br>x_j-x_i(x_i&lt;x_j)<br>$$<br>在我们计算前一半对后一半的贡献时，我们要枚举后一半区间里的每一个点，计算前一半区间里的所有点到这个点的距离和</p>
+<p>那么，这些点到一个点的距离和如何求呢</p>
+<p>我们得到这样一个式子：<br>$$<br>sum&#x3D;cnt1\times x_i-\sum_{x_i&gt;x_j} x_j+\sum_{x_i&lt;x_j}x_j-cnt2\times x_i<br>$$<br>其中，$sum$为距离和，$i$为当前点，$cnt1$为前一半区间内坐标小于（等于）当前点坐标的点的数量，$cnt2$就是前一半区间内坐标大于当前点坐标的点的数量（应该比较好理解）</p>
+<p>显然，这个式子可以在$O(n^2)$的时间内做完</p>
+<p>那么把这个$x$进行排序了以后就可以在之后的循环里面$O(n)$解决了（此处感觉表达不清楚，如果不理解就看代码吧qaq）</p>
+<p>总时间复杂度为$O(nlogn)$</p>
+<p>代码：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> MAXN 20010</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> int long long<span class="comment">//本题要用long long</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="type">int</span> n;</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">Node</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="type">int</span> v,x;</span><br><span class="line">&#125;cow[MAXN];</span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">cmp1</span><span class="params">(Node x,Node y)</span><span class="comment">//以v为第一关键字排序</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(x.v!=y.v)<span class="keyword">return</span> x.v&lt;y.v;</span><br><span class="line">	<span class="keyword">return</span> x.x&lt;y.x;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">cmp2</span><span class="params">(Node x,Node y)</span><span class="comment">//以x为第一关键字排序（其实这个排序不需要第二关键字）</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(x.x!=y.x)<span class="keyword">return</span> x.x&lt;y.x;</span><br><span class="line">	<span class="keyword">return</span> x.v&lt;y.v;<span class="comment">//即这一行可以省去不写</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="type">int</span> ans;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">cdq</span><span class="params">(<span class="type">int</span> l,<span class="type">int</span> r)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(l==r)<span class="keyword">return</span>;</span><br><span class="line">	<span class="type">int</span> mid=l+r&gt;&gt;<span class="number">1</span>;</span><br><span class="line">	<span class="built_in">cdq</span>(l,mid);<span class="built_in">cdq</span>(mid<span class="number">+1</span>,r);<span class="comment">//标准cdq分治</span></span><br><span class="line">	<span class="built_in">sort</span>(cow+l,cow+mid<span class="number">+1</span>,cmp2);<span class="built_in">sort</span>(cow+mid<span class="number">+1</span>,cow+r<span class="number">+1</span>,cmp2);<span class="comment">//两个sort，保证左右区间内部的x坐标都是有序的</span></span><br><span class="line">	<span class="comment">//这两个sort就替代了之前题解里面的归并排序，更好写但是耗时更多</span></span><br><span class="line">	<span class="type">int</span> sum1=<span class="number">0</span>,sum2=<span class="number">0</span>;</span><br><span class="line">	<span class="comment">//sum2统计在左区间中坐标小于当前坐标的坐标和，sum1统计在左区间中坐标大于当前坐标的坐标和</span></span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=l;i&lt;=mid;i++)</span><br><span class="line">		sum1+=cow[i].x;<span class="comment">//先求和，再在循环过程中更新</span></span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=mid<span class="number">+1</span>,j=l;i&lt;=r;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">while</span>(j&lt;=mid&amp;&amp;cow[j].x&lt;cow[i].x)</span><br><span class="line">			sum1-=cow[j].x,sum2+=cow[j].x,j++;</span><br><span class="line">   		<span class="comment">//如果遇到坐标比当前坐标小的，在小于当前坐标的坐标和上累加，在大于当前坐标的坐标和中减去</span></span><br><span class="line">		<span class="type">int</span> cnt1=j-l,cnt2=mid-j<span class="number">+1</span>;<span class="comment">//通过j来计算小于和大于当前坐标的个数</span></span><br><span class="line">		ans+=cow[i].v*(cnt1*cow[i].x-sum2+sum1-cnt2*cow[i].x);</span><br><span class="line">		<span class="comment">//这就是上面所说的式子</span></span><br><span class="line">		<span class="comment">//由于现在的左区间和右区间都是有序的了，所以右区间内后面的坐标比前面的坐标大</span></span><br><span class="line">		<span class="comment">//所以能保证之前加入sum2的点不会再次更改，所以这么做是正确的</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">signed</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%lld&quot;</span>,&amp;n);</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)<span class="built_in">scanf</span>(<span class="string">&quot;%lld%lld&quot;</span>,&amp;cow[i].v,&amp;cow[i].x);</span><br><span class="line">	<span class="built_in">sort</span>(cow<span class="number">+1</span>,cow+n<span class="number">+1</span>,cmp1);<span class="comment">//以v为第一关键字排序</span></span><br><span class="line">	<span class="built_in">cdq</span>(<span class="number">1</span>,n);<span class="built_in">printf</span>(<span class="string">&quot;%lld\n&quot;</span>,ans); </span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>接下来，我再来对这个程序做一些小小的解释：</p>
+<p>1.我们在cdq分治中不断地对每个区间内的信息重新按照$x$来排序，但是这样排序会不会影响第一次以$v$排序需要维护的结果呢？</p>
+<p>肯定不会</p>
+<p>因为第一次排序只是为了在分治中二分时在后面统计答案的时候直接拿右区间内的$v$去乘就好了，而在区间与区间内部排序，在最后统计答案的时候的右区间内的$v$是一定大于（或者等于）左区间内的$v$的</p>
+<p>这个应该很好理解，因为毕竟没有让左区间和右区间混在一起排序嘛</p>
+<p>2.我再做完这道题了以后，又去翻了翻题解，看到了里面的归并排序的写法，是放在cdq分治的最后的，我自己想了想，其实只要让我们在统计答案的时候的$x$值是有序的就可以了，而写在前面和写在后面其实是等价的（不理解可以自己在草稿纸上画画）</p>
+<p>也就是说，上面的那段cdq分治的代码也可以这么写：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">cdq</span><span class="params">(<span class="type">int</span> l,<span class="type">int</span> r)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(l==r)<span class="keyword">return</span>;</span><br><span class="line">	<span class="type">int</span> mid=l+r&gt;&gt;<span class="number">1</span>;</span><br><span class="line">	<span class="built_in">cdq</span>(l,mid);<span class="built_in">cdq</span>(mid<span class="number">+1</span>,r);</span><br><span class="line">	<span class="type">int</span> sum1=<span class="number">0</span>,sum2=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=l;i&lt;=mid;i++)</span><br><span class="line">		sum1+=cow[i].x;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=mid<span class="number">+1</span>,j=l;i&lt;=r;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">while</span>(j&lt;=mid&amp;&amp;cow[j].x&lt;cow[i].x)</span><br><span class="line">			sum1-=cow[j].x,sum2+=cow[j].x,j++;</span><br><span class="line">		<span class="type">int</span> cnt1=j-l,cnt2=mid-j<span class="number">+1</span>;</span><br><span class="line">		ans+=cow[i].v*(cnt1*cow[i].x-sum2+sum1-cnt2*cow[i].x);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">sort</span>(cow+l,cow+r<span class="number">+1</span>,cmp2);<span class="comment">//变化在这里</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>用这个代码交上去是可以ac的 <del>（代码又短了呢）</del></p>
+<p>不知道写前面和写后面在时间上面有没有什么变化（我指的是常数上面有没有变化），请求大佬解答qaq</p>
+<p>那么，同样的道理，题解中的归并排序也可以提到统计答案之前，但是要写两遍qaq</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">题解</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2019/12/03/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20%E6%B4%9B%E8%B0%B7P2345/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2020/01/04/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20%E6%B4%9B%E8%B0%B7P5835/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          【题解】 洛谷P5835 [USACO19DEC S]Meetings
+        
+      </div>
+    </a>
   
   
-    </div></section>
+    <a href="/2019/12/01/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20%E6%B4%9B%E8%B0%B7P3120/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">【题解】 洛谷P3120 [USACO15FEB G]牛跳房子</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+
+  
+  <div id="gitment-ctn"></div> 
+<link rel="stylesheet" href="//imsun.github.io/gitment/style/default.css">
+<script src="//imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+var gitment = new Gitment({
+  id: "http://example.com/2019/12/03/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20%E6%B4%9B%E8%B0%B7P2345/",
+  owner: 'UltiMadow',
+  repo: 'comments',
+  oauth: {
+    client_id: 'Ov23lix4Aj3qhD7NKeNo',
+    client_secret: '45bfe55456622fe89dedb0e6b02876bf30cda095',
+  },
+})
+gitment.render('gitment-ctn')
+</script>
+  
 
 
           </div>
@@ -211,8 +364,8 @@
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

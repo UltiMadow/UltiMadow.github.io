@@ -6,14 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Archives: 1970/1 | UM&#39;s blog</title>
+  <title>【题解】 洛谷P5835 [USACO19DEC S]Meetings | UM&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="UM&#39;s blog">
-<meta property="og:url" content="http://example.com/archives/1970/01/index.html">
+  <meta name="description" content="前言考场上看到这道题我是懵*的，然后打了$O(n^2logn)$的，过了7个点走人于是我考后去问了老师，结果老师告诉我这道题是一道队列的好题，于是，时隔半个月，我AC了这道题">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【题解】 洛谷P5835 [USACO19DEC S]Meetings">
+<meta property="og:url" content="http://example.com/2020/01/04/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20%E6%B4%9B%E8%B0%B7P5835/index.html">
 <meta property="og:site_name" content="UM&#39;s blog">
+<meta property="og:description" content="前言考场上看到这道题我是懵*的，然后打了$O(n^2logn)$的，过了7个点走人于是我考后去问了老师，结果老师告诉我这道题是一道队列的好题，于是，时隔半个月，我AC了这道题">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-01-03T16:00:00.000Z">
+<meta property="article:modified_time" content="2024-10-06T12:36:17.805Z">
 <meta property="article:author" content="UMqwq">
+<meta property="article:tag" content="题解">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="UM&#39;s blog" type="application/atom+xml">
@@ -146,49 +151,203 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-【题解】 洛谷P5835" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/1970" class="archive-year">1970</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/1970/01/01/hello-world/" class="archive-article-date">
-  	<time datetime="1970-01-01T00:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>1970-01-01</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/1970/01/01/hello-world/">Hello World</a>
+    <h1 class="article-title" itemprop="name">
+      【题解】 洛谷P5835 [USACO19DEC S]Meetings
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
+        
+        <a href="/2020/01/04/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20%E6%B4%9B%E8%B0%B7P5835/" class="archive-article-date">
+  	<time datetime="2020-01-03T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-04</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>考场上看到这道题我是懵*的，然后打了$O(n^2logn)$的，过了7个点走人<br>于是我考后去问了老师，结果老师告诉我这道题是一道队列的好题，于是，时隔半个月，我AC了这道题</p>
+<span id="more"></span>
 
+<h3 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h3><p>我采用了一个和所有题解都不一样的做法</p>
+<p>首先，思路和其他题解是一样的，就是：<br>1、算出T<br>2、算出碰撞次数<br>3、把每次碰撞是都看成是穿过，而不是反弹，并交换体重</p>
+<p>P.S. 以下的计算全部都是把碰撞看成穿过并交换体重</p>
+<h4 id="1-如何计算T"><a href="#1-如何计算T" class="headerlink" title="1 如何计算T"></a>1 如何计算T</h4><p>题解们都用的是二分$O(nlogn)$+两次排序$O(nlogn)$<br>而我是用的四遍$O(n)$统计+两次排序$O(nlogn)$</p>
+<p>接下来，我来讲讲我是如何计算T的</p>
+<p>既然都已经穿过去了，那么，我们只要考虑每一头牛去到牛棚时的体重就好了</p>
+<p>我们先来找一找规律：  </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">编号：  1  2  3  4</span><br><span class="line">重量：  2  3  1  5</span><br><span class="line">方向：  -&gt; -&gt; -&gt; &lt;-</span><br></pre></td></tr></table></figure>
+<p>我们单独考虑向右的奶牛们</p>
+<p>当经过一系列的碰撞之后，向右的奶牛们的体重变成了：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">编号：  1  2  3</span><br><span class="line">重量：  3  1  5</span><br></pre></td></tr></table></figure>
+<p>这应该比较好理解吧</p>
+<p>当这个向右的奶牛队列又遇到了一位向左的，体重为2的奶牛呢？</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">编号：  1  2  3</span><br><span class="line">重量：  1  5  2</span><br></pre></td></tr></table></figure>
+<p>至此，规律基本上就推出来了<br>当一个（同方向）奶牛遇到了一个反方向来的奶牛时<br>第1头牛的重量变成第2头牛的重量，第2头牛的重量变成第3头牛的重量……最后一头牛的重量变成遇到的奶牛的重量</p>
+<p>看到这里，我们的<strong>队列</strong>就出场了</p>
+<p>我们可以先把所有奶牛按坐标从大到小排序<br>然后用队列来维护向一个方向的奶牛（体重）队列<br>按照顺序扫描每一个奶牛<br>如果这是和队列维护的同方向奶牛，直接加入队列<br>如果不是，弹出队头，并把这头牛的体重加入队列（根据上面的规律）</p>
+<p>这里有个细节，就是在处理向原点走的奶牛时要从后往前扫描 <del>（自行理解，想一想，为什么）</del></p>
+<p>求T的代码：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sort</span>(cow<span class="number">+1</span>,cow+n<span class="number">+1</span>,cmp);<span class="comment">//按照坐标排序</span></span><br><span class="line"><span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">if</span>(Q<span class="number">1.</span><span class="built_in">empty</span>()&amp;&amp;cow[i].d==<span class="number">-1</span>)<span class="keyword">continue</span>;<span class="comment">//Q1存速度为1的奶牛的队列</span></span><br><span class="line">	<span class="keyword">if</span>(cow[i].d==<span class="number">1</span>)Q<span class="number">1.</span><span class="built_in">push</span>(cow[i].w);</span><br><span class="line">	<span class="keyword">else</span> Q<span class="number">1.</span><span class="built_in">pop</span>(),Q<span class="number">1.</span><span class="built_in">push</span>(cow[i].w);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span>(<span class="type">int</span> i=n;i&gt;=<span class="number">1</span>;i--)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">if</span>(Q<span class="number">2.</span><span class="built_in">empty</span>()&amp;&amp;cow[i].d==<span class="number">1</span>)<span class="keyword">continue</span>;<span class="comment">//Q2存速度为-1的奶牛的队列</span></span><br><span class="line">	<span class="keyword">if</span>(cow[i].d==<span class="number">-1</span>)Q<span class="number">2.</span><span class="built_in">push</span>(cow[i].w);</span><br><span class="line">	<span class="keyword">else</span> Q<span class="number">2.</span><span class="built_in">pop</span>(),Q<span class="number">2.</span><span class="built_in">push</span>(cow[i].w);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">	<span class="keyword">if</span>(cow[i].d==<span class="number">1</span>)</span><br><span class="line">	&#123;<span class="comment">//ncow存每头牛到达农场时的重量和体重</span></span><br><span class="line">		ncow[i].t=L-cow[i].x;</span><br><span class="line">		ncow[i].w=Q<span class="number">1.f</span>ront();</span><br><span class="line">		Q<span class="number">1.</span><span class="built_in">pop</span>();</span><br><span class="line">	&#125;</span><br><span class="line"><span class="keyword">for</span>(<span class="type">int</span> i=n;i&gt;=<span class="number">1</span>;i--)</span><br><span class="line">	<span class="keyword">if</span>(cow[i].d==<span class="number">-1</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		ncow[i].t=cow[i].x;</span><br><span class="line">		ncow[i].w=Q<span class="number">2.f</span>ront();</span><br><span class="line">		Q<span class="number">2.</span><span class="built_in">pop</span>();</span><br><span class="line">	&#125;</span><br><span class="line"><span class="type">int</span> T=<span class="number">0</span>,W=<span class="number">0</span>,now=<span class="number">0</span>;</span><br><span class="line"><span class="built_in">sort</span>(ncow<span class="number">+1</span>,ncow+n<span class="number">+1</span>,cmp1);<span class="comment">//按照到达时间排序</span></span><br><span class="line"><span class="keyword">while</span>(<span class="number">2</span>*W&lt;sum)W+=ncow[++now].w;<span class="comment">//尽量把除法写成乘法形式，否则可能会有精度问题</span></span><br><span class="line">T=ncow[now].t;<span class="comment">//计算T</span></span><br></pre></td></tr></table></figure>
+<h4 id="2-求碰撞次数"><a href="#2-求碰撞次数" class="headerlink" title="2 求碰撞次数"></a>2 求碰撞次数</h4><p>这一部分就比较简单了<br><del>不过阅读这部分之前请自学初二物理：运动学之参照物</del></p>
+<p>我们以速度为1的奶牛为参照物（其实以速度为-1的为参照物也可以）<br>我们可以得到速度为-1的奶牛的速度现在变成了-2<br>那么，我们就可以得到（在以原先速度为1的奶牛为参照物的情况下）这些奶牛可以到达的位置<br>现在，我们只要知道在这些奶牛和他们最终到达的位置之间有多少头站着不动的奶牛（也就是原先速度为1的奶牛）就好了</p>
+<p>于是我们又要维护一个<strong>队列</strong><br>这个队列维护的就是在速度为-2（原先速度为-1）的奶牛能到达的范围内的所有（站着不动的）奶牛的编号<br>我们扫描每一头奶牛<br>如果这是一头原先速度为1的奶牛，则直接将其加入队列<br>如果这是一头原先速度为-1的奶牛，则要检查队列的前部<br>若这头奶牛到不了队头的奶牛，则将队头的奶牛弹出队列，一直执行到这头奶牛可以到达队头的奶牛为止<br>这时，队列的长度就是这头奶牛碰撞的次数</p>
+<p>代码：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//这里我手写了一个队列，并用sz表示它的大小</span></span><br><span class="line"><span class="type">int</span> ans=<span class="number">0</span>;<span class="comment">//存碰撞总数</span></span><br><span class="line"><span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">if</span>(cow[i].d==<span class="number">1</span>)Q[Tail++]=i,sz++;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">while</span>(Head&lt;Tail)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>(cow[i].x-cow[Q[Head]].x&gt;T*<span class="number">2</span>)Head++,sz--;</span><br><span class="line">			<span class="comment">//如果当前奶牛到达不了队头的奶牛，就出队</span></span><br><span class="line">			<span class="keyword">else</span> <span class="keyword">break</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		ans+=sz;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="3-时间复杂度"><a href="#3-时间复杂度" class="headerlink" title="3 时间复杂度"></a>3 时间复杂度</h4><p>排序$O(nlogn)$<br>计算T $O(n)$<br>计算碰撞次数 $O(n)$<br>所以总复杂度 $O(nlogn)$<br><del>这烦人的排序</del></p>
+<h4 id="4-代码"><a href="#4-代码" class="headerlink" title="4 代码"></a>4 代码</h4><p>放上我的（没有注释）的完整代码</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> MAXN 50010</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="type">int</span> n,L;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">read</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="type">int</span> num=<span class="number">0</span>,fl=<span class="number">1</span>;<span class="type">char</span> c=<span class="built_in">getchar</span>();</span><br><span class="line">	<span class="keyword">while</span>(!<span class="built_in">isdigit</span>(c))&#123;<span class="keyword">if</span>(c==<span class="string">&#x27;-&#x27;</span>)fl=<span class="number">-1</span>;c=<span class="built_in">getchar</span>();&#125;</span><br><span class="line">	<span class="keyword">while</span>(<span class="built_in">isdigit</span>(c))&#123;num=num*<span class="number">10</span>+c<span class="number">-48</span>;c=<span class="built_in">getchar</span>();&#125;</span><br><span class="line">	<span class="keyword">return</span> num*fl;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">Node</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="type">int</span> w,x,d;</span><br><span class="line">&#125;cow[MAXN];</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">Node1</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="type">int</span> w,t;</span><br><span class="line">&#125;ncow[MAXN];</span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">cmp</span><span class="params">(Node x,Node y)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> x.x&lt;y.x;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">cmp1</span><span class="params">(Node1 x,Node1 y)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> x.t&lt;y.t;</span><br><span class="line">&#125;</span><br><span class="line">queue&lt;<span class="type">int</span>&gt;Q1,Q2;</span><br><span class="line"><span class="type">int</span> sum;</span><br><span class="line"><span class="type">int</span> Q[MAXN],Head,Tail,sz;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	n=<span class="built_in">read</span>();L=<span class="built_in">read</span>();</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)cow[i].w=<span class="built_in">read</span>(),cow[i].x=<span class="built_in">read</span>(),cow[i].d=<span class="built_in">read</span>(),sum+=cow[i].w;</span><br><span class="line">	<span class="built_in">sort</span>(cow<span class="number">+1</span>,cow+n<span class="number">+1</span>,cmp);</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(Q<span class="number">1.</span><span class="built_in">empty</span>()&amp;&amp;cow[i].d==<span class="number">-1</span>)<span class="keyword">continue</span>;</span><br><span class="line">		<span class="keyword">if</span>(cow[i].d==<span class="number">1</span>)Q<span class="number">1.</span><span class="built_in">push</span>(cow[i].w);</span><br><span class="line">		<span class="keyword">else</span> Q<span class="number">1.</span><span class="built_in">pop</span>(),Q<span class="number">1.</span><span class="built_in">push</span>(cow[i].w);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=n;i&gt;=<span class="number">1</span>;i--)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(Q<span class="number">2.</span><span class="built_in">empty</span>()&amp;&amp;cow[i].d==<span class="number">1</span>)<span class="keyword">continue</span>;</span><br><span class="line">		<span class="keyword">if</span>(cow[i].d==<span class="number">-1</span>)Q<span class="number">2.</span><span class="built_in">push</span>(cow[i].w);</span><br><span class="line">		<span class="keyword">else</span> Q<span class="number">2.</span><span class="built_in">pop</span>(),Q<span class="number">2.</span><span class="built_in">push</span>(cow[i].w);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">		<span class="keyword">if</span>(cow[i].d==<span class="number">1</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			ncow[i].t=L-cow[i].x;</span><br><span class="line">			ncow[i].w=Q<span class="number">1.f</span>ront();</span><br><span class="line">			Q<span class="number">1.</span><span class="built_in">pop</span>();</span><br><span class="line">		&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=n;i&gt;=<span class="number">1</span>;i--)</span><br><span class="line">		<span class="keyword">if</span>(cow[i].d==<span class="number">-1</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			ncow[i].t=cow[i].x;</span><br><span class="line">			ncow[i].w=Q<span class="number">2.f</span>ront();</span><br><span class="line">			Q<span class="number">2.</span><span class="built_in">pop</span>();</span><br><span class="line">		&#125;</span><br><span class="line">	<span class="type">int</span> T=<span class="number">0</span>,W=<span class="number">0</span>,now=<span class="number">0</span>;</span><br><span class="line">	<span class="built_in">sort</span>(ncow<span class="number">+1</span>,ncow+n<span class="number">+1</span>,cmp1);</span><br><span class="line">	<span class="keyword">while</span>(<span class="number">2</span>*W&lt;sum)W+=ncow[++now].w;</span><br><span class="line">	T=ncow[now].t;</span><br><span class="line">	<span class="type">int</span> ans=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(cow[i].d==<span class="number">1</span>)Q[Tail++]=i,sz++;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">while</span>(Head&lt;Tail)</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">if</span>(cow[i].x-cow[Q[Head]].x&gt;T*<span class="number">2</span>)Head++,sz--;</span><br><span class="line">				<span class="keyword">else</span> <span class="keyword">break</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			ans+=sz;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>,ans);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="5-提交结果"><a href="#5-提交结果" class="headerlink" title="5 提交结果"></a>5 提交结果</h4><p>开O2 118ms rk1<br>不开O2 234ms 在不开O2的提交中rk4</p>
+<p>最后，希望各位AC此题qwq</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">题解</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2020/01/04/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20%E6%B4%9B%E8%B0%B7P5835/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2020/01/21/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20%E6%B4%9B%E8%B0%B7P3746/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          【题解】 洛谷P3746 [六省联考2017]组合数问题
+        
+      </div>
+    </a>
   
   
-    </div></section>
+    <a href="/2019/12/03/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20%E6%B4%9B%E8%B0%B7P2345/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">【题解】 洛谷P2345 奶牛集会</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+
+  
+  <div id="gitment-ctn"></div> 
+<link rel="stylesheet" href="//imsun.github.io/gitment/style/default.css">
+<script src="//imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+var gitment = new Gitment({
+  id: "http://example.com/2020/01/04/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20%E6%B4%9B%E8%B0%B7P5835/",
+  owner: 'UltiMadow',
+  repo: 'comments',
+  oauth: {
+    client_id: 'Ov23lix4Aj3qhD7NKeNo',
+    client_secret: '45bfe55456622fe89dedb0e6b02876bf30cda095',
+  },
+})
+gitment.render('gitment-ctn')
+</script>
+  
 
 
           </div>
@@ -211,8 +370,8 @@
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
