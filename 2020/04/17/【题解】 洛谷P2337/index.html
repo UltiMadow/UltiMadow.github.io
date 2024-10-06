@@ -6,14 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Archives | UM&#39;s blog</title>
+  <title>【题解】 洛谷P2337 [SCOI2012]喵星人的入侵 | UM&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="UM&#39;s blog">
-<meta property="og:url" content="http://example.com/archives/index.html">
+  <meta name="description" content="本题解思路&amp;部分代码实现来自这篇日报 终于过了，调了3h，写个题解纪念一下 这道题让我感到了什么叫真正的毒瘤 这题呢，看一眼数据范围，大概是插头dp">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【题解】 洛谷P2337 [SCOI2012]喵星人的入侵">
+<meta property="og:url" content="http://example.com/2020/04/17/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20%E6%B4%9B%E8%B0%B7P2337/index.html">
 <meta property="og:site_name" content="UM&#39;s blog">
+<meta property="og:description" content="本题解思路&amp;部分代码实现来自这篇日报 终于过了，调了3h，写个题解纪念一下 这道题让我感到了什么叫真正的毒瘤 这题呢，看一眼数据范围，大概是插头dp">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-04-16T16:00:00.000Z">
+<meta property="article:modified_time" content="2024-10-06T13:27:37.283Z">
 <meta property="article:author" content="UMqwq">
+<meta property="article:tag" content="题解">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="UM&#39;s blog" type="application/atom+xml">
@@ -146,36 +151,66 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-【题解】 洛谷P2337" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      【题解】 洛谷P2337 [SCOI2012]喵星人的入侵
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/17/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20%E6%B4%9B%E8%B0%B7P2337/" class="archive-article-date">
+
+        
+        <a href="/2020/04/17/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20%E6%B4%9B%E8%B0%B7P2337/" class="archive-article-date">
   	<time datetime="2020-04-16T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-17</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/17/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20%E6%B4%9B%E8%B0%B7P2337/">【题解】 洛谷P2337 [SCOI2012]喵星人的入侵</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>本题解思路&amp;部分代码实现来自<a target="_blank" rel="noopener" href="https://www.luogu.com.cn/blog/efforts-will-pay-off/du-liu-dong-gui-cha-tou-dp">这篇</a>日报</p>
+<p>终于过了，调了3h，写个题解纪念一下</p>
+<p><del>这道题让我感到了什么叫真正的毒瘤</del></p>
+<p>这题呢，看一眼数据范围，大概是插头dp</p>
+<span id="more"></span>
 
-        <div class="article-info info-on-right">
-          
+<p>那我们就要考虑如何设计状态了</p>
+<p>显然，本题中只记录轮廓线的<strong>插头</strong>状态是不够的，因为每个点的权值是由它周围的八个点的状态决定的，所以我们还要记录轮廓线的<strong>路径</strong>，也就是轮廓线上是放障碍还是炮台还是路径</p>
+<p>我们记轮廓线上如果是障碍则为状态 0，如果是路径则为状态 1，如果是炮台则为 3</p>
+<p>当然，我们发现插头状态仅记录左括号（记为1），右括号（记为2），和无插头（记为0）是不够的，因为本题中可能有没有括号和它匹配的插头，我们称其为<strong>独立插头</strong>（记为3）</p>
+<p>我们又发现炮台的数量还有个限制，于是还要加一个状态记录炮台的数量</p>
+<p>接下来，就是<del>喜闻乐见</del>的大力分类讨论时间啦</p>
+<p>（当然，如果你没有做过<a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P5056">这个</a>题，那么建议你先去做一下，因为本题插头使用括号表示法）</p>
+<p>我们记 $pl1$ 为右插头，记 $pl2$ 为下插头</p>
+<ol>
+<li><p>这个点 $pl1&#x3D;0$ 且左边是路径或 $pl2&#x3D;0$ 且上边是路径<br>这种情况显然需要用障碍去堵住<br>那么，显然只有无左插头且无下插头的情况是合法的<br>接下来，只要转移这个点放炮台或障碍就行了</p>
+</li>
+<li><p>这个点是障碍点<br>这应该是最简单的一种<br>显然只有无左插头且无下插头的情况是合法的<br>直接转移即可</p>
+</li>
+<li><p>这个点是非障碍点<br>（疯狂的地方开始了）<br>1）若 $pl1&#x3D;0$ 且 $pl2&#x3D;0$<br>$\quad$ 则可以添加炮台，或者新建一个联通分量，或者不走<br>2）若 $pl1&#x3D;0$ 或 $pl2&#x3D;0$<br>$\quad$ 则直接延伸插头即可<br>3）若 $pl1&#x3D;1$ 且 $pl2&#x3D;1$<br>$\quad$ 则需要向右寻找一个右括号换成左括号并删除当前插头<br>4）若 $pl1&#x3D;2$ 且 $pl2&#x3D;2$<br>$\quad$ 则需要向左寻找一个左括号换成右括号并删除当前插头<br>5）若 $pl1&#x3D;1$ 且 $pl2&#x3D;2$<br>$\quad$ 不合法，因为这样会形成闭合回路<br>6）若 $pl1&#x3D;2$ 且 $pl2&#x3D;1$<br>$\quad$ 直接删除插头即可<br>7）若 $pl1&#x3D;1$ 且 $pl2&#x3D;3$ 或 $pl1&#x3D;3$ 且 $pl2&#x3D;1$<br>$\quad$ 则需要向右寻找一个右括号替换成独立插头并删除当前插头<br>8）若 $pl1&#x3D;2$ 且 $pl2&#x3D;3$ 或 $pl1&#x3D;3$ 且 $pl2&#x3D;2$<br>$\quad$ 则需要向左寻找一个左括号替换成独立插头并删除当前插头<br>9）若 $pl1&#x3D;3$ 且 $pl2&#x3D;3$<br>$\quad$ 直接删除插头即可</p>
+</li>
+<li><p>这个点是起点或者终点<br>1）若 $pl1&#x3D;0$ 且 $pl2&#x3D;0$<br>$\quad$ 则需要新建一个独立插头<br>2）若 $pl1&#x3D;1$ 且 $pl2&#x3D;0$ 或 $pl1&#x3D;0$ 且 $pl2&#x3D;1$<br>$\quad$ 则需要向右寻找一个右括号替换成独立插头并删除当前插头<br>3）若 $pl1&#x3D;2$ 且 $pl2&#x3D;0$ 或 $pl1&#x3D;0$ 且 $pl2&#x3D;2$<br>$\quad$ 则需要向左寻找一个左括号替换成独立插头并删除当前插头<br>4）若 $pl1&#x3D;3$ 且 $pl2&#x3D;0$ 或 $pl1&#x3D;0$ 且 $pl2&#x3D;3$<br>$\quad$ 直接删除插头即可</p>
+</li>
+</ol>
+<hr>
+<p>以上是大力分类</p>
+<p>接下来，我们来讲讲点权的事情</p>
+<p>如果经过这个点，由于我们只知道轮廓线上的周围四个点的情况，所以只能加上这四个点中炮台的个数</p>
+<p>如果这个点放障碍，不加，直接传下去就行</p>
+<p>如果这个点放炮台，我们就要加上轮廓线上路径的个数，那为啥这样直接加是对的呢？</p>
+<p>我们如果不经过一个点，我们可以直接把它设置成障碍，这样，一个炮台的贡献就是轮廓线上的周围四个点中路径的个数</p>
+<p>该解释的都解释了，我们来看代码吧</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> MAXN 25</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> p 100007</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> int long long</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="type">int</span> n,m,K,now,pre;</span><br><span class="line"><span class="type">char</span> c[MAXN][MAXN];</span><br><span class="line"><span class="type">int</span> head[p<span class="number">+3</span>],nxt[<span class="number">1</span>&lt;&lt;<span class="number">24</span>];</span><br><span class="line"><span class="type">int</span> f[<span class="number">2</span>][<span class="number">1</span>&lt;&lt;<span class="number">24</span>],fst[<span class="number">2</span>][<span class="number">3</span>][<span class="number">1</span>&lt;&lt;<span class="number">24</span>];</span><br><span class="line"><span class="type">int</span> cnt[<span class="number">2</span>];</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">insert</span><span class="params">(<span class="type">int</span> state1,<span class="type">int</span> state2,<span class="type">int</span> state3,<span class="type">int</span> val)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="type">int</span> ha=((((<span class="number">1ll</span>*state1&lt;&lt;<span class="number">16</span>)|state2)&lt;&lt;<span class="number">4</span>)|state3)%p<span class="number">+1</span>;<span class="comment">//哈希</span></span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=head[ha];i;i=nxt[i])</span><br><span class="line">		<span class="keyword">if</span>(fst[now][<span class="number">0</span>][i]==state1&amp;&amp;fst[now][<span class="number">1</span>][i]==state2&amp;&amp;fst[now][<span class="number">2</span>][i]==state3)</span><br><span class="line">		&#123;</span><br><span class="line">			f[now][i]=<span class="built_in">max</span>(f[now][i],val);</span><br><span class="line">			<span class="keyword">return</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	f[now][++cnt[now]]=val;</span><br><span class="line">	fst[now][<span class="number">0</span>][cnt[now]]=state1;</span><br><span class="line">	fst[now][<span class="number">1</span>][cnt[now]]=state2;</span><br><span class="line">	fst[now][<span class="number">2</span>][cnt[now]]=state3;<span class="comment">//三个状态</span></span><br><span class="line">	nxt[cnt[now]]=head[ha];</span><br><span class="line">	head[ha]=cnt[now];</span><br><span class="line">&#125;<span class="comment">//hash表</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">left</span><span class="params">(<span class="type">int</span> state,<span class="type">int</span> pos,<span class="type">int</span> val)</span></span></span><br><span class="line"><span class="function"></span>&#123;<span class="comment">//向左寻找左括号</span></span><br><span class="line">	<span class="type">int</span> tot=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">while</span>(<span class="literal">true</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="type">int</span> pl=(state&gt;&gt;(pos&lt;&lt;<span class="number">1</span>))&amp;<span class="number">3</span>;</span><br><span class="line">		<span class="keyword">if</span>(pl==<span class="number">2</span>)tot++;<span class="keyword">if</span>(pl==<span class="number">1</span>) tot--;</span><br><span class="line">		<span class="keyword">if</span>(!tot)<span class="keyword">return</span> state^(pl&lt;&lt;(pos&lt;&lt;<span class="number">1</span>))^(val&lt;&lt;(pos&lt;&lt;<span class="number">1</span>));</span><br><span class="line">		pos--;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">right</span><span class="params">(<span class="type">int</span> state,<span class="type">int</span> pos,<span class="type">int</span> val)</span></span></span><br><span class="line"><span class="function"></span>&#123;<span class="comment">//向右寻找右括号</span></span><br><span class="line">	<span class="type">int</span> tot=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">while</span>(<span class="literal">true</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="type">int</span> pl=(state&gt;&gt;(pos&lt;&lt;<span class="number">1</span>))&amp;<span class="number">3</span>;</span><br><span class="line">		<span class="keyword">if</span>(pl==<span class="number">1</span>)tot++;<span class="keyword">if</span>(pl==<span class="number">2</span>) tot--;</span><br><span class="line">		<span class="keyword">if</span>(!tot)<span class="keyword">return</span> state^(pl&lt;&lt;(pos&lt;&lt;<span class="number">1</span>))^(val&lt;&lt;(pos&lt;&lt;<span class="number">1</span>));</span><br><span class="line">		pos++;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">char</span> tmp[MAXN][MAXN];</span><br><span class="line"><span class="function"><span class="type">signed</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%lld%lld%lld&quot;</span>,&amp;n,&amp;m,&amp;K);</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;n;i++)<span class="built_in">scanf</span>(<span class="string">&quot;%s&quot;</span>,c[i]);</span><br><span class="line">	<span class="keyword">if</span>(n&lt;m)</span><br><span class="line">	&#123;<span class="comment">//n&lt;m的时候把地图转90度</span></span><br><span class="line">		<span class="built_in">memcpy</span>(tmp,c,<span class="built_in">sizeof</span>(c));</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;n;i++)</span><br><span class="line">			<span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">0</span>;j&lt;m;j++)</span><br><span class="line">				c[j][i]=tmp[i][j];</span><br><span class="line">		<span class="built_in">swap</span>(n,m);</span><br><span class="line">	&#125;</span><br><span class="line">	cnt[<span class="number">0</span>]=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;n;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">1</span>;j&lt;=cnt[now];j++)</span><br><span class="line">			fst[now][<span class="number">0</span>][j]&lt;&lt;=<span class="number">2</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">1</span>;j&lt;=cnt[now];j++)</span><br><span class="line">			fst[now][<span class="number">1</span>][j]=(fst[now][<span class="number">1</span>][j]^(((fst[now][<span class="number">1</span>][j]&gt;&gt;(m<span class="number">+1</span>&lt;&lt;<span class="number">1</span>))&amp;<span class="number">3</span>)&lt;&lt;(m<span class="number">+1</span>&lt;&lt;<span class="number">1</span>)))&lt;&lt;<span class="number">2</span>;<span class="comment">//更新上一行的状态</span></span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">0</span>;j&lt;m;j++)</span><br><span class="line">		&#123;</span><br><span class="line">			pre=now;now^=<span class="number">1</span>;cnt[now]=<span class="number">0</span>;</span><br><span class="line">			<span class="built_in">memset</span>(head,<span class="number">0</span>,<span class="built_in">sizeof</span>(head));<span class="comment">//注意初始化</span></span><br><span class="line">			<span class="keyword">for</span>(<span class="type">int</span> k=<span class="number">1</span>;k&lt;=cnt[pre];k++)</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="type">int</span> sta=fst[pre][<span class="number">0</span>][k],stb=fst[pre][<span class="number">1</span>][k],stc=fst[pre][<span class="number">2</span>][k];</span><br><span class="line">				<span class="type">int</span> val=f[pre][k];</span><br><span class="line">				<span class="keyword">if</span>(sta&gt;=(<span class="number">1</span>&lt;&lt;(m<span class="number">+1</span>&lt;&lt;<span class="number">1</span>)))<span class="keyword">continue</span>;</span><br><span class="line">				<span class="type">int</span> pl1=(sta&gt;&gt;(j&lt;&lt;<span class="number">1</span>))&amp;<span class="number">3</span>;<span class="comment">//right</span></span><br><span class="line">				<span class="type">int</span> pl2=(sta&gt;&gt;(j<span class="number">+1</span>&lt;&lt;<span class="number">1</span>))&amp;<span class="number">3</span>;<span class="comment">//down</span></span><br><span class="line">				<span class="type">int</span> r=(stb&gt;&gt;(j&lt;&lt;<span class="number">1</span>))&amp;<span class="number">3</span>;<span class="comment">//右状态</span></span><br><span class="line">				<span class="type">int</span> ur=(stb&gt;&gt;(j<span class="number">+1</span>&lt;&lt;<span class="number">1</span>))&amp;<span class="number">3</span>;<span class="comment">//右上状态</span></span><br><span class="line">				<span class="type">int</span> u=(stb&gt;&gt;(j<span class="number">+2</span>&lt;&lt;<span class="number">1</span>))&amp;<span class="number">3</span>;<span class="comment">//上状态</span></span><br><span class="line">				<span class="type">int</span> ul=(stb&gt;&gt;(j<span class="number">+3</span>&lt;&lt;<span class="number">1</span>))&amp;<span class="number">3</span>;<span class="comment">//左上状态</span></span><br><span class="line">				<span class="type">int</span> now=(sta^(pl1&lt;&lt;(j&lt;&lt;<span class="number">1</span>))^(pl2&lt;&lt;(j<span class="number">+1</span>&lt;&lt;<span class="number">1</span>)));</span><br><span class="line">				<span class="keyword">if</span>((!pl1&amp;&amp;r==<span class="number">1</span>)||(!pl2&amp;&amp;u==<span class="number">1</span>))<span class="comment">//1</span></span><br><span class="line">				&#123;</span><br><span class="line">					<span class="keyword">if</span>(pl1||pl2)<span class="keyword">continue</span>;</span><br><span class="line">					<span class="built_in">insert</span>(now,stb^(ur&lt;&lt;(j<span class="number">+1</span>&lt;&lt;<span class="number">1</span>)),stc,val);<span class="comment">//放障碍</span></span><br><span class="line">					<span class="keyword">if</span>(stc&lt;K&amp;&amp;c[i][j]==<span class="string">&#x27;.&#x27;</span>)</span><br><span class="line">						<span class="built_in">insert</span>(now,stb^(ur&lt;&lt;(j<span class="number">+1</span>&lt;&lt;<span class="number">1</span>))^(<span class="number">3</span>&lt;&lt;(j<span class="number">+1</span>&lt;&lt;<span class="number">1</span>)),stc<span class="number">+1</span>,val+(r==<span class="number">1</span>)+(ur==<span class="number">1</span>)+(u==<span class="number">1</span>)+(ul==<span class="number">1</span>));<span class="comment">//放炮台</span></span><br><span class="line">				&#125;</span><br><span class="line">				<span class="keyword">else</span> <span class="keyword">if</span>(c[i][j]==<span class="string">&#x27;#&#x27;</span>)&#123;<span class="keyword">if</span>(!pl1&amp;&amp;!pl2)<span class="built_in">insert</span>(now,stb^(ur&lt;&lt;(j<span class="number">+1</span>&lt;&lt;<span class="number">1</span>)),stc,val);&#125;<span class="comment">//2</span></span><br><span class="line">				<span class="keyword">else</span> <span class="keyword">if</span>(c[i][j]==<span class="string">&#x27;.&#x27;</span>)<span class="comment">//3</span></span><br><span class="line">				&#123;</span><br><span class="line">					<span class="keyword">if</span>(!pl1&amp;&amp;!pl2)<span class="comment">//1)</span></span><br><span class="line">					&#123;</span><br><span class="line">						<span class="keyword">if</span>(stc&lt;K)</span><br><span class="line">							<span class="built_in">insert</span>(now,stb^(ur&lt;&lt;(j<span class="number">+1</span>&lt;&lt;<span class="number">1</span>))^(<span class="number">3</span>&lt;&lt;(j<span class="number">+1</span>&lt;&lt;<span class="number">1</span>)),stc<span class="number">+1</span>,</span><br><span class="line">								val+(r==<span class="number">1</span>)+(ur==<span class="number">1</span>)+(u==<span class="number">1</span>)+(ul==<span class="number">1</span>));<span class="comment">//放炮台</span></span><br><span class="line">						<span class="built_in">insert</span>(now^(<span class="number">1</span>&lt;&lt;(j&lt;&lt;<span class="number">1</span>))^(<span class="number">2</span>&lt;&lt;(j<span class="number">+1</span>&lt;&lt;<span class="number">1</span>)),stb^(ur&lt;&lt;(j<span class="number">+1</span>&lt;&lt;<span class="number">1</span>))^(<span class="number">1</span>&lt;&lt;(j<span class="number">+1</span>&lt;&lt;<span class="number">1</span>)),stc,</span><br><span class="line">							val+(r==<span class="number">3</span>)+(ur==<span class="number">3</span>)+(u==<span class="number">3</span>)+(ul==<span class="number">3</span>));<span class="comment">//走</span></span><br><span class="line">						<span class="built_in">insert</span>(now,stb^(ur&lt;&lt;(j<span class="number">+1</span>&lt;&lt;<span class="number">1</span>)),stc,val);<span class="comment">//不走</span></span><br><span class="line">					&#125;</span><br><span class="line">					<span class="keyword">else</span> <span class="keyword">if</span>(!pl1&amp;&amp;pl2)<span class="comment">//2）</span></span><br><span class="line">					&#123;</span><br><span class="line">						<span class="built_in">insert</span>(now^(pl2&lt;&lt;(j&lt;&lt;<span class="number">1</span>)),stb^(ur&lt;&lt;(j<span class="number">+1</span>&lt;&lt;<span class="number">1</span>))^(<span class="number">1</span>&lt;&lt;(j<span class="number">+1</span>&lt;&lt;<span class="number">1</span>)),stc,</span><br><span class="line">							val+(r==<span class="number">3</span>)+(ur==<span class="number">3</span>)+(u==<span class="number">3</span>)+(ul==<span class="number">3</span>));</span><br><span class="line">						<span class="built_in">insert</span>(now^(pl2&lt;&lt;(j<span class="number">+1</span>&lt;&lt;<span class="number">1</span>)),stb^(ur&lt;&lt;(j<span class="number">+1</span>&lt;&lt;<span class="number">1</span>))^(<span class="number">1</span>&lt;&lt;(j<span class="number">+1</span>&lt;&lt;<span class="number">1</span>)),stc,</span><br><span class="line">							val+(r==<span class="number">3</span>)+(ur==<span class="number">3</span>)+(u==<span class="number">3</span>)+(ul==<span class="number">3</span>));</span><br><span class="line">					&#125;</span><br><span class="line">					<span class="keyword">else</span> <span class="keyword">if</span>(pl1&amp;&amp;!pl2)<span class="comment">//2）</span></span><br><span class="line">					&#123;</span><br><span class="line">						<span class="built_in">insert</span>(now^(pl1&lt;&lt;(j&lt;&lt;<span class="number">1</span>)),stb^(ur&lt;&lt;(j<span class="number">+1</span>&lt;&lt;<span class="number">1</span>))^(<span class="number">1</span>&lt;&lt;(j<span class="number">+1</span>&lt;&lt;<span class="number">1</span>)),stc,</span><br><span class="line">							val+(r==<span class="number">3</span>)+(ur==<span class="number">3</span>)+(u==<span class="number">3</span>)+(ul==<span class="number">3</span>));</span><br><span class="line">						<span class="built_in">insert</span>(now^(pl1&lt;&lt;(j<span class="number">+1</span>&lt;&lt;<span class="number">1</span>)),stb^(ur&lt;&lt;(j<span class="number">+1</span>&lt;&lt;<span class="number">1</span>))^(<span class="number">1</span>&lt;&lt;(j<span class="number">+1</span>&lt;&lt;<span class="number">1</span>)),stc,</span><br><span class="line">							val+(r==<span class="number">3</span>)+(ur==<span class="number">3</span>)+(u==<span class="number">3</span>)+(ul==<span class="number">3</span>));</span><br><span class="line">					&#125;</span><br><span class="line">					<span class="keyword">else</span> <span class="keyword">if</span>(pl1==<span class="number">1</span>&amp;&amp;pl2==<span class="number">1</span>)<span class="comment">//3）</span></span><br><span class="line">						<span class="built_in">insert</span>(<span class="built_in">right</span>(now,j,<span class="number">1</span>),stb^(ur&lt;&lt;(j<span class="number">+1</span>&lt;&lt;<span class="number">1</span>))^(<span class="number">1</span>&lt;&lt;(j<span class="number">+1</span>&lt;&lt;<span class="number">1</span>)),stc,</span><br><span class="line">							val+(r==<span class="number">3</span>)+(ur==<span class="number">3</span>)+(u==<span class="number">3</span>)+(ul==<span class="number">3</span>));</span><br><span class="line">					<span class="keyword">else</span> <span class="keyword">if</span>(pl1==<span class="number">2</span>&amp;&amp;pl2==<span class="number">2</span>)<span class="comment">//4）</span></span><br><span class="line">						<span class="built_in">insert</span>(<span class="built_in">left</span>(now,j,<span class="number">2</span>),stb^(ur&lt;&lt;(j<span class="number">+1</span>&lt;&lt;<span class="number">1</span>))^(<span class="number">1</span>&lt;&lt;(j<span class="number">+1</span>&lt;&lt;<span class="number">1</span>)),stc,</span><br><span class="line">							val+(r==<span class="number">3</span>)+(ur==<span class="number">3</span>)+(u==<span class="number">3</span>)+(ul==<span class="number">3</span>));</span><br><span class="line">					<span class="keyword">else</span> <span class="keyword">if</span>(pl1==<span class="number">2</span>&amp;&amp;pl2==<span class="number">1</span>)<span class="comment">//6）</span></span><br><span class="line">						<span class="built_in">insert</span>(now,stb^(ur&lt;&lt;(j<span class="number">+1</span>&lt;&lt;<span class="number">1</span>))^(<span class="number">1</span>&lt;&lt;(j<span class="number">+1</span>&lt;&lt;<span class="number">1</span>)),stc,</span><br><span class="line">							val+(r==<span class="number">3</span>)+(ur==<span class="number">3</span>)+(u==<span class="number">3</span>)+(ul==<span class="number">3</span>));</span><br><span class="line">					<span class="keyword">else</span> <span class="keyword">if</span>(pl1==<span class="number">1</span>&amp;&amp;pl2==<span class="number">3</span>)<span class="comment">//7）</span></span><br><span class="line">						<span class="built_in">insert</span>(<span class="built_in">right</span>(now,j,<span class="number">3</span>),stb^(ur&lt;&lt;(j<span class="number">+1</span>&lt;&lt;<span class="number">1</span>))^(<span class="number">1</span>&lt;&lt;(j<span class="number">+1</span>&lt;&lt;<span class="number">1</span>)),stc,</span><br><span class="line">							val+(r==<span class="number">3</span>)+(ur==<span class="number">3</span>)+(u==<span class="number">3</span>)+(ul==<span class="number">3</span>));</span><br><span class="line">					<span class="keyword">else</span> <span class="keyword">if</span>(pl1==<span class="number">2</span>&amp;&amp;pl2==<span class="number">3</span>)<span class="comment">//8）</span></span><br><span class="line">						<span class="built_in">insert</span>(<span class="built_in">left</span>(now,j,<span class="number">3</span>),stb^(ur&lt;&lt;(j<span class="number">+1</span>&lt;&lt;<span class="number">1</span>))^(<span class="number">1</span>&lt;&lt;(j<span class="number">+1</span>&lt;&lt;<span class="number">1</span>)),stc,</span><br><span class="line">							val+(r==<span class="number">3</span>)+(ur==<span class="number">3</span>)+(u==<span class="number">3</span>)+(ul==<span class="number">3</span>));</span><br><span class="line">					<span class="keyword">else</span> <span class="keyword">if</span>(pl1==<span class="number">3</span>&amp;&amp;pl2==<span class="number">1</span>)<span class="comment">//7）</span></span><br><span class="line">						<span class="built_in">insert</span>(<span class="built_in">right</span>(now,j,<span class="number">3</span>),stb^(ur&lt;&lt;(j<span class="number">+1</span>&lt;&lt;<span class="number">1</span>))^(<span class="number">1</span>&lt;&lt;(j<span class="number">+1</span>&lt;&lt;<span class="number">1</span>)),stc,</span><br><span class="line">							val+(r==<span class="number">3</span>)+(ur==<span class="number">3</span>)+(u==<span class="number">3</span>)+(ul==<span class="number">3</span>));</span><br><span class="line">					<span class="keyword">else</span> <span class="keyword">if</span>(pl1==<span class="number">3</span>&amp;&amp;pl2==<span class="number">2</span>)<span class="comment">//8）</span></span><br><span class="line">						<span class="built_in">insert</span>(<span class="built_in">left</span>(now,j,<span class="number">3</span>),stb^(ur&lt;&lt;(j<span class="number">+1</span>&lt;&lt;<span class="number">1</span>))^(<span class="number">1</span>&lt;&lt;(j<span class="number">+1</span>&lt;&lt;<span class="number">1</span>)),stc,</span><br><span class="line">							val+(r==<span class="number">3</span>)+(ur==<span class="number">3</span>)+(u==<span class="number">3</span>)+(ul==<span class="number">3</span>));</span><br><span class="line">					<span class="keyword">else</span> <span class="keyword">if</span>(pl1==<span class="number">3</span>&amp;&amp;pl2==<span class="number">3</span>)<span class="comment">//9）</span></span><br><span class="line">						<span class="built_in">insert</span>(now,stb^(ur&lt;&lt;(j<span class="number">+1</span>&lt;&lt;<span class="number">1</span>))^(<span class="number">1</span>&lt;&lt;(j<span class="number">+1</span>&lt;&lt;<span class="number">1</span>)),stc,</span><br><span class="line">							val+(r==<span class="number">3</span>)+(ur==<span class="number">3</span>)+(u==<span class="number">3</span>)+(ul==<span class="number">3</span>));</span><br><span class="line">				&#125;</span><br><span class="line">				<span class="keyword">else</span> <span class="keyword">if</span>(c[i][j]==<span class="string">&#x27;S&#x27;</span>||c[i][j]==<span class="string">&#x27;T&#x27;</span>)<span class="comment">//4</span></span><br><span class="line">				&#123;</span><br><span class="line">					<span class="keyword">if</span>(c[i][j]==<span class="string">&#x27;S&#x27;</span>&amp;&amp;!pl1&amp;&amp;!pl2)<span class="comment">//1）</span></span><br><span class="line">					&#123;</span><br><span class="line">						<span class="built_in">insert</span>(now^(<span class="number">3</span>&lt;&lt;(j&lt;&lt;<span class="number">1</span>)),stb^(ur&lt;&lt;(j<span class="number">+1</span>&lt;&lt;<span class="number">1</span>))^(<span class="number">1</span>&lt;&lt;(j<span class="number">+1</span>&lt;&lt;<span class="number">1</span>)),stc,</span><br><span class="line">							val+(r==<span class="number">3</span>)+(ur==<span class="number">3</span>)+(u==<span class="number">3</span>)+(ul==<span class="number">3</span>));</span><br><span class="line">						<span class="built_in">insert</span>(now^(<span class="number">3</span>&lt;&lt;(j<span class="number">+1</span>&lt;&lt;<span class="number">1</span>)),stb^(ur&lt;&lt;(j<span class="number">+1</span>&lt;&lt;<span class="number">1</span>))^(<span class="number">1</span>&lt;&lt;(j<span class="number">+1</span>&lt;&lt;<span class="number">1</span>)),stc,</span><br><span class="line">							val+(r==<span class="number">3</span>)+(ur==<span class="number">3</span>)+(u==<span class="number">3</span>)+(ul==<span class="number">3</span>));</span><br><span class="line">					&#125;</span><br><span class="line">					<span class="keyword">else</span> <span class="keyword">if</span>(c[i][j]==<span class="string">&#x27;T&#x27;</span>&amp;&amp;!pl1&amp;&amp;!pl2)<span class="comment">//1）</span></span><br><span class="line">					&#123;</span><br><span class="line">						<span class="built_in">insert</span>(now^(<span class="number">3</span>&lt;&lt;(j&lt;&lt;<span class="number">1</span>)),stb^(ur&lt;&lt;(j<span class="number">+1</span>&lt;&lt;<span class="number">1</span>))^(<span class="number">1</span>&lt;&lt;(j<span class="number">+1</span>&lt;&lt;<span class="number">1</span>)),stc,</span><br><span class="line">							val+(r==<span class="number">3</span>)+(ur==<span class="number">3</span>)+(u==<span class="number">3</span>)+(ul==<span class="number">3</span>));</span><br><span class="line">						<span class="built_in">insert</span>(now^(<span class="number">3</span>&lt;&lt;(j<span class="number">+1</span>&lt;&lt;<span class="number">1</span>)),stb^(ur&lt;&lt;(j<span class="number">+1</span>&lt;&lt;<span class="number">1</span>))^(<span class="number">1</span>&lt;&lt;(j<span class="number">+1</span>&lt;&lt;<span class="number">1</span>)),stc,</span><br><span class="line">							val+(r==<span class="number">3</span>)+(ur==<span class="number">3</span>)+(u==<span class="number">3</span>)+(ul==<span class="number">3</span>));</span><br><span class="line">					&#125;</span><br><span class="line">					<span class="keyword">else</span> <span class="keyword">if</span>(!pl1&amp;&amp;pl2==<span class="number">1</span>)<span class="comment">//2）</span></span><br><span class="line">						<span class="built_in">insert</span>(<span class="built_in">right</span>(now,j,<span class="number">3</span>),stb^(ur&lt;&lt;(j<span class="number">+1</span>&lt;&lt;<span class="number">1</span>))^(<span class="number">1</span>&lt;&lt;(j<span class="number">+1</span>&lt;&lt;<span class="number">1</span>)),stc,</span><br><span class="line">							val+(r==<span class="number">3</span>)+(ur==<span class="number">3</span>)+(u==<span class="number">3</span>)+(ul==<span class="number">3</span>));</span><br><span class="line">					<span class="keyword">else</span> <span class="keyword">if</span>(!pl1&amp;&amp;pl2==<span class="number">2</span>)<span class="comment">//3）</span></span><br><span class="line">						<span class="built_in">insert</span>(<span class="built_in">left</span>(now,j,<span class="number">3</span>),stb^(ur&lt;&lt;(j<span class="number">+1</span>&lt;&lt;<span class="number">1</span>))^(<span class="number">1</span>&lt;&lt;(j<span class="number">+1</span>&lt;&lt;<span class="number">1</span>)),stc,</span><br><span class="line">							val+(r==<span class="number">3</span>)+(ur==<span class="number">3</span>)+(u==<span class="number">3</span>)+(ul==<span class="number">3</span>));</span><br><span class="line">					<span class="keyword">else</span> <span class="keyword">if</span>(pl1==<span class="number">1</span>&amp;&amp;!pl2)<span class="comment">//2）</span></span><br><span class="line">						<span class="built_in">insert</span>(<span class="built_in">right</span>(now,j,<span class="number">3</span>),stb^(ur&lt;&lt;(j<span class="number">+1</span>&lt;&lt;<span class="number">1</span>))^(<span class="number">1</span>&lt;&lt;(j<span class="number">+1</span>&lt;&lt;<span class="number">1</span>)),stc,</span><br><span class="line">							val+(r==<span class="number">3</span>)+(ur==<span class="number">3</span>)+(u==<span class="number">3</span>)+(ul==<span class="number">3</span>));</span><br><span class="line">					<span class="keyword">else</span> <span class="keyword">if</span>(pl1==<span class="number">2</span>&amp;&amp;!pl2)<span class="comment">//3）</span></span><br><span class="line">						<span class="built_in">insert</span>(<span class="built_in">left</span>(now,j,<span class="number">3</span>),stb^(ur&lt;&lt;(j<span class="number">+1</span>&lt;&lt;<span class="number">1</span>))^(<span class="number">1</span>&lt;&lt;(j<span class="number">+1</span>&lt;&lt;<span class="number">1</span>)),stc,</span><br><span class="line">							val+(r==<span class="number">3</span>)+(ur==<span class="number">3</span>)+(u==<span class="number">3</span>)+(ul==<span class="number">3</span>));</span><br><span class="line">					<span class="keyword">else</span> <span class="keyword">if</span>(pl1==<span class="number">3</span>&amp;&amp;!pl2)<span class="comment">//4）</span></span><br><span class="line">						<span class="built_in">insert</span>(now,stb^(ur&lt;&lt;(j<span class="number">+1</span>&lt;&lt;<span class="number">1</span>))^(<span class="number">1</span>&lt;&lt;(j<span class="number">+1</span>&lt;&lt;<span class="number">1</span>)),stc,</span><br><span class="line">							val+(r==<span class="number">3</span>)+(ur==<span class="number">3</span>)+(u==<span class="number">3</span>)+(ul==<span class="number">3</span>));</span><br><span class="line">					<span class="keyword">else</span> <span class="keyword">if</span>(!pl1&amp;&amp;pl2==<span class="number">3</span>)<span class="comment">//4）</span></span><br><span class="line">						<span class="built_in">insert</span>(now,stb^(ur&lt;&lt;(j<span class="number">+1</span>&lt;&lt;<span class="number">1</span>))^(<span class="number">1</span>&lt;&lt;(j<span class="number">+1</span>&lt;&lt;<span class="number">1</span>)),stc,</span><br><span class="line">							val+(r==<span class="number">3</span>)+(ur==<span class="number">3</span>)+(u==<span class="number">3</span>)+(ul==<span class="number">3</span>));</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="type">int</span> ans=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=cnt[now];i++)<span class="comment">//统计答案</span></span><br><span class="line">		<span class="keyword">if</span>(!fst[now][<span class="number">0</span>][i])</span><br><span class="line">			ans=<span class="built_in">max</span>(ans,f[now][i]);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%lld&quot;</span>,ans);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -187,364 +222,121 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2020/04/17/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20%E6%B4%9B%E8%B0%B7P2337/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/05/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20%E6%B4%9B%E8%B0%B7P6278/" class="archive-article-date">
-  	<time datetime="2020-04-04T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-05</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2020/04/05/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20%E6%B4%9B%E8%B0%B7P6278/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">【题解】 洛谷P6278 [USACO20OPEN G]Haircut</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/05/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20%E6%B4%9B%E8%B0%B7P6278/">【题解】 洛谷P6278 [USACO20OPEN G]Haircut</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">题解</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/04/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20%E6%B4%9B%E8%B0%B7P6310/" class="archive-article-date">
-  	<time datetime="2020-04-03T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-04</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/04/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20%E6%B4%9B%E8%B0%B7P6310/">【题解】 洛谷P6310 仓库建设</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">题解</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/26/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20%E6%B4%9B%E8%B0%B7P1539/" class="archive-article-date">
-  	<time datetime="2020-03-25T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-26</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/26/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20%E6%B4%9B%E8%B0%B7P1539/">【题解】 洛谷P1539 [TJOI2011]01矩阵</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">题解</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/18/%E3%80%90%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%91%20%E6%8D%A2%E6%A0%B9dp/" class="archive-article-date">
-  	<time datetime="2020-03-17T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-18</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/18/%E3%80%90%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%91%20%E6%8D%A2%E6%A0%B9dp/">【学习笔记】 换根dp</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">学习笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/11/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20%E6%B4%9B%E8%B0%B7P5962/" class="archive-article-date">
-  	<time datetime="2020-03-10T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-11</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/11/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20%E6%B4%9B%E8%B0%B7P5962/">【题解】 洛谷P5962 [BOI2004]ships</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">题解</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/10/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20%E6%B4%9B%E8%B0%B7P3092/" class="archive-article-date">
-  	<time datetime="2020-03-09T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-10</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/10/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20%E6%B4%9B%E8%B0%B7P3092/">【题解】 洛谷P3092 [USACO13NOV G]No Change</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">题解</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/05/%E3%80%90%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%91%E8%8E%AB%E6%AF%94%E4%B9%8C%E6%96%AF%E5%8F%8D%E6%BC%94/" class="archive-article-date">
-  	<time datetime="2020-03-04T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-05</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/05/%E3%80%90%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%91%E8%8E%AB%E6%AF%94%E4%B9%8C%E6%96%AF%E5%8F%8D%E6%BC%94/">【学习笔记】 莫比乌斯反演</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">学习笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/03/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20%E6%B4%9B%E8%B0%B7P4095/" class="archive-article-date">
-  	<time datetime="2020-03-02T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-03</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/03/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20%E6%B4%9B%E8%B0%B7P4095/">【题解】 洛谷P4095 [HEOI2013]Eden 的新背包问题</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">题解</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/01/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20%E6%B4%9B%E8%B0%B7P6145/" class="archive-article-date">
-  	<time datetime="2020-02-29T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-01</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/01/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20%E6%B4%9B%E8%B0%B7P6145/">【题解】 洛谷P6145 [USACO20FEB G]Timeline</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">题解</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="page-number" href="/archives/page/3/">3</a><a class="extend next" rel="next" href="/archives/page/2/">Next &raquo;</a>
-    </nav>
+  <div id="gitment-ctn"></div> 
+<link rel="stylesheet" href="//imsun.github.io/gitment/style/default.css">
+<script src="//imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+var gitment = new Gitment({
+  id: "http://example.com/2020/04/17/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20%E6%B4%9B%E8%B0%B7P2337/",
+  owner: 'UltiMadow',
+  repo: 'comments',
+  oauth: {
+    client_id: 'Ov23lix4Aj3qhD7NKeNo',
+    client_secret: '45bfe55456622fe89dedb0e6b02876bf30cda095',
+  },
+})
+gitment.render('gitment-ctn')
+</script>
   
 
 
@@ -568,8 +360,8 @@
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
