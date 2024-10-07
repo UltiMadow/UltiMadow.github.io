@@ -148,32 +148,31 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-【题解】 洛谷P2337" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-【题解】 洛谷P3642" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/17/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20%E6%B4%9B%E8%B0%B7P2337/">【题解】 洛谷P2337 [SCOI2012]喵星人的入侵</a>
+      <a class="article-title" href="/2020/11/28/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20%E6%B4%9B%E8%B0%B7P3642/">【题解】 洛谷P3642 [APIO2016]烟火表演</a>
     </h1>
   
 
         
-        <a href="/2020/04/17/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20%E6%B4%9B%E8%B0%B7P2337/" class="archive-article-date">
-  	<time datetime="2020-04-16T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-17</time>
+        <a href="/2020/11/28/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20%E6%B4%9B%E8%B0%B7P3642/" class="archive-article-date">
+  	<time datetime="2020-11-27T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-11-28</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>本题解思路&amp;部分代码实现来自<a target="_blank" rel="noopener" href="https://www.luogu.com.cn/blog/efforts-will-pay-off/du-liu-dong-gui-cha-tou-dp">这篇</a>日报</p>
-<p>终于过了，调了3h，写个题解纪念一下</p>
-<p><del>这道题让我感到了什么叫真正的毒瘤</del></p>
-<p>这题呢，看一眼数据范围，大概是插头dp</p>
+        <p>首先有一个很显然的 dp 方程</p>
+<p>设 $f_{u,x}$ 为以 $u$ 为根的子树中结束时间统一为 $x$ 的最小代价，有 $f_{u,x}&#x3D;\sum \min_{y\le x}{f_{v,y}+|w-x+y|}$</p>
+<p>于是有了一个 $\mathcal O(n(\sum w)^2)$ 的方程</p>
         
-          <a class="article-more-a" href="/2020/04/17/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20%E6%B4%9B%E8%B0%B7P2337/#more">more >></a>
+          <a class="article-more-a" href="/2020/11/28/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20%E6%B4%9B%E8%B0%B7P3642/#more">more >></a>
         
       
 
@@ -197,7 +196,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/17/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20%E6%B4%9B%E8%B0%B7P2337/">展开全文 >></a>
+          <a class="article-more-a" href="/2020/11/28/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20%E6%B4%9B%E8%B0%B7P3642/">展开全文 >></a>
         </p>
       
 
@@ -227,31 +226,35 @@
 
 
   
-    <article id="post-【题解】 洛谷P6278" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-【做题笔记】 csp-s2020" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/05/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20%E6%B4%9B%E8%B0%B7P6278/">【题解】 洛谷P6278 [USACO20OPEN G]Haircut</a>
+      <a class="article-title" href="/2020/11/25/%E3%80%90%E5%81%9A%E9%A2%98%E7%AC%94%E8%AE%B0%E3%80%91%20csp-s2020/">【做题笔记】 csp-s2020</a>
     </h1>
   
 
         
-        <a href="/2020/04/05/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20%E6%B4%9B%E8%B0%B7P6278/" class="archive-article-date">
-  	<time datetime="2020-04-04T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-05</time>
+        <a href="/2020/11/25/%E3%80%90%E5%81%9A%E9%A2%98%E7%AC%94%E8%AE%B0%E3%80%91%20csp-s2020/" class="archive-article-date">
+  	<time datetime="2020-11-24T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-11-25</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>思维题，挺不错的一个树状数组题，代码不长，<del>甚至不需要排序</del></p>
-<p>考场上一看到这题其实窝是懵的，接下来，输出的方式给了我一点提示</p>
-<p>看到<code>对于每一个 j=0,1,…,N−1，用一行输出 Farmer John 头发的不良度</code>我们想到了倒推</p>
+        <p><del>考场 T4 写出一大半，另一部分没想到，25pts滚粗了</del></p>
+<p><del>墙裂谴责T1出大膜你的行为</del></p>
+<p><del>墙裂谴责T2卡ull的行为</del></p>
+<ul>
+<li>T1 儒略日</li>
+</ul>
+<p>大膜你</p>
         
-          <a class="article-more-a" href="/2020/04/05/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20%E6%B4%9B%E8%B0%B7P6278/#more">more >></a>
+          <a class="article-more-a" href="/2020/11/25/%E3%80%90%E5%81%9A%E9%A2%98%E7%AC%94%E8%AE%B0%E3%80%91%20csp-s2020/#more">more >></a>
         
       
 
@@ -275,7 +278,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/05/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20%E6%B4%9B%E8%B0%B7P6278/">展开全文 >></a>
+          <a class="article-more-a" href="/2020/11/25/%E3%80%90%E5%81%9A%E9%A2%98%E7%AC%94%E8%AE%B0%E3%80%91%20csp-s2020/">展开全文 >></a>
         </p>
       
 
@@ -305,31 +308,31 @@
 
 
   
-    <article id="post-【题解】 洛谷P6310" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-【题解】 CF1016F" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/04/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20%E6%B4%9B%E8%B0%B7P6310/">【题解】 洛谷P6310 仓库建设</a>
+      <a class="article-title" href="/2020/10/21/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20CF1016F/">【题解】 CF1016F Road Projects</a>
     </h1>
   
 
         
-        <a href="/2020/04/04/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20%E6%B4%9B%E8%B0%B7P6310/" class="archive-article-date">
-  	<time datetime="2020-04-03T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-04</time>
+        <a href="/2020/10/21/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20CF1016F/" class="archive-article-date">
+  	<time datetime="2020-10-20T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-21</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>一道kruskal重构树的题目</p>
-<p>思路并不难，首先把kruskal重构树建出来，接下来dp</p>
-<p>dp之前要倍增预处理一下，求出每个点可以控制的范围，并把那个点标记+1</p>
+        <p>挺不错的一个树形 dp 题</p>
+<p>首先把 $1\to n$ 的链提取出来，显然这一条链上会挂很多子树</p>
+<p>考虑链上的一个节点 $u$ 以及它的子树，显然如果这个子树内有大于等于 3 个节点（包括 $u$）则在这个子树内一定能选出两个没有直接连边的点，每次查询只要连这两个点即可，于是答案就是原树上 $1\to n$ 的最短路</p>
         
-          <a class="article-more-a" href="/2020/04/04/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20%E6%B4%9B%E8%B0%B7P6310/#more">more >></a>
+          <a class="article-more-a" href="/2020/10/21/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20CF1016F/#more">more >></a>
         
       
 
@@ -353,7 +356,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/04/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20%E6%B4%9B%E8%B0%B7P6310/">展开全文 >></a>
+          <a class="article-more-a" href="/2020/10/21/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20CF1016F/">展开全文 >></a>
         </p>
       
 
@@ -383,31 +386,112 @@
 
 
   
-    <article id="post-【题解】 洛谷P1539" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-【做题笔记】 一些好玩的dp题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/26/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20%E6%B4%9B%E8%B0%B7P1539/">【题解】 洛谷P1539 [TJOI2011]01矩阵</a>
+      <a class="article-title" href="/2020/09/07/%E3%80%90%E5%81%9A%E9%A2%98%E7%AC%94%E8%AE%B0%E3%80%91%20%E4%B8%80%E4%BA%9B%E5%A5%BD%E7%8E%A9%E7%9A%84dp%E9%A2%98/">【做题笔记】 一些好玩的dp题</a>
     </h1>
   
 
         
-        <a href="/2020/03/26/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20%E6%B4%9B%E8%B0%B7P1539/" class="archive-article-date">
-  	<time datetime="2020-03-25T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-26</time>
+        <a href="/2020/09/07/%E3%80%90%E5%81%9A%E9%A2%98%E7%AC%94%E8%AE%B0%E3%80%91%20%E4%B8%80%E4%BA%9B%E5%A5%BD%E7%8E%A9%E7%9A%84dp%E9%A2%98/" class="archive-article-date">
+  	<time datetime="2020-09-06T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-07</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>首先，此题暴力状压可过</p>
-<p>为啥捏，我们可以枚举每行所有的合法状态，也就是没有连续的两个 1 的状态数，记为 $k$，那么时间复杂度即为 $\Theta(nk^2)$</p>
-<p>发现 $m&#x3D;15$ 时这个 $k$ 不会很多</p>
+        <ul>
+<li><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/CF671D">CF671D Roads in Yusland</a></li>
+</ul>
+<p>设 $f_u$ 为以 $u$ 为根的子树全部覆盖且覆盖了 $u$ 与其父亲节点的边所需要的最小化费</p>
+<p>转移的时候发现不好转移，因为这个东西不满足最优子结构，于是考虑把所有有用的信息都用一个堆存下来</p>
         
-          <a class="article-more-a" href="/2020/03/26/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20%E6%B4%9B%E8%B0%B7P1539/#more">more >></a>
+          <a class="article-more-a" href="/2020/09/07/%E3%80%90%E5%81%9A%E9%A2%98%E7%AC%94%E8%AE%B0%E3%80%91%20%E4%B8%80%E4%BA%9B%E5%A5%BD%E7%8E%A9%E7%9A%84dp%E9%A2%98/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">做题笔记</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/09/07/%E3%80%90%E5%81%9A%E9%A2%98%E7%AC%94%E8%AE%B0%E3%80%91%20%E4%B8%80%E4%BA%9B%E5%A5%BD%E7%8E%A9%E7%9A%84dp%E9%A2%98/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-【题解】 洛谷P6442" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/08/29/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20%E6%B4%9B%E8%B0%B7P6442/">【题解】 洛谷P6442 [COCI2011-2012#6] KOŠARE</a>
+    </h1>
+  
+
+        
+        <a href="/2020/08/29/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20%E6%B4%9B%E8%B0%B7P6442/" class="archive-article-date">
+  	<time datetime="2020-08-28T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-29</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>update: 修正了几个明显的问题（</strong></p>
+<p>容斥 + sos dp</p>
+<p><a target="_blank" rel="noopener" href="https://codeforces.ml/blog/entry/45223">如果你不会 sos dp</a></p>
+<p>首先发现 $m$ 很小，于是直接对于每一个箱子状压</p>
+        
+          <a class="article-more-a" href="/2020/08/29/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20%E6%B4%9B%E8%B0%B7P6442/#more">more >></a>
         
       
 
@@ -431,7 +515,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2020/03/26/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20%E6%B4%9B%E8%B0%B7P1539/">展开全文 >></a>
+          <a class="article-more-a" href="/2020/08/29/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20%E6%B4%9B%E8%B0%B7P6442/">展开全文 >></a>
         </p>
       
 
@@ -461,107 +545,31 @@
 
 
   
-    <article id="post-【学习笔记】 换根dp" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-【题解】 UVA12991" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/18/%E3%80%90%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%91%20%E6%8D%A2%E6%A0%B9dp/">【学习笔记】 换根dp</a>
+      <a class="article-title" href="/2020/08/20/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20UVA12991/">【题解】 UVA12991 Game Rooms</a>
     </h1>
   
 
         
-        <a href="/2020/03/18/%E3%80%90%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%91%20%E6%8D%A2%E6%A0%B9dp/" class="archive-article-date">
-  	<time datetime="2020-03-17T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-18</time>
+        <a href="/2020/08/20/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20UVA12991/" class="archive-article-date">
+  	<time datetime="2020-08-19T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-20</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="0-前言"><a href="#0-前言" class="headerlink" title="0 前言"></a>0 前言</h3><p>换根dp应该是树形dp中比较难理解的一类dp了</p>
-<p><del>当然，理解了之后就没有难度了</del></p>
+        <p>不难的 dp 题</p>
+<p>令 $f_{i,k}$ 为当前修到第 $i$ 层，第 $i$ 层修了第 $k\in{0,1}$ 种房间的最小代价</p>
+<p>容易发现这就是一个序列分段问题，易得 $f_{i,k}&#x3D;\min{f_{j,k\text{ xor }1}+\text{cost}(j+1,i,k)}$</p>
         
-          <a class="article-more-a" href="/2020/03/18/%E3%80%90%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%91%20%E6%8D%A2%E6%A0%B9dp/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">学习笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/03/18/%E3%80%90%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%91%20%E6%8D%A2%E6%A0%B9dp/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-【题解】 洛谷P5962" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/11/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20%E6%B4%9B%E8%B0%B7P5962/">【题解】 洛谷P5962 [BOI2004]ships</a>
-    </h1>
-  
-
-        
-        <a href="/2020/03/11/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20%E6%B4%9B%E8%B0%B7P5962/" class="archive-article-date">
-  	<time datetime="2020-03-10T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-11</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>看到这题，窝的第一反应：不就是个联通块嘛，水题水题</p>
-<p>然后看到数据范围：$1\le n\le 3\times 10^4$，需要优化</p>
-        
-          <a class="article-more-a" href="/2020/03/11/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20%E6%B4%9B%E8%B0%B7P5962/#more">more >></a>
+          <a class="article-more-a" href="/2020/08/20/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20UVA12991/#more">more >></a>
         
       
 
@@ -585,7 +593,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2020/03/11/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20%E6%B4%9B%E8%B0%B7P5962/">展开全文 >></a>
+          <a class="article-more-a" href="/2020/08/20/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20UVA12991/">展开全文 >></a>
         </p>
       
 
@@ -615,32 +623,31 @@
 
 
   
-    <article id="post-【题解】 洛谷P3092" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-【题解】 洛谷P6772" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/10/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20%E6%B4%9B%E8%B0%B7P3092/">【题解】 洛谷P3092 [USACO13NOV G]No Change</a>
+      <a class="article-title" href="/2020/08/18/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20%E6%B4%9B%E8%B0%B7P6772/">【题解】 洛谷P6772 [NOI2020]美食家</a>
     </h1>
   
 
         
-        <a href="/2020/03/10/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20%E6%B4%9B%E8%B0%B7P3092/" class="archive-article-date">
-  	<time datetime="2020-03-09T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-10</time>
+        <a href="/2020/08/18/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20%E6%B4%9B%E8%B0%B7P6772/" class="archive-article-date">
+  	<time datetime="2020-08-17T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-18</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>其实这题代码真的很短</p>
-<p>我们来换一种dp方式（当然这种dp方式题解里好像有，但是讲的不太详细，于是我来补充一下）</p>
-<p>仍然是状压dp</p>
-<p>令 $f[st]$ 为当前硬币使用状态为 $st$ 时多买到几号物品</p>
+        <p>同步赛 long long $\to$ int，$100\to 20$ &#x2F;dk&#x2F;dk</p>
+<p>第一眼是个费用流，后来发现就是个 DAG 最长路</p>
+<p>然后显然这个图可以分层（反正就莫名其妙想到了，鬼知道为啥），边是有向无权边，点上有点权</p>
         
-          <a class="article-more-a" href="/2020/03/10/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20%E6%B4%9B%E8%B0%B7P3092/#more">more >></a>
+          <a class="article-more-a" href="/2020/08/18/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20%E6%B4%9B%E8%B0%B7P6772/#more">more >></a>
         
       
 
@@ -664,7 +671,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2020/03/10/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20%E6%B4%9B%E8%B0%B7P3092/">展开全文 >></a>
+          <a class="article-more-a" href="/2020/08/18/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20%E6%B4%9B%E8%B0%B7P6772/">展开全文 >></a>
         </p>
       
 
@@ -694,109 +701,32 @@
 
 
   
-    <article id="post-【学习笔记】莫比乌斯反演" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-【题解】 洛谷P3163" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/05/%E3%80%90%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%91%E8%8E%AB%E6%AF%94%E4%B9%8C%E6%96%AF%E5%8F%8D%E6%BC%94/">【学习笔记】 莫比乌斯反演</a>
+      <a class="article-title" href="/2020/08/05/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20%E6%B4%9B%E8%B0%B7P3163/">【题解】 洛谷P3163 [CQOI2014]危桥</a>
     </h1>
   
 
         
-        <a href="/2020/03/05/%E3%80%90%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%91%E8%8E%AB%E6%AF%94%E4%B9%8C%E6%96%AF%E5%8F%8D%E6%BC%94/" class="archive-article-date">
-  	<time datetime="2020-03-04T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-05</time>
+        <a href="/2020/08/05/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20%E6%B4%9B%E8%B0%B7P3163/" class="archive-article-date">
+  	<time datetime="2020-08-04T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-05</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>莫比乌斯反演是从<a target="_blank" rel="noopener" href="https://www.luogu.com.cn/blog/lx-2003/mobius-inversion">这篇日报</a>上学的qwq</p>
-<p>然后我来稍微整理一下</p>
-<p>如果有不对的地方欢迎指正qwq</p>
+        <p>update on 2024.6.10: 把剪切板的内容搬到了正文中。</p>
+<p>先来一个结论：</p>
+<p>首先建出给定的网络流图，危桥容量为 2，其他容量为 $+\infty$，然后建出超级源点 $s,t$；</p>
+<p>接着连 $s\to a_1$，容量为 $2\times a_n$；连 $s\to b_1$，容量为 $2\times b_n$；连 $a_2\to t$，容量为 $2\times a_n$；连 $b_2\to t$，容量为 $2\times b_n$，并跑一遍最大流；</p>
         
-          <a class="article-more-a" href="/2020/03/05/%E3%80%90%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%91%E8%8E%AB%E6%AF%94%E4%B9%8C%E6%96%AF%E5%8F%8D%E6%BC%94/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">学习笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/03/05/%E3%80%90%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%91%E8%8E%AB%E6%AF%94%E4%B9%8C%E6%96%AF%E5%8F%8D%E6%BC%94/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-【题解】 洛谷P4095" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/03/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20%E6%B4%9B%E8%B0%B7P4095/">【题解】 洛谷P4095 [HEOI2013]Eden 的新背包问题</a>
-    </h1>
-  
-
-        
-        <a href="/2020/03/03/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20%E6%B4%9B%E8%B0%B7P4095/" class="archive-article-date">
-  	<time datetime="2020-03-02T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-03</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>分治大法吼啊</p>
-<p>之前有大佬讲分治讲的很清楚了，但是他是用的是单调队列</p>
-<p>所以我来写一篇用二进制拆分的分治题解</p>
-        
-          <a class="article-more-a" href="/2020/03/03/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20%E6%B4%9B%E8%B0%B7P4095/#more">more >></a>
+          <a class="article-more-a" href="/2020/08/05/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20%E6%B4%9B%E8%B0%B7P3163/#more">more >></a>
         
       
 
@@ -820,7 +750,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2020/03/03/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20%E6%B4%9B%E8%B0%B7P4095/">展开全文 >></a>
+          <a class="article-more-a" href="/2020/08/05/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20%E6%B4%9B%E8%B0%B7P3163/">展开全文 >></a>
         </p>
       
 
@@ -850,30 +780,31 @@
 
 
   
-    <article id="post-【题解】 洛谷P6145" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-【题解】 洛谷P3833" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/01/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20%E6%B4%9B%E8%B0%B7P6145/">【题解】 洛谷P6145 [USACO20FEB G]Timeline</a>
+      <a class="article-title" href="/2020/08/04/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20%E6%B4%9B%E8%B0%B7P3833/">【题解】 洛谷P3833 [SHOI2012]魔法树</a>
     </h1>
   
 
         
-        <a href="/2020/03/01/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20%E6%B4%9B%E8%B0%B7P6145/" class="archive-article-date">
-  	<time datetime="2020-02-29T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-01</time>
+        <a href="/2020/08/04/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20%E6%B4%9B%E8%B0%B7P3833/" class="archive-article-date">
+  	<time datetime="2020-08-03T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-04</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>这是一个差分约束裸题，如果不会的话可以看看我的<a target="_blank" rel="noopener" href="https://ultimadow.github.io/2020/02/12/%E3%80%90%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%91%20%E5%B7%AE%E5%88%86%E7%BA%A6%E6%9D%9F/">这篇博客</a></p>
-<p>由于良心出题人没有卡SPFA，于是我们就过掉了这题</p>
+        <p>upd: 管理说没代码不好理解，于是我就把代码放上来了（</p>
+<p>强烈要求管理卡一卡树剖，因为出题人说正解不是树剖（</p>
+<p>大家应该学树状数组的时候都学过如何用树状数组处理区间加区间查的问题 （POJ3468）</p>
         
-          <a class="article-more-a" href="/2020/03/01/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20%E6%B4%9B%E8%B0%B7P6145/#more">more >></a>
+          <a class="article-more-a" href="/2020/08/04/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20%E6%B4%9B%E8%B0%B7P3833/#more">more >></a>
         
       
 
@@ -897,7 +828,87 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2020/03/01/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20%E6%B4%9B%E8%B0%B7P6145/">展开全文 >></a>
+          <a class="article-more-a" href="/2020/08/04/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20%E6%B4%9B%E8%B0%B7P3833/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-【做题笔记】 2020-8" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/08/04/%E3%80%90%E5%81%9A%E9%A2%98%E7%AC%94%E8%AE%B0%E3%80%91%202020-8/">【做题笔记】 2020-8</a>
+    </h1>
+  
+
+        
+        <a href="/2020/08/04/%E3%80%90%E5%81%9A%E9%A2%98%E7%AC%94%E8%AE%B0%E3%80%91%202020-8/" class="archive-article-date">
+  	<time datetime="2020-08-03T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-04</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>暑假过了一半了才想起来做题笔记的事（（（</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P2414">Luogu P2414 [NOI2011]阿狸的打字机</a></li>
+</ul>
+<p>AC 自动机，先建出 fail 树</p>
+        
+          <a class="article-more-a" href="/2020/08/04/%E3%80%90%E5%81%9A%E9%A2%98%E7%AC%94%E8%AE%B0%E3%80%91%202020-8/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">做题笔记</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/08/04/%E3%80%90%E5%81%9A%E9%A2%98%E7%AC%94%E8%AE%B0%E3%80%91%202020-8/">展开全文 >></a>
         </p>
       
 
@@ -929,7 +940,7 @@
   
   
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
     </nav>
   
 
@@ -1043,6 +1054,14 @@ MathJax.Hub.Queue(function() {
             <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
           </label>
           <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">备忘录</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">做题笔记</a>
+              </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">学习笔记</a>
