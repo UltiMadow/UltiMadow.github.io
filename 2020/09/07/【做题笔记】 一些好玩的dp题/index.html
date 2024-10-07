@@ -16,7 +16,7 @@
 <meta property="og:description" content="CF671D Roads in Yusland  设 $f_u$ 为以 $u$ 为根的子树全部覆盖且覆盖了 $u$ 与其父亲节点的边所需要的最小化费 转移的时候发现不好转移，因为这个东西不满足最优子结构，于是考虑把所有有用的信息都用一个堆存下来">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-09-06T16:00:00.000Z">
-<meta property="article:modified_time" content="2024-10-07T05:06:21.386Z">
+<meta property="article:modified_time" content="2024-10-07T05:26:48.172Z">
 <meta property="article:author" content="UMqwq">
 <meta property="article:tag" content="做题笔记">
 <meta name="twitter:card" content="summary">
@@ -216,7 +216,7 @@
 <p>同样设 $fr_{i,j}&#x3D;\sum\limits_{j\le r}f_{i,j,r},sr_{i,j}&#x3D;\sum\limits_{j\le l\le r}f_{i,l,r}&#x3D;\sum\limits_{j\le l}fr_{i,l}$</p>
 <p>根据对称性，有 $sr_{i,j}&#x3D;sl_{i,m-j+1}$</p>
 <p>而最终的答案即为 $sl_{n,m}$</p>
-<p>接下来考虑推 $fl$，有：<br>$$<br>\begin{aligned}<br>fl_{i,j}&amp;&#x3D;\sum_{l\le j}f_{i,l,j}\<br>&amp;&#x3D; \sum_{l\le j}P_{l-1}P_{m-j}\sum\limits_{[l1,r1]\cap [l,j]\not &#x3D; \varnothing} f_{i-1,l1,r1}\<br>&amp;&#x3D; \sum_{l\le j}P_{l-1}P_{m-j}(sl_{i-1,m}-sl_{i-1,l-1}-sr_{i-1,j+1})\<br>&amp;&#x3D; P_{m-j}\sum_{l\le j}P_{l-1}(sl_{i-1,m}-sl_{i-1,l-1}-sl_{i-1,m-j})\<br>&amp;&#x3D; P_{m-j}(sl_{i-1,m}-sl_{i-1,m-j})\sum_{l\le j}P_{l-1}-P_{m-j}\sum_{l\le j}P_{l-1}sl_{i-1,l-1}<br>\end{aligned}<br>$$</p>
+<p>接下来考虑推 $fl$，有：<br>$$<br>\begin{aligned}<br>fl_{i,j}&amp;&#x3D;\sum_{l\le j}f_{i,l,j}\cr<br>&amp;&#x3D; \sum_{l\le j}P_{l-1}P_{m-j}\sum\limits_{[l1,r1]\cap [l,j]\not &#x3D; \varnothing} f_{i-1,l1,r1}\cr<br>&amp;&#x3D; \sum_{l\le j}P_{l-1}P_{m-j}(sl_{i-1,m}-sl_{i-1,l-1}-sr_{i-1,j+1})\cr<br>&amp;&#x3D; P_{m-j}\sum_{l\le j}P_{l-1}(sl_{i-1,m}-sl_{i-1,l-1}-sl_{i-1,m-j})\cr<br>&amp;&#x3D; P_{m-j}(sl_{i-1,m}-sl_{i-1,m-j})\sum_{l\le j}P_{l-1}-P_{m-j}\sum_{l\le j}P_{l-1}sl_{i-1,l-1}<br>\end{aligned}<br>$$</p>
 <p>其中，$\sum P_{l-1},\sum P_{l-1}sl_{i-1,l-1}$ 都可以通过前缀和预处理，于是 $fl$ 的转移变成 $\mathcal O(1)$ 的了</p>
 <p>考虑把 $sl$ 变成递推式：$sl_{i,j}&#x3D;\sum\limits_{r\le j}fl_{i,r}&#x3D;sl_{i,j-1}+fl_{i,j}$，于是 $sl$ 的转移也优化到了 $\mathcal O(1)$</p>
 <p>于是有总复杂度 $\mathcal O(nm)$，使用滚动数组优化空间可达到空间复杂度 $\mathcal O(m+k)$</p>
@@ -704,19 +704,19 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">备忘录</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">做题笔记</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">学习笔记</a>
+                <a href="javascript:void(0)" class="js-tag color4">备忘录</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">题解</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">学习笔记</a>
               </li>
             
             <div class="clearfix"></div>

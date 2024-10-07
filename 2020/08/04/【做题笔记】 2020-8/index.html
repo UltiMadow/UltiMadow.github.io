@@ -16,7 +16,7 @@
 <meta property="og:description" content="暑假过了一半了才想起来做题笔记的事（（（  Luogu P2414 [NOI2011]阿狸的打字机  AC 自动机，先建出 fail 树">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-08-03T16:00:00.000Z">
-<meta property="article:modified_time" content="2024-10-07T04:57:40.928Z">
+<meta property="article:modified_time" content="2024-10-07T05:26:15.842Z">
 <meta property="article:author" content="UMqwq">
 <meta property="article:tag" content="做题笔记">
 <meta name="twitter:card" content="summary">
@@ -424,9 +424,9 @@
 <li><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P6620">Luogu P6620 [省选联考 2020 A 卷] 组合数问题</a></li>
 </ul>
 <p>简单数学题</p>
-<p>首先把 $f$ 转化成下降幂多项式：<br>$$<br>\begin{aligned}<br>f(k)&amp;&#x3D;\sum_{i&#x3D;0}^{m}a_ik^i\<br>&amp;&#x3D;\sum_{i&#x3D;0}^m a_i\sum_{j&#x3D;0}^i {^i_j}k^{\underline j}\<br>&amp;&#x3D;\sum_{i&#x3D;0}^m k^{\underline i}\sum_{j&#x3D;i}^{m}a_j{^j_i}\<br>&amp;&#x3D;\sum_{i&#x3D;0}^m b_ik^{\underline i} \qquad (b_i&#x3D;\sum_{j&#x3D;i}^{m}a_j{^j_i})<br>\end{aligned}<br>$$</p>
+<p>首先把 $f$ 转化成下降幂多项式：<br>$$<br>\begin{aligned}<br>f(k)&amp;&#x3D;\sum_{i&#x3D;0}^{m}a_ik^i\cr<br>&amp;&#x3D;\sum_{i&#x3D;0}^m a_i\sum_{j&#x3D;0}^i {^i_j}k^{\underline j}\cr<br>&amp;&#x3D;\sum_{i&#x3D;0}^m k^{\underline i}\sum_{j&#x3D;i}^{m}a_j{^j_i}\cr<br>&amp;&#x3D;\sum_{i&#x3D;0}^m b_ik^{\underline i} \qquad (b_i&#x3D;\sum_{j&#x3D;i}^{m}a_j{^j_i})<br>\end{aligned}<br>$$</p>
 <p>带回原式：</p>
-<p>$$<br>\begin{aligned}<br>\sum_{k&#x3D;0}^n\sum_{i&#x3D;0}^m b_i k^{\underline i}x^k\binom nk&amp;&#x3D;\sum_{k&#x3D;0}^n\sum_{i&#x3D;0}^m b_ix^k\binom{n-i}{k-i}n^{\underline i}\<br>&amp;&#x3D;\sum_{i&#x3D;0}^m b_in^{\underline i}\sum_{k&#x3D;i}^n\binom {n-i}{k-i}x^k\<br>&amp;&#x3D;\sum_{i&#x3D;0}^mb_in^{\underline i}x^i\sum_{k&#x3D;0}^{n-i}\binom{n-i}{k}x^k\<br>&amp;&#x3D;\sum_{i&#x3D;0}^mb_in^{\underline i}x^i(x+1)^{n-i}<br>\end{aligned}<br>$$</p>
+<p>$$<br>\begin{aligned}<br>\sum_{k&#x3D;0}^n\sum_{i&#x3D;0}^m b_i k^{\underline i}x^k\binom nk&amp;&#x3D;\sum_{k&#x3D;0}^n\sum_{i&#x3D;0}^m b_ix^k\binom{n-i}{k-i}n^{\underline i}\cr<br>&amp;&#x3D;\sum_{i&#x3D;0}^m b_in^{\underline i}\sum_{k&#x3D;i}^n\binom {n-i}{k-i}x^k\cr<br>&amp;&#x3D;\sum_{i&#x3D;0}^mb_in^{\underline i}x^i\sum_{k&#x3D;0}^{n-i}\binom{n-i}{k}x^k\cr<br>&amp;&#x3D;\sum_{i&#x3D;0}^mb_in^{\underline i}x^i(x+1)^{n-i}<br>\end{aligned}<br>$$</p>
 <p>然后暴力预处理第二类斯特林数和 $b$ 即可</p>
 <p>时间复杂度 $\mathcal O(m^2)$</p>
 <ul>
@@ -718,19 +718,19 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">备忘录</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">做题笔记</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">学习笔记</a>
+                <a href="javascript:void(0)" class="js-tag color4">备忘录</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">题解</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">学习笔记</a>
               </li>
             
             <div class="clearfix"></div>
