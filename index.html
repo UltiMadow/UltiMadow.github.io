@@ -148,31 +148,35 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-【题解】 AGC049E" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-【游记】 NOI2023" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2022/10/27/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20AGC049E/">【题解】 AGC049E Increment Decrement</a>
+      <a class="article-title" href="/2023/07/27/%E3%80%90%E6%B8%B8%E8%AE%B0%E3%80%91%20NOI2023/">【游记】 NOI2023 退役记</a>
     </h1>
   
 
         
-        <a href="/2022/10/27/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20AGC049E/" class="archive-article-date">
-  	<time datetime="2022-10-26T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-27</time>
+        <a href="/2023/07/27/%E3%80%90%E6%B8%B8%E8%AE%B0%E3%80%91%20NOI2023/" class="archive-article-date">
+  	<time datetime="2023-07-26T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-07-27</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>先考虑如何对于一个序列 ${a}$ 求答案</p>
-<p>记 $p_i$ 为执行完所有操作二之后的 $a$ 序列，则操作一贡献为 $\sum|p_i-a_i|$，操作二贡献为 $\sum c\max{p_{i+1}-p_i,0}$</p>
-<p>考虑 dp，记 $f_{i,j}$ 为考虑前 $i$ 个数，$p_i&#x3D;j$ 的最小代价</p>
+        <p>省流：寄。</p>
+<ul>
+<li>Day？？？</li>
+</ul>
+<p>结束了半个月在华师一的训练，感觉状态至少比省选前好了不少</p>
+<p>unr 拿到了 Au 的好成绩，之前的两场 NOI 模拟赛打的也还可以</p>
+<p>到达了成都，打板子，休息，开摆！</p>
         
-          <a class="article-more-a" href="/2022/10/27/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20AGC049E/#more">more >></a>
+          <a class="article-more-a" href="/2023/07/27/%E3%80%90%E6%B8%B8%E8%AE%B0%E3%80%91%20NOI2023/#more">more >></a>
         
       
 
@@ -186,7 +190,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">题解</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">游记</a>
         		</li>
       		
 		</ul>
@@ -196,7 +200,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2022/10/27/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20AGC049E/">展开全文 >></a>
+          <a class="article-more-a" href="/2023/07/27/%E3%80%90%E6%B8%B8%E8%AE%B0%E3%80%91%20NOI2023/">展开全文 >></a>
         </p>
       
 
@@ -226,30 +230,30 @@
 
 
   
-    <article id="post-多项式板子" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-【题解】 ARC164E" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2022/09/23/%E5%A4%9A%E9%A1%B9%E5%BC%8F%E6%9D%BF%E5%AD%90/">多项式板子</a>
+      <a class="article-title" href="/2023/07/11/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20ARC164E/">【题解】 ARC164E Segment-Tree Optimization</a>
     </h1>
   
 
         
-        <a href="/2022/09/23/%E5%A4%9A%E9%A1%B9%E5%BC%8F%E6%9D%BF%E5%AD%90/" class="archive-article-date">
-  	<time datetime="2022-09-22T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-09-23</time>
+        <a href="/2023/07/11/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20ARC164E/" class="archive-article-date">
+  	<time datetime="2023-07-10T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-07-11</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>备忘</p>
-<p>多项式除法和开根还没写（</p>
+        <p>考场看错题了&#x2F;fn&#x2F;fn&#x2F;fn</p>
+<p>考虑转化一下构建线段树的过程，构造一条 $n$ 个点的链，假设当前区间为 $[l,r]$，深度为 $dep$，选取的分割点为 $mid$，则我们给 $mid\to mid+1$ 的边 $dep$ 的权值，并断开这条边。</p>
         
-          <a class="article-more-a" href="/2022/09/23/%E5%A4%9A%E9%A1%B9%E5%BC%8F%E6%9D%BF%E5%AD%90/#more">more >></a>
+          <a class="article-more-a" href="/2023/07/11/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20ARC164E/#more">more >></a>
         
       
 
@@ -263,7 +267,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">备忘录</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">题解</a>
         		</li>
       		
 		</ul>
@@ -273,7 +277,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2022/09/23/%E5%A4%9A%E9%A1%B9%E5%BC%8F%E6%9D%BF%E5%AD%90/">展开全文 >></a>
+          <a class="article-more-a" href="/2023/07/11/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20ARC164E/">展开全文 >></a>
         </p>
       
 
@@ -303,31 +307,31 @@
 
 
   
-    <article id="post-【题解】 ARC145F" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-【题解】 ABC309Ex" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2022/07/31/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20ARC145F/">【题解】 ARC145F Modulo Sum of Increasing Sequences</a>
+      <a class="article-title" href="/2023/07/09/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20ABC309Ex/">【题解】 ABC309Ex Simple Path Counting Problem</a>
     </h1>
   
 
         
-        <a href="/2022/07/31/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20ARC145F/" class="archive-article-date">
-  	<time datetime="2022-07-30T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-07-31</time>
+        <a href="/2023/07/09/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20ABC309Ex/" class="archive-article-date">
+  	<time datetime="2023-07-08T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-07-09</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><del>被这个 Poly 毒害了一上午&#x2F;fn</del></p>
-<p>考虑先转化一下题意，由于要求序列是单调不降的，所以可以令 $b_i&#x3D;a_i+i$，此时 $b_i$ 严格单调增</p>
-<p>所以可以把题目转化为在 $[0,n+m)$ 中选择 $n$ 个组成严格单调增的序列，以下将 $m$ 加上 $n$</p>
+        <p>感觉很猛的题（</p>
+<p>首先考虑一个暴力 dp，记 $f_{i,j}$ 为从第一行的某个起点走到了第 $i$ 行第 $j$ 列的方案数，转移显然为 $f_{i,j}&#x3D;[j&gt;1]f_{i-1,j-1}+f_{i-1,j}+[j&lt;m]f_{i-1,j+1}$。</p>
+<p>这个 dp 可以用矩阵加速，但由于 $m$ 很大，所以没啥前途。</p>
         
-          <a class="article-more-a" href="/2022/07/31/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20ARC145F/#more">more >></a>
+          <a class="article-more-a" href="/2023/07/09/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20ABC309Ex/#more">more >></a>
         
       
 
@@ -351,7 +355,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2022/07/31/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20ARC145F/">展开全文 >></a>
+          <a class="article-more-a" href="/2023/07/09/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20ABC309Ex/">展开全文 >></a>
         </p>
       
 
@@ -381,31 +385,31 @@
 
 
   
-    <article id="post-【题解】 AGC048F" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-【题解】 AGC061C" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2022/07/30/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20AGC048F/">【题解】 AGC048F 01 Record</a>
+      <a class="article-title" href="/2023/07/05/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20AGC061C/">【题解】 AGC061C First Come First Serve</a>
     </h1>
   
 
         
-        <a href="/2022/07/30/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20AGC048F/" class="archive-article-date">
-  	<time datetime="2022-07-29T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-07-30</time>
+        <a href="/2023/07/05/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20AGC061C/" class="archive-article-date">
+  	<time datetime="2023-07-04T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-07-05</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>将 $S$ 反过来，则一个数的贡献为一个形如 <code>101010...</code> 的串，称这种字符串为好的字符串。</p>
-<p>考虑不断贪心地从 $S$ 中取出最长的好串，记它们的长度为 $l_1,l_2,\dots,l_k$。</p>
-<p>假设原先在黑板上的数从大到小为 $x_1,x_2,\dots,x_m$，则这些数合法当且仅当下列条件被满足：</p>
+        <p>记录一个暴力的思路（</p>
+<p>按照套路，考虑给每个登记序列一一对应一种登记方式。</p>
+<p>不妨让每个人都尽量在区间左端点处登记，也即只有在区间内有人登记时才可以选右端点。</p>
         
-          <a class="article-more-a" href="/2022/07/30/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20AGC048F/#more">more >></a>
+          <a class="article-more-a" href="/2023/07/05/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20AGC061C/#more">more >></a>
         
       
 
@@ -429,7 +433,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2022/07/30/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20AGC048F/">展开全文 >></a>
+          <a class="article-more-a" href="/2023/07/05/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20AGC061C/">展开全文 >></a>
         </p>
       
 
@@ -459,31 +463,30 @@
 
 
   
-    <article id="post-【题解】 AGC046F" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-【题解】 CF1776E" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2022/07/26/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20AGC046F/">【题解】 AGC046F Forbidden Tournament</a>
+      <a class="article-title" href="/2023/06/10/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20CF1776E/">【题解】 CF1776E Crossing the Railways</a>
     </h1>
   
 
         
-        <a href="/2022/07/26/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20AGC046F/" class="archive-article-date">
-  	<time datetime="2022-07-25T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-07-26</time>
+        <a href="/2023/06/10/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20CF1776E/" class="archive-article-date">
+  	<time datetime="2023-06-09T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-06-10</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>引理 $1$：竞赛图中若没有三元环则是 DAG。</p>
-<p>证明：考虑反证，假设图中最小环为 $p_1,p_2,\dots,p_k(k\ge 4)$，则考虑 $p_1$ 和 $p_3$ 之间的边，无论以什么方向连都会产生一个更小的环，矛盾。</p>
-<p>考虑一张竞赛图，若其中存在一个入度为 $0$ 的点，则可以去掉这个点，转化为一个更小的子问题，所以只需要考虑所有点入度 $&gt;0$ 的情况。</p>
+        <p>考虑画出人的路程 - 时间图像，不难发现题目要求的是一条不碰到任意一条给定的横线的折线。</p>
+<p>由于人可以在任意时刻改变速度，那么要求还可以转化为折线不穿过任意一条给定的横线，但可以沿着横线走（因为对于和横线重合的部分，我们可以沿着横线一端旋转一个很小的角度）。</p>
         
-          <a class="article-more-a" href="/2022/07/26/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20AGC046F/#more">more >></a>
+          <a class="article-more-a" href="/2023/06/10/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20CF1776E/#more">more >></a>
         
       
 
@@ -507,7 +510,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2022/07/26/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20AGC046F/">展开全文 >></a>
+          <a class="article-more-a" href="/2023/06/10/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20CF1776E/">展开全文 >></a>
         </p>
       
 
@@ -537,31 +540,34 @@
 
 
   
-    <article id="post-【题解】 AGC044F" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-【学习笔记】 Lyndon 科技" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2022/07/22/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20AGC044F/">【题解】 AGC044F Name-Preserving Clubs</a>
+      <a class="article-title" href="/2023/05/05/%E3%80%90%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%91%20Lyndon%20%E7%A7%91%E6%8A%80/">【学习笔记】 Lyndon 科技</a>
     </h1>
   
 
         
-        <a href="/2022/07/22/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20AGC044F/" class="archive-article-date">
-  	<time datetime="2022-07-21T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-07-22</time>
+        <a href="/2023/05/05/%E3%80%90%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%91%20Lyndon%20%E7%A7%91%E6%8A%80/" class="archive-article-date">
+  	<time datetime="2023-05-04T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-05-05</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>我们把 $k$ 个俱乐部组成的集合写成 $k$ 行 $n$ 列的 01 矩阵。</p>
-<p>首先考虑没有两个俱乐部相同的情况。</p>
-<p>此时若一个 $k\times n$ 的矩阵 $M$ 合法，则 $M^T$ 也合法。</p>
+        <ul>
+<li>Lyndon 串</li>
+</ul>
+<p>若字符串 $s$ 满足 $s$ 的字典序小于所有 $s$ 的后缀，则称 $s$ 为「Lyndon 串」</p>
+<p>另一种定义方式：若字符串 $s$ 满足 $s$ 的字典序严格小于所有非平凡的 $s$ 的循环同构串，则称 $s$ 为「Lyndon 串」</p>
+<p>性质 $1$：若 $s,t$ 均为 Lyndon 串且 $s\le t$，则 $st$ 为 Lyndon 串</p>
         
-          <a class="article-more-a" href="/2022/07/22/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20AGC044F/#more">more >></a>
+          <a class="article-more-a" href="/2023/05/05/%E3%80%90%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%91%20Lyndon%20%E7%A7%91%E6%8A%80/#more">more >></a>
         
       
 
@@ -575,7 +581,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">题解</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">学习笔记</a>
         		</li>
       		
 		</ul>
@@ -585,7 +591,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2022/07/22/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20AGC044F/">展开全文 >></a>
+          <a class="article-more-a" href="/2023/05/05/%E3%80%90%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%91%20Lyndon%20%E7%A7%91%E6%8A%80/">展开全文 >></a>
         </p>
       
 
@@ -615,31 +621,31 @@
 
 
   
-    <article id="post-【题解】 AGC019E" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-【题解】 洛谷P9193" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2022/07/12/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20AGC019E/">【题解】 AGC019E Shuffle and Swap</a>
+      <a class="article-title" href="/2023/04/20/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20%E6%B4%9B%E8%B0%B7P9193/">【题解】 洛谷P9193 [USACO23OPEN P] Good Bitstrings</a>
     </h1>
   
 
         
-        <a href="/2022/07/12/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20AGC019E/" class="archive-article-date">
-  	<time datetime="2022-07-11T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-07-12</time>
+        <a href="/2023/04/20/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20%E6%B4%9B%E8%B0%B7P9193/" class="archive-article-date">
+  	<time datetime="2023-04-19T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-04-20</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Poly 萌新认为这题很难（</p>
-<p>首先转化一下题意：先让 $A$ 中的 $1$ 和 $B$ 中的 $1$ 两两匹配，共 $k!$ 种匹配方法；再按任意顺序对这些匹配进行操作，共 $k!$ 种顺序</p>
-<p>考虑建一个图论模型，如果位置 $A_i&#x3D;1$ 与位置 $B_j&#x3D;1$ 匹配则连一条 $i\to j$ 的有向边</p>
+        <p>upd: 修正了一些错误（</p>
+<p>考虑把 <code>gen_string</code> 的过程画到平面上，即画成一条从 $(0,0)$ 到 $(a,b)$ 的折线，折线上的所有点即可表示 <code>gen_string</code> 的所有前缀。</p>
+<p>称折线上一个点合法当且仅当它所代表的的前缀合法。</p>
         
-          <a class="article-more-a" href="/2022/07/12/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20AGC019E/#more">more >></a>
+          <a class="article-more-a" href="/2023/04/20/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20%E6%B4%9B%E8%B0%B7P9193/#more">more >></a>
         
       
 
@@ -663,7 +669,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2022/07/12/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20AGC019E/">展开全文 >></a>
+          <a class="article-more-a" href="/2023/04/20/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20%E6%B4%9B%E8%B0%B7P9193/">展开全文 >></a>
         </p>
       
 
@@ -693,31 +699,31 @@
 
 
   
-    <article id="post-【题解】 洛谷P4365" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-【题解】 洛谷P9192" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2022/06/24/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20%E6%B4%9B%E8%B0%B7P4365/">【题解】 洛谷P4365 [九省联考 2018] 秘密袭击 coat</a>
+      <a class="article-title" href="/2023/04/10/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20%E6%B4%9B%E8%B0%B7P9192/">【题解】 洛谷P9192 [USACO23OPEN P] Pareidolia</a>
     </h1>
   
 
         
-        <a href="/2022/06/24/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20%E6%B4%9B%E8%B0%B7P4365/" class="archive-article-date">
-  	<time datetime="2022-06-23T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-06-24</time>
+        <a href="/2023/04/10/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20%E6%B4%9B%E8%B0%B7P9192/" class="archive-article-date">
+  	<time datetime="2023-04-09T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-04-10</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>开始补一些历史遗留问题（</p>
-<p>首先转化一下题意，转化成对于每个值 $j$ 求第 $k$ 大的权值 $\ge j$ 的方案数，再转化成求 $\ge j$ 的权值至少有 $k$ 个的方案数</p>
-<p>考虑 dp</p>
+        <p>首先考虑对于单独的一个数列应该怎么做。</p>
+<p>记字符串 <code>bessie</code> 为 $T$，为了方便，$T$ 的下标从 $0$ 开始。</p>
+<p>考虑一个 dp：记 $f_{i,j}$ 为考虑前 $i$ 个字符，下一个需要匹配的是 $T$ 的第 $j$ 位的后缀个数。</p>
         
-          <a class="article-more-a" href="/2022/06/24/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20%E6%B4%9B%E8%B0%B7P4365/#more">more >></a>
+          <a class="article-more-a" href="/2023/04/10/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20%E6%B4%9B%E8%B0%B7P9192/#more">more >></a>
         
       
 
@@ -741,7 +747,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2022/06/24/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20%E6%B4%9B%E8%B0%B7P4365/">展开全文 >></a>
+          <a class="article-more-a" href="/2023/04/10/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20%E6%B4%9B%E8%B0%B7P9192/">展开全文 >></a>
         </p>
       
 
@@ -771,32 +777,31 @@
 
 
   
-    <article id="post-【题解】 ARC142D" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-【题解】 ABC297Ex" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2022/06/19/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20ARC142D/">【题解】 ARC142D Deterministic Placing</a>
+      <a class="article-title" href="/2023/04/09/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20ABC297Ex/">【题解】 ABC297Ex Diff Adjacent</a>
     </h1>
   
 
         
-        <a href="/2022/06/19/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20ARC142D/" class="archive-article-date">
-  	<time datetime="2022-06-18T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-06-19</time>
+        <a href="/2023/04/09/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20ABC297Ex/" class="archive-article-date">
+  	<time datetime="2023-04-08T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-04-09</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>考场犯浑 乘法原理写成加法原理 喜提 rk40-&gt;rk450</p>
-<p>挺有意思的一个计数（</p>
-<p>先考虑什么样的方案是合法的</p>
-<p>题目要求每条边只能由一种棋子经过，所以可以很自然（大概？）地想到把原树划分成若干条链</p>
+        <p>一个暴力的推法（</p>
+<p>首先有一个显然的 dp：记 $f_{i,j}$ 表示和为 $i$，最后一个选的数是 $j$ 的所有序列长度和，$g_{i,j}$ 表示和为 $i$，最后一个选的数是 $j$ 的序列个数。</p>
+<p>那么有转移：$f_{i,j}&#x3D;\sum f_{i-j,k}+g_{i-j,k},g_{i,j}&#x3D;\sum g_{i-j,k}$，答案即为 $\sum f_{n,i}$。</p>
         
-          <a class="article-more-a" href="/2022/06/19/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20ARC142D/#more">more >></a>
+          <a class="article-more-a" href="/2023/04/09/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20ABC297Ex/#more">more >></a>
         
       
 
@@ -820,7 +825,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2022/06/19/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20ARC142D/">展开全文 >></a>
+          <a class="article-more-a" href="/2023/04/09/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20ABC297Ex/">展开全文 >></a>
         </p>
       
 
@@ -850,31 +855,36 @@
 
 
   
-    <article id="post-【题解】 CF1687F" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-【游记】 联合省选2023" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2022/06/05/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20CF1687F/">【题解】 CF1687F Koishi&#39;s Unconscious Permutation</a>
+      <a class="article-title" href="/2023/04/03/%E3%80%90%E6%B8%B8%E8%AE%B0%E3%80%91%20%E8%81%94%E5%90%88%E7%9C%81%E9%80%892023/">【游记】 联合省选2023</a>
     </h1>
   
 
         
-        <a href="/2022/06/05/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20CF1687F/" class="archive-article-date">
-  	<time datetime="2022-06-04T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-06-05</time>
+        <a href="/2023/04/03/%E3%80%90%E6%B8%B8%E8%AE%B0%E3%80%91%20%E8%81%94%E5%90%88%E7%9C%81%E9%80%892023/" class="archive-article-date">
+  	<time datetime="2023-04-02T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-04-03</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>赛后用了 10min 调出来.jpg</p>
-<p>先随便写几个数，发现符合条件的数为 $[k^2,k^2+k]$，我们称 $[k^2,k^2+k]$ 为第 $k$ 段</p>
-<p>写出来发现是连续 $2$ 个数，再间隔 $1$ 个数，再连续 $3$ 个数，再间隔 $2$ 个数，也就是连续 $k+1$ 个数，再间隔 $k$ 个数</p>
+        <ul>
+<li>Day 0</li>
+</ul>
+<p>复习算法。休息。摆。</p>
+<ul>
+<li>Day 1</li>
+</ul>
+<p><del>感觉在华二考试就从来没考好过（</del></p>
         
-          <a class="article-more-a" href="/2022/06/05/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20CF1687F/#more">more >></a>
+          <a class="article-more-a" href="/2023/04/03/%E3%80%90%E6%B8%B8%E8%AE%B0%E3%80%91%20%E8%81%94%E5%90%88%E7%9C%81%E9%80%892023/#more">more >></a>
         
       
 
@@ -888,7 +898,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">题解</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">游记</a>
         		</li>
       		
 		</ul>
@@ -898,7 +908,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2022/06/05/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20CF1687F/">展开全文 >></a>
+          <a class="article-more-a" href="/2023/04/03/%E3%80%90%E6%B8%B8%E8%AE%B0%E3%80%91%20%E8%81%94%E5%90%88%E7%9C%81%E9%80%892023/">展开全文 >></a>
         </p>
       
 
@@ -930,7 +940,7 @@
   
   
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
     </nav>
   
 
