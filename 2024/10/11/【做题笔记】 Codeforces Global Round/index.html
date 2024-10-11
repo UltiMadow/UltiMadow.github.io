@@ -16,7 +16,7 @@
 <meta property="og:description" content="CF Global 13 A  维护序列中有多少 $1$ 即可 时间复杂度 $\mathcal O(n+q)$">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-10-10T16:00:00.000Z">
-<meta property="article:modified_time" content="2024-10-11T15:58:04.051Z">
+<meta property="article:modified_time" content="2024-10-11T16:03:59.203Z">
 <meta property="article:author" content="UMqwq">
 <meta property="article:tag" content="做题笔记">
 <meta name="twitter:card" content="summary">
@@ -475,8 +475,8 @@
 <p>记 $f(x)$ 为所有 $x$ 的质因子的乘积，$S_i&#x3D;{x|f(x)&#x3D;i}$ </p>
 <p>以下所有定义域均为 $\mu$ 值不为 $0$ 的整数</p>
 <p>记 $f_i$ 为询问的答案，即 $f_i&#x3D;\operatorname{xor}_{j\in A}[\gcd(i,j)&#x3D;1]j$</p>
-<p>记 $g_i&#x3D;\operatorname{xor}<em>{j\in A,i|j}j$，那么 $f_i&#x3D;\operatorname{xor}</em>{j|i}g_j\Leftrightarrow g_i&#x3D;\operatorname{xor}_{j|i}f_j$（异或意义下的莫比乌斯反演）</p>
-<p>记 $h_i&#x3D;\operatorname{xor}<em>{j\in A\cap S_i}j$，那么有 $g_i&#x3D;\operatorname{xor}</em>{i|j}h_j\Leftrightarrow h_i&#x3D;\operatorname{xor}_{i|j}g_j$</p>
+<p>记 $g_i&#x3D;\operatorname{xor}_{j\in A,i|j}j$，那么 $f_i=\operatorname{xor}_{j|i}g_j\Leftrightarrow g_i=\operatorname{xor}_{j|i}f_j$（异或意义下的莫比乌斯反演）</p>
+<p>记 $h_i&#x3D;\operatorname{xor}_{j\in A\cap S_i}j$，那么有 $g_i=\operatorname{xor}_{i|j}h_j\Leftrightarrow h_i=\operatorname{xor}_{i|j}g_j$</p>
 <p>那么问题就被转化为了对于若干个集合 $S_i$，要从每个集合中选出若干个数，使得 $S_i$ 中选出的数异或和为 $h_i$，且总共要选恰好 $n$ 个数，构造方案</p>
 <p>由于数据随机，所以考虑随机化</p>
 <p>对每个集合都建立一个线性基，对于 $|S_i|$ 小的集合直接在基内选，$|S_i|$ 大的集合随机在基外选一些数</p>
