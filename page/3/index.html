@@ -148,6 +148,84 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-【题解】 AGC054F" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/11/10/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20AGC054F/">【题解】 AGC054F Decrement</a>
+    </h1>
+  
+
+        
+        <a href="/2022/11/10/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20AGC054F/" class="archive-article-date">
+  	<time datetime="2022-11-09T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-11-10</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>记 $a_i$ 为 $A_i$ 最终删除了多少，$b_i$ 为 $B_i$ 最终删除了多少，不妨设 $a_0&#x3D;b_0&#x3D;a_{n+1}&#x3D;b_n&#x3D;0$</p>
+<p>结论：数列 $a,b$ 合法当且仅当对于任意 $i$ 有 $2| a_i+b_i+b_{i-1}$ 且 $\max{a_i,b_i,b_{i-1}}\le \frac{a_i+b_i+b_{i-1}}{2}$</p>
+<p>证明：先证必要性，显然一次操作 $[l,r]$ 会把 $a_l,b_l$ 减去 $1$，$a_r,b_{r-1}$ 减去 $1$，$b_i,b_{i-1}(i\in(l,r))$ 减去 $1$，即一次操作会对 $[l,r]$ 中所有位置的 $a_i,b_i,b_{i-1}$ 中的两个减去 $1$，显然需要满足上述条件</p>
+        
+          <a class="article-more-a" href="/2022/11/10/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20AGC054F/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">题解</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/11/10/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20AGC054F/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-【题解】 AGC052C" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -382,84 +460,6 @@
 
 
   
-    <article id="post-【题解】 AGC049E" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/10/27/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20AGC049E/">【题解】 AGC049E Increment Decrement</a>
-    </h1>
-  
-
-        
-        <a href="/2022/10/27/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20AGC049E/" class="archive-article-date">
-  	<time datetime="2022-10-26T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-27</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>先考虑如何对于一个序列 ${a}$ 求答案</p>
-<p>记 $p_i$ 为执行完所有操作二之后的 $a$ 序列，则操作一贡献为 $\sum|p_i-a_i|$，操作二贡献为 $\sum c\max{p_{i+1}-p_i,0}$</p>
-<p>考虑 dp，记 $f_{i,j}$ 为考虑前 $i$ 个数，$p_i&#x3D;j$ 的最小代价</p>
-        
-          <a class="article-more-a" href="/2022/10/27/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20AGC049E/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">题解</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/10/27/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20AGC049E/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
     <article id="post-【题解】 AGC049F" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -509,6 +509,84 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2022/10/27/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20AGC049F/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-【题解】 AGC049E" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/10/27/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20AGC049E/">【题解】 AGC049E Increment Decrement</a>
+    </h1>
+  
+
+        
+        <a href="/2022/10/27/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20AGC049E/" class="archive-article-date">
+  	<time datetime="2022-10-26T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-27</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>先考虑如何对于一个序列 ${a}$ 求答案</p>
+<p>记 $p_i$ 为执行完所有操作二之后的 $a$ 序列，则操作一贡献为 $\sum|p_i-a_i|$，操作二贡献为 $\sum c\max{p_{i+1}-p_i,0}$</p>
+<p>考虑 dp，记 $f_{i,j}$ 为考虑前 $i$ 个数，$p_i&#x3D;j$ 的最小代价</p>
+        
+          <a class="article-more-a" href="/2022/10/27/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20AGC049E/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">题解</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/10/27/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20AGC049E/">展开全文 >></a>
         </p>
       
 
@@ -820,84 +898,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2022/07/26/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20AGC046F/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-【题解】 AGC044F" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/07/22/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20AGC044F/">【题解】 AGC044F Name-Preserving Clubs</a>
-    </h1>
-  
-
-        
-        <a href="/2022/07/22/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20AGC044F/" class="archive-article-date">
-  	<time datetime="2022-07-21T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-07-22</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>我们把 $k$ 个俱乐部组成的集合写成 $k$ 行 $n$ 列的 01 矩阵。</p>
-<p>首先考虑没有两个俱乐部相同的情况。</p>
-<p>此时若一个 $k\times n$ 的矩阵 $M$ 合法，则 $M^T$ 也合法。</p>
-        
-          <a class="article-more-a" href="/2022/07/22/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20AGC044F/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">题解</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/07/22/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20AGC044F/">展开全文 >></a>
         </p>
       
 
