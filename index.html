@@ -148,195 +148,31 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-【做题笔记】 一些好玩的dp题 II" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-【题解】 AGC049E" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2021/09/11/%E3%80%90%E5%81%9A%E9%A2%98%E7%AC%94%E8%AE%B0%E3%80%91%20%E4%B8%80%E4%BA%9B%E5%A5%BD%E7%8E%A9%E7%9A%84dp%E9%A2%98%20II/">【做题笔记】 一些好玩的dp题 II</a>
+      <a class="article-title" href="/2022/10/27/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20AGC049E/">【题解】 AGC049E Increment Decrement</a>
     </h1>
   
 
         
-        <a href="/2021/09/11/%E3%80%90%E5%81%9A%E9%A2%98%E7%AC%94%E8%AE%B0%E3%80%91%20%E4%B8%80%E4%BA%9B%E5%A5%BD%E7%8E%A9%E7%9A%84dp%E9%A2%98%20II/" class="archive-article-date">
-  	<time datetime="2021-09-10T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-09-11</time>
+        <a href="/2022/10/27/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20AGC049E/" class="archive-article-date">
+  	<time datetime="2022-10-26T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-27</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <ul>
-<li><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/CF1540B">CF1540B Tree Array</a></li>
-</ul>
-<p>考虑对每对点分开计算贡献</p>
-<p>设当前的点对为 $(u,v)$，离它们的 $\operatorname{lca}$ 的距离分别是 $d_u$ 和 $d_v$</p>
-<p>我们发现如果只考虑 $u$ 和 $v$ 的顺序，那么 $u$ 在 $v$ 之前的概率只和 $d_u$ 和 $d_v$ 有关</p>
+        <p>先考虑如何对于一个序列 ${a}$ 求答案</p>
+<p>记 $p_i$ 为执行完所有操作二之后的 $a$ 序列，则操作一贡献为 $\sum|p_i-a_i|$，操作二贡献为 $\sum c\max{p_{i+1}-p_i,0}$</p>
+<p>考虑 dp，记 $f_{i,j}$ 为考虑前 $i$ 个数，$p_i&#x3D;j$ 的最小代价</p>
         
-          <a class="article-more-a" href="/2021/09/11/%E3%80%90%E5%81%9A%E9%A2%98%E7%AC%94%E8%AE%B0%E3%80%91%20%E4%B8%80%E4%BA%9B%E5%A5%BD%E7%8E%A9%E7%9A%84dp%E9%A2%98%20II/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">做题笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/09/11/%E3%80%90%E5%81%9A%E9%A2%98%E7%AC%94%E8%AE%B0%E3%80%91%20%E4%B8%80%E4%BA%9B%E5%A5%BD%E7%8E%A9%E7%9A%84dp%E9%A2%98%20II/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-【学习笔记】 字符串整理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/09/03/%E3%80%90%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%91%20%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%95%B4%E7%90%86/">【学习笔记】 字符串整理</a>
-    </h1>
-  
-
-        
-        <a href="/2021/09/03/%E3%80%90%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%91%20%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%95%B4%E7%90%86/" class="archive-article-date">
-  	<time datetime="2021-09-02T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-09-03</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h4><ul>
-<li>字典树 trie</li>
-</ul>
-<p>将每个字符串逐层插入字典树，一条转移边上有一个字符</p>
-<p>那么从根到对应字符串的终止节点上所有转移边上的字符连起来就是这个字符串</p>
-        
-          <a class="article-more-a" href="/2021/09/03/%E3%80%90%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%91%20%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%95%B4%E7%90%86/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">学习笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/09/03/%E3%80%90%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%91%20%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%95%B4%E7%90%86/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-【题解】 CF1559" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/08/16/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20CF1559/">【题解】 CF1559</a>
-    </h1>
-  
-
-        
-        <a href="/2021/08/16/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20CF1559/" class="archive-article-date">
-  	<time datetime="2021-08-15T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-08-16</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>好久没打 CF 力（</p>
-<ul>
-<li>A Mocha and Math</li>
-</ul>
-<p>对每一位依次考虑，发现这一位只要至少存在一个 0 则答案中这一位就一定可以是 0</p>
-<p>于是输出所有 $a_i$ 按位与即可</p>
-        
-          <a class="article-more-a" href="/2021/08/16/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20CF1559/#more">more >></a>
+          <a class="article-more-a" href="/2022/10/27/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20AGC049E/#more">more >></a>
         
       
 
@@ -360,7 +196,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2021/08/16/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20CF1559/">展开全文 >></a>
+          <a class="article-more-a" href="/2022/10/27/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20AGC049E/">展开全文 >></a>
         </p>
       
 
@@ -390,34 +226,30 @@
 
 
   
-    <article id="post-【学习笔记】 子集卷积相关" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-多项式板子" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2021/08/01/%E3%80%90%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%91%20%E5%AD%90%E9%9B%86%E5%8D%B7%E7%A7%AF%E7%9B%B8%E5%85%B3/">【学习笔记】 子集卷积相关</a>
+      <a class="article-title" href="/2022/09/23/%E5%A4%9A%E9%A1%B9%E5%BC%8F%E6%9D%BF%E5%AD%90/">多项式板子</a>
     </h1>
   
 
         
-        <a href="/2021/08/01/%E3%80%90%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%91%20%E5%AD%90%E9%9B%86%E5%8D%B7%E7%A7%AF%E7%9B%B8%E5%85%B3/" class="archive-article-date">
-  	<time datetime="2021-07-31T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-08-01</time>
+        <a href="/2022/09/23/%E5%A4%9A%E9%A1%B9%E5%BC%8F%E6%9D%BF%E5%AD%90/" class="archive-article-date">
+  	<time datetime="2022-09-22T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-09-23</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <ul>
-<li>高维前缀和 &amp; sosdp</li>
-</ul>
-<p>对于二维前缀和，我们一般有两种计算方法</p>
-<p>第一种可以使用容斥，$s_{i,j}&#x3D;s_{i-1,j}+s_{i,j-1}-s_{i-1,j-1}+a_{i,j}$</p>
-<p>第二种，我们可以先选一个维度进行前缀和：$s_{i,j}&#x3D;s_{i,j-1}+a_{i,j}$，接下来，再对第二个维度进行前缀和：$s_{i,j}\leftarrow s_{i-1,j}+s_{i,j}$</p>
+        <p>备忘</p>
+<p>多项式除法和开根还没写（</p>
         
-          <a class="article-more-a" href="/2021/08/01/%E3%80%90%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%91%20%E5%AD%90%E9%9B%86%E5%8D%B7%E7%A7%AF%E7%9B%B8%E5%85%B3/#more">more >></a>
+          <a class="article-more-a" href="/2022/09/23/%E5%A4%9A%E9%A1%B9%E5%BC%8F%E6%9D%BF%E5%AD%90/#more">more >></a>
         
       
 
@@ -431,7 +263,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">学习笔记</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">备忘录</a>
         		</li>
       		
 		</ul>
@@ -441,7 +273,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2021/08/01/%E3%80%90%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%91%20%E5%AD%90%E9%9B%86%E5%8D%B7%E7%A7%AF%E7%9B%B8%E5%85%B3/">展开全文 >></a>
+          <a class="article-more-a" href="/2022/09/23/%E5%A4%9A%E9%A1%B9%E5%BC%8F%E6%9D%BF%E5%AD%90/">展开全文 >></a>
         </p>
       
 
@@ -471,193 +303,31 @@
 
 
   
-    <article id="post-【游记】 APIO2021" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-【题解】 ARC145F" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2021/05/27/%E3%80%90%E6%B8%B8%E8%AE%B0%E3%80%91%20APIO2021/">【游记】 APIO2021</a>
+      <a class="article-title" href="/2022/07/31/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20ARC145F/">【题解】 ARC145F Modulo Sum of Increasing Sequences</a>
     </h1>
   
 
         
-        <a href="/2021/05/27/%E3%80%90%E6%B8%B8%E8%AE%B0%E3%80%91%20APIO2021/" class="archive-article-date">
-  	<time datetime="2021-05-26T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-27</time>
+        <a href="/2022/07/31/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20ARC145F/" class="archive-article-date">
+  	<time datetime="2022-07-30T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-07-31</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><del>CCF 的广告！！1</del></p>
-<p><del>我直接开始加边！！！1</del></p>
-<p><del>《简 单 的 入 门 讲 座》，《不 可 能 掉 线》，《掉 线 了 可 以 很 快 重 连》</del></p>
-<p>快进到考场（</p>
+        <p><del>被这个 Poly 毒害了一上午&#x2F;fn</del></p>
+<p>考虑先转化一下题意，由于要求序列是单调不降的，所以可以令 $b_i&#x3D;a_i+i$，此时 $b_i$ 严格单调增</p>
+<p>所以可以把题目转化为在 $[0,n+m)$ 中选择 $n$ 个组成严格单调增的序列，以下将 $m$ 加上 $n$</p>
         
-          <a class="article-more-a" href="/2021/05/27/%E3%80%90%E6%B8%B8%E8%AE%B0%E3%80%91%20APIO2021/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">游记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/05/27/%E3%80%90%E6%B8%B8%E8%AE%B0%E3%80%91%20APIO2021/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-【游记】 THUSC2021" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/05/17/%E3%80%90%E6%B8%B8%E8%AE%B0%E3%80%91%20THUSC2021/">【游记】 THUSC2021</a>
-    </h1>
-  
-
-        
-        <a href="/2021/05/17/%E3%80%90%E6%B8%B8%E8%AE%B0%E3%80%91%20THUSC2021/" class="archive-article-date">
-  	<time datetime="2021-05-16T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-17</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <ul>
-<li>Day 0</li>
-</ul>
-<p>到了杭州，肝了一晚上文化课作业（</p>
-<ul>
-<li>Day 1</li>
-</ul>
-<p>来到了学军&#x2F;se&#x2F;se</p>
-        
-          <a class="article-more-a" href="/2021/05/17/%E3%80%90%E6%B8%B8%E8%AE%B0%E3%80%91%20THUSC2021/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">游记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/05/17/%E3%80%90%E6%B8%B8%E8%AE%B0%E3%80%91%20THUSC2021/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-【题解】 洛谷P7530" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/05/01/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20%E6%B4%9B%E8%B0%B7P7530/">【题解】 洛谷P7530 [USACO21OPEN P] United Cows of Farmer John</a>
-    </h1>
-  
-
-        
-        <a href="/2021/05/01/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20%E6%B4%9B%E8%B0%B7P7530/" class="archive-article-date">
-  	<time datetime="2021-04-30T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-01</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>考虑枚举每个区间的右端点，用线段树维护每个左端点对答案的贡献</p>
-<p>设当前枚举到的点为 $i$，值为 $b_i$，上一个出现 $b_i$ 的位置为 $pre_{b_i}$，显然左端点只能在 $(pre_{b_i},i-1)$ 范围内取</p>
-<p>考虑新加入一个点 $x$ 对每个左端点的贡献，那么所有在 $(pre_{b_x},x)$ 中的左端点的方案数都可以 +1（这些左端点可以选 $x$ 作为中间点）</p>
-        
-          <a class="article-more-a" href="/2021/05/01/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20%E6%B4%9B%E8%B0%B7P7530/#more">more >></a>
+          <a class="article-more-a" href="/2022/07/31/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20ARC145F/#more">more >></a>
         
       
 
@@ -681,7 +351,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2021/05/01/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20%E6%B4%9B%E8%B0%B7P7530/">展开全文 >></a>
+          <a class="article-more-a" href="/2022/07/31/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20ARC145F/">展开全文 >></a>
         </p>
       
 
@@ -711,31 +381,31 @@
 
 
   
-    <article id="post-【题解】 ARC081C" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-【题解】 AGC048F" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2021/04/27/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20ARC081C/">【题解】 ARC081C Don&#39;t Be a Subsequence</a>
+      <a class="article-title" href="/2022/07/30/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20AGC048F/">【题解】 AGC048F 01 Record</a>
     </h1>
   
 
         
-        <a href="/2021/04/27/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20ARC081C/" class="archive-article-date">
-  	<time datetime="2021-04-26T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-04-27</time>
+        <a href="/2022/07/30/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20AGC048F/" class="archive-article-date">
+  	<time datetime="2022-07-29T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-07-30</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>所以这题为啥要 dp 啊（</p>
-<p>把字符串的字序列自动机建出来，然后在自序列自动机上按照字典序跑一遍 bfs，遇到一个空转移就代表是最小的非子序列，直接输出答案</p>
-<p>时间复杂度 $\mathcal O(n)$，带一个 26 的常数</p>
+        <p>将 $S$ 反过来，则一个数的贡献为一个形如 <code>101010...</code> 的串，称这种字符串为好的字符串。</p>
+<p>考虑不断贪心地从 $S$ 中取出最长的好串，记它们的长度为 $l_1,l_2,\dots,l_k$。</p>
+<p>假设原先在黑板上的数从大到小为 $x_1,x_2,\dots,x_m$，则这些数合法当且仅当下列条件被满足：</p>
         
-          <a class="article-more-a" href="/2021/04/27/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20ARC081C/#more">more >></a>
+          <a class="article-more-a" href="/2022/07/30/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20AGC048F/#more">more >></a>
         
       
 
@@ -759,7 +429,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2021/04/27/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20ARC081C/">展开全文 >></a>
+          <a class="article-more-a" href="/2022/07/30/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20AGC048F/">展开全文 >></a>
         </p>
       
 
@@ -789,31 +459,31 @@
 
 
   
-    <article id="post-【题解】 洛谷P3639" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-【题解】 AGC046F" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2021/04/21/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20%E6%B4%9B%E8%B0%B7P3639/">【题解】 洛谷P3639 [APIO2013]道路费用</a>
+      <a class="article-title" href="/2022/07/26/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20AGC046F/">【题解】 AGC046F Forbidden Tournament</a>
     </h1>
   
 
         
-        <a href="/2021/04/21/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20%E6%B4%9B%E8%B0%B7P3639/" class="archive-article-date">
-  	<time datetime="2021-04-20T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-04-21</time>
+        <a href="/2022/07/26/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20AGC046F/" class="archive-article-date">
+  	<time datetime="2022-07-25T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-07-26</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>发现 $k$ 很小，只有 $20$，那么这题复杂度大概率和 $2^k$ 有关</p>
-<p>考虑枚举加入新边的集合，如果直接跑最小生成树的话会 T，需要优化</p>
-<p>容易发现每次最小生成树重复加入的边数会很多，于是可以考虑哪些边是一定会加入</p>
+        <p>引理 $1$：竞赛图中若没有三元环则是 DAG。</p>
+<p>证明：考虑反证，假设图中最小环为 $p_1,p_2,\dots,p_k(k\ge 4)$，则考虑 $p_1$ 和 $p_3$ 之间的边，无论以什么方向连都会产生一个更小的环，矛盾。</p>
+<p>考虑一张竞赛图，若其中存在一个入度为 $0$ 的点，则可以去掉这个点，转化为一个更小的子问题，所以只需要考虑所有点入度 $&gt;0$ 的情况。</p>
         
-          <a class="article-more-a" href="/2021/04/21/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20%E6%B4%9B%E8%B0%B7P3639/#more">more >></a>
+          <a class="article-more-a" href="/2022/07/26/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20AGC046F/#more">more >></a>
         
       
 
@@ -837,7 +507,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2021/04/21/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20%E6%B4%9B%E8%B0%B7P3639/">展开全文 >></a>
+          <a class="article-more-a" href="/2022/07/26/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20AGC046F/">展开全文 >></a>
         </p>
       
 
@@ -867,31 +537,31 @@
 
 
   
-    <article id="post-【题解】 CF1295F" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-【题解】 AGC044F" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2021/04/10/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20CF1295F/">【题解】 CF1295F Good Contest</a>
+      <a class="article-title" href="/2022/07/22/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20AGC044F/">【题解】 AGC044F Name-Preserving Clubs</a>
     </h1>
   
 
         
-        <a href="/2021/04/10/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20CF1295F/" class="archive-article-date">
-  	<time datetime="2021-04-09T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-04-10</time>
+        <a href="/2022/07/22/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20AGC044F/" class="archive-article-date">
+  	<time datetime="2022-07-21T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-07-22</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>首先把题目所求的概率变成合法方案数除以总方案数，所以这题就变成了一个计数问题</p>
-<p>发现值域很大，但是 $n$ 很小，考虑把区间化成左闭右开的形式然后离散化</p>
-<p>记所有端点排好序之后为 $b_1, b_2\dots,b_q$，$b_{q+1}&#x3D;b_q+1$，这些端点把值域分成 $[b_1,b_2),[b_2,b_3),\dots,[b_q,b_{q+1})$ 这 $q$ 段区间</p>
+        <p>我们把 $k$ 个俱乐部组成的集合写成 $k$ 行 $n$ 列的 01 矩阵。</p>
+<p>首先考虑没有两个俱乐部相同的情况。</p>
+<p>此时若一个 $k\times n$ 的矩阵 $M$ 合法，则 $M^T$ 也合法。</p>
         
-          <a class="article-more-a" href="/2021/04/10/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20CF1295F/#more">more >></a>
+          <a class="article-more-a" href="/2022/07/22/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20AGC044F/#more">more >></a>
         
       
 
@@ -915,7 +585,335 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2021/04/10/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20CF1295F/">展开全文 >></a>
+          <a class="article-more-a" href="/2022/07/22/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20AGC044F/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-【题解】 AGC019E" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/07/12/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20AGC019E/">【题解】 AGC019E Shuffle and Swap</a>
+    </h1>
+  
+
+        
+        <a href="/2022/07/12/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20AGC019E/" class="archive-article-date">
+  	<time datetime="2022-07-11T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-07-12</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Poly 萌新认为这题很难（</p>
+<p>首先转化一下题意：先让 $A$ 中的 $1$ 和 $B$ 中的 $1$ 两两匹配，共 $k!$ 种匹配方法；再按任意顺序对这些匹配进行操作，共 $k!$ 种顺序</p>
+<p>考虑建一个图论模型，如果位置 $A_i&#x3D;1$ 与位置 $B_j&#x3D;1$ 匹配则连一条 $i\to j$ 的有向边</p>
+        
+          <a class="article-more-a" href="/2022/07/12/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20AGC019E/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">题解</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/07/12/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20AGC019E/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-【题解】 洛谷P4365" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/06/24/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20%E6%B4%9B%E8%B0%B7P4365/">【题解】 洛谷P4365 [九省联考 2018] 秘密袭击 coat</a>
+    </h1>
+  
+
+        
+        <a href="/2022/06/24/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20%E6%B4%9B%E8%B0%B7P4365/" class="archive-article-date">
+  	<time datetime="2022-06-23T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-06-24</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>开始补一些历史遗留问题（</p>
+<p>首先转化一下题意，转化成对于每个值 $j$ 求第 $k$ 大的权值 $\ge j$ 的方案数，再转化成求 $\ge j$ 的权值至少有 $k$ 个的方案数</p>
+<p>考虑 dp</p>
+        
+          <a class="article-more-a" href="/2022/06/24/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20%E6%B4%9B%E8%B0%B7P4365/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">题解</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/06/24/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20%E6%B4%9B%E8%B0%B7P4365/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-【题解】 ARC142D" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/06/19/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20ARC142D/">【题解】 ARC142D Deterministic Placing</a>
+    </h1>
+  
+
+        
+        <a href="/2022/06/19/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20ARC142D/" class="archive-article-date">
+  	<time datetime="2022-06-18T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-06-19</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>考场犯浑 乘法原理写成加法原理 喜提 rk40-&gt;rk450</p>
+<p>挺有意思的一个计数（</p>
+<p>先考虑什么样的方案是合法的</p>
+<p>题目要求每条边只能由一种棋子经过，所以可以很自然（大概？）地想到把原树划分成若干条链</p>
+<p>不难发现这时每条长为 $k$ 的链必须有 $k-1$ 个棋子，没有棋子的点也必须在链两端，而且链长必须 $&gt;1$</p>
+<p>除此之外，还需要满足以下两个要求：</p>
+<ol>
+<li>称一条链中没有棋子的端点为「白端点」，有棋子的端点为「黑端点」，则一个点如果是「白端点」，则和它相邻的点（除去和它在同一条链上的点）都应该是「黑端点」；「黑端点」同理</li>
+<li>如果一个点不是链的端点，则和它相邻的点（除去和它在同一条链上的点）都应该不是链的端点</li>
+</ol>
+<p>这个画画图应该挺好理解的吧（大概？）</p>
+<p>接下来就可以 dp 了</p>
+<p>设 $fs_{u,0&#x2F;1}$ 为一条链的起点，且它为「黑&#x2F;白端点」的方案数；$ft_{u,0&#x2F;1}$ 为一条链的终点，且它为「黑&#x2F;白端点」的方案数；$h_{u,0&#x2F;1}$ 为一条终点还没确定的链，起点为「黑&#x2F;白端点」的方案数；$g_{u}$ 通过 $u$ 的链起点终点都已经确定，且 $u$ 不为链的端点的方案数</p>
+<p>不难发现 $fs_{u,0}&#x3D;fs_{u,1},ft_{u,0}&#x3D;ft_{u,1},h_{u,0}&#x3D;h_{u,1}$，所以它们只存一个就好了</p>
+<p>转移也挺显然的（但我还是写挂了好多次）：</p>
+<p>$fs_u&#x3D;\prod ft_v$</p>
+<p>$ft_u&#x3D;\sum (h_v+fs_v)\prod_{w\not&#x3D;v} ft_w$</p>
+<p>$h_u&#x3D;\sum(h_v+fs_v)\prod_{w\not&#x3D;v}g_w$</p>
+<p>$g_u&#x3D;\sum (h_v+fs_v)(h_w+fs_w)\prod_{x\not&#x3D;v, x\not&#x3D;w}g_x$</p>
+<p>预处理一些前缀后缀积即可做到 $\mathcal O(n)$</p>
+<p>code:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> int long long</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> MAXN 200010</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> p 998244353</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> pb push_back</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">qpow</span><span class="params">(<span class="type">int</span> x,<span class="type">int</span> y)</span></span>&#123;</span><br><span class="line">    <span class="type">int</span> ret=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(;y;y&gt;&gt;=<span class="number">1</span>,x=x*x%p)<span class="keyword">if</span>(y&amp;<span class="number">1</span>)ret=ret*x%p;</span><br><span class="line">    <span class="keyword">return</span> ret;</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">int</span> n;</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">Node</span>&#123;<span class="type">int</span> to,nxt;&#125;Edge[MAXN&lt;&lt;<span class="number">1</span>];</span><br><span class="line"><span class="type">int</span> Head[MAXN],cnt_Edge;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">Add_Edge</span><span class="params">(<span class="type">int</span> u,<span class="type">int</span> v)</span></span>&#123;</span><br><span class="line">    Edge[++cnt_Edge]=(Node)&#123;v,Head[u]&#125;;</span><br><span class="line">    Head[u]=cnt_Edge;</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">int</span> fs[MAXN],ft[MAXN],g[MAXN],h[MAXN];</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">dp</span><span class="params">(<span class="type">int</span> u,<span class="type">int</span> fa)</span></span>&#123;</span><br><span class="line">    fs[u]=<span class="number">1</span>;</span><br><span class="line">    vector&lt;<span class="type">int</span>&gt;st,sg;</span><br><span class="line">    vector&lt;<span class="type">int</span>&gt;pt,pg;</span><br><span class="line">    vector&lt;<span class="type">int</span>&gt;son;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=Head[u];i;i=Edge[i].nxt)&#123;</span><br><span class="line">        <span class="type">int</span> v=Edge[i].to;<span class="keyword">if</span>(v==fa)<span class="keyword">continue</span>;</span><br><span class="line">        <span class="built_in">dp</span>(v,u);sg.<span class="built_in">pb</span>(g[v]);pg.<span class="built_in">pb</span>(g[v]);son.<span class="built_in">pb</span>(v);</span><br><span class="line">        fs[u]=fs[u]*ft[v]%p;st.<span class="built_in">pb</span>(ft[v]);pt.<span class="built_in">pb</span>(ft[v]);</span><br><span class="line">    &#125;<span class="type">int</span> sz=son.<span class="built_in">size</span>();</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;sz;i++)sg[i]=sg[i<span class="number">-1</span>]*sg[i]%p,st[i]=st[i<span class="number">-1</span>]*st[i]%p;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=sz<span class="number">-2</span>;i&gt;=<span class="number">0</span>;i--)pg[i]=pg[i<span class="number">+1</span>]*pg[i]%p,pt[i]=pt[i<span class="number">+1</span>]*pt[i]%p;</span><br><span class="line">    <span class="type">int</span> pre=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;sz;i++)&#123;</span><br><span class="line">        <span class="type">int</span> v=son[i];</span><br><span class="line">        ft[u]=(ft[u]+(h[v]+fs[v])*(i==<span class="number">0</span>?<span class="number">1</span>:st[i<span class="number">-1</span>])%p*(i==sz<span class="number">-1</span>?<span class="number">1</span>:pt[i<span class="number">+1</span>])%p)%p;</span><br><span class="line">        g[u]=(g[u]<span class="number">+2</span>*pre*(h[v]+fs[v])%p*(i==sz<span class="number">-1</span>?<span class="number">1</span>:pg[i<span class="number">+1</span>])%p)%p;</span><br><span class="line">        pre=(pre*g[v]%p+(h[v]+fs[v])*(i==<span class="number">0</span>?<span class="number">1</span>:sg[i<span class="number">-1</span>])%p)%p;</span><br><span class="line">        h[u]=(h[u]+(h[v]+fs[v])*(i==<span class="number">0</span>?<span class="number">1</span>:sg[i<span class="number">-1</span>])%p*(i==sz<span class="number">-1</span>?<span class="number">1</span>:pg[i<span class="number">+1</span>])%p)%p;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">signed</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%lld&quot;</span>,&amp;n);</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;n;i++)&#123;</span><br><span class="line">        <span class="type">int</span> u,v;<span class="built_in">scanf</span>(<span class="string">&quot;%lld%lld&quot;</span>,&amp;u,&amp;v);</span><br><span class="line">        <span class="built_in">Add_Edge</span>(u,v);<span class="built_in">Add_Edge</span>(v,u);</span><br><span class="line">    &#125;<span class="built_in">dp</span>(<span class="number">1</span>,<span class="number">0</span>);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%lld&quot;</span>,(g[<span class="number">1</span>]+ft[<span class="number">1</span>]*<span class="number">2</span>)%p);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">题解</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/06/19/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20ARC142D/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-【题解】 CF1687F" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/06/05/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20CF1687F/">【题解】 CF1687F Koishi&#39;s Unconscious Permutation</a>
+    </h1>
+  
+
+        
+        <a href="/2022/06/05/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20CF1687F/" class="archive-article-date">
+  	<time datetime="2022-06-04T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-06-05</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>赛后用了 10min 调出来.jpg</p>
+<p>先随便写几个数，发现符合条件的数为 $[k^2,k^2+k]$，我们称 $[k^2,k^2+k]$ 为第 $k$ 段</p>
+<p>写出来发现是连续 $2$ 个数，再间隔 $1$ 个数，再连续 $3$ 个数，再间隔 $2$ 个数，也就是连续 $k+1$ 个数，再间隔 $k$ 个数</p>
+        
+          <a class="article-more-a" href="/2022/06/05/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20CF1687F/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">题解</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/06/05/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20CF1687F/">展开全文 >></a>
         </p>
       
 
@@ -947,7 +945,7 @@
   
   
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
     </nav>
   
 
@@ -1063,19 +1061,19 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">做题笔记</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">备忘录</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">学习笔记</a>
+                <a href="javascript:void(0)" class="js-tag color5">做题笔记</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">题解</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">学习笔记</a>
               </li>
              
               <li class="article-tag-list-item">
