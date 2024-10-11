@@ -148,6 +148,85 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-【题解】 洛谷P3163" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/08/05/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20%E6%B4%9B%E8%B0%B7P3163/">【题解】 洛谷P3163 [CQOI2014]危桥</a>
+    </h1>
+  
+
+        
+        <a href="/2020/08/05/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20%E6%B4%9B%E8%B0%B7P3163/" class="archive-article-date">
+  	<time datetime="2020-08-04T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-05</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>update on 2024.6.10: 把剪切板的内容搬到了正文中。</p>
+<p>先来一个结论：</p>
+<p>首先建出给定的网络流图，危桥容量为 2，其他容量为 $+\infty$，然后建出超级源点 $s,t$；</p>
+<p>接着连 $s\to a_1$，容量为 $2\times a_n$；连 $s\to b_1$，容量为 $2\times b_n$；连 $a_2\to t$，容量为 $2\times a_n$；连 $b_2\to t$，容量为 $2\times b_n$，并跑一遍最大流；</p>
+        
+          <a class="article-more-a" href="/2020/08/05/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20%E6%B4%9B%E8%B0%B7P3163/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">题解</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/08/05/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20%E6%B4%9B%E8%B0%B7P3163/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-【题解】 洛谷P3833" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -822,83 +901,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2020/05/19/%E3%80%90%E5%81%9A%E9%A2%98%E7%AC%94%E8%AE%B0%E3%80%91%20NOIp2017/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-【题解】CF855E" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/28/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91CF855E/">【题解】 CF855E Salazar Slytherin&#39;s Locket</a>
-    </h1>
-  
-
-        
-        <a href="/2020/04/28/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91CF855E/" class="archive-article-date">
-  	<time datetime="2020-04-27T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-28</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>提供一个空间更优的解法</p>
-<p>注：本解法时间复杂度 $\Theta(q\log q + 2^bb \log n)$，比其他题解里解法多了一个 $\Theta(q\log q)$，空间复杂度 $\Theta(2^b\log n)$，其他题解是 $\Theta(2^bb\log n)$</p>
-        
-          <a class="article-more-a" href="/2020/04/28/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91CF855E/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">题解</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/28/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91CF855E/">展开全文 >></a>
         </p>
       
 
