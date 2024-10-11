@@ -8,15 +8,15 @@
   <link rel="dns-prefetch" href="http://example.com">
   <title>【题解】 ARC142D Deterministic Placing | UM&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="考场犯浑 乘法原理写成加法原理 喜提 rk40-&gt;rk450 挺有意思的一个计数（ 先考虑什么样的方案是合法的 题目要求每条边只能由一种棋子经过，所以可以很自然（大概？）地想到把原树划分成若干条链 不难发现这时每条长为 $k$ 的链必须有 $k-1$ 个棋子，没有棋子的点也必须在链两端，而且链长必须 $&gt;1$ 除此之外，还需要满足以下两个要求：  称一条链中没有棋子的端点为「白端点」，">
+  <meta name="description" content="考场犯浑 乘法原理写成加法原理 喜提 rk40-&gt;rk450 挺有意思的一个计数（ 先考虑什么样的方案是合法的 题目要求每条边只能由一种棋子经过，所以可以很自然（大概？）地想到把原树划分成若干条链">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【题解】 ARC142D Deterministic Placing">
 <meta property="og:url" content="http://example.com/2022/06/19/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%20ARC142D/index.html">
 <meta property="og:site_name" content="UM&#39;s blog">
-<meta property="og:description" content="考场犯浑 乘法原理写成加法原理 喜提 rk40-&gt;rk450 挺有意思的一个计数（ 先考虑什么样的方案是合法的 题目要求每条边只能由一种棋子经过，所以可以很自然（大概？）地想到把原树划分成若干条链 不难发现这时每条长为 $k$ 的链必须有 $k-1$ 个棋子，没有棋子的点也必须在链两端，而且链长必须 $&gt;1$ 除此之外，还需要满足以下两个要求：  称一条链中没有棋子的端点为「白端点」，">
+<meta property="og:description" content="考场犯浑 乘法原理写成加法原理 喜提 rk40-&gt;rk450 挺有意思的一个计数（ 先考虑什么样的方案是合法的 题目要求每条边只能由一种棋子经过，所以可以很自然（大概？）地想到把原树划分成若干条链">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-06-18T16:00:00.000Z">
-<meta property="article:modified_time" content="2024-10-11T12:36:43.265Z">
+<meta property="article:modified_time" content="2024-10-11T13:00:08.023Z">
 <meta property="article:author" content="UMqwq">
 <meta property="article:tag" content="题解">
 <meta name="twitter:card" content="summary">
@@ -175,6 +175,8 @@
 <p>挺有意思的一个计数（</p>
 <p>先考虑什么样的方案是合法的</p>
 <p>题目要求每条边只能由一种棋子经过，所以可以很自然（大概？）地想到把原树划分成若干条链</p>
+<span id="more"></span>
+
 <p>不难发现这时每条长为 $k$ 的链必须有 $k-1$ 个棋子，没有棋子的点也必须在链两端，而且链长必须 $&gt;1$</p>
 <p>除此之外，还需要满足以下两个要求：</p>
 <ol>
