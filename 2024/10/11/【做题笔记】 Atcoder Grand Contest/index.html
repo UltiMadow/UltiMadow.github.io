@@ -23,7 +23,7 @@
 <meta property="og:image" content="https://img.atcoder.jp/agc051/f3c08bc39531e4cd1258b577ee5d9ebd.png">
 <meta property="og:image" content="https://img.atcoder.jp/agc057/61b3000087dd8839269d74914b8cec53.png">
 <meta property="article:published_time" content="2024-10-10T16:00:00.000Z">
-<meta property="article:modified_time" content="2024-10-11T15:47:20.209Z">
+<meta property="article:modified_time" content="2024-10-11T15:49:05.637Z">
 <meta property="article:author" content="UMqwq">
 <meta property="article:tag" content="做题笔记">
 <meta name="twitter:card" content="summary">
@@ -1632,9 +1632,9 @@
 <p>接下来考虑如何计算 $both$</p>
 <p>记 $b_{i,j}$ 为去掉不可以从 $x&#x3D;mid$ 中任意一点到达的点后的 $a_{i,j}$，$sum_{i,j}&#x3D;\sum\limits_{k\le j} b_{i,k}$</p>
 <p>记 $dl_{i,j}$ 为 $(mid,j)$ 可以到达的 $(i,x)$ 中最小的 $x$，$dr_{i,j}$ 为 $(mid,j)$ 可以到达的 $(i,x)$ 中最大的 $x$</p>
-<p>则 $both(i,j,d)=\sum [k\ge d\land dl_{k,j}\le dr_{k,i}](sum_{k,dr_{k,i}}-sum_{k,dl_{k,j}-1})$</p>
+<p>则 $both(i,j,d)&#x3D;\sum (sum_{k,dr_{k,i}}-sum_{k,dl_{k,j}-1})[k\ge d\land dl_{k,j}\le dr_{k,i}]$</p>
 <p>记 $met_{i,j}$ 为满足 $dl_{k,j}\le dr_{k,i}$ 的 $k$ 中最小的 $k$</p>
-<p>则 $both(i,j,d)=\sum[k\ge d\land k\ge met_{i,j}](sum_{k,dr_{k,i}}-sum_{k,dl_{k,j}-1})$，可以预处理 $sum_{k,dr}$ 关于 $k$ 的前缀和 $pr$ 和 $sum_{k,dl}$ 关于 $k$ 的前缀和 $pl$</p>
+<p>则 $both(i,j,d)&#x3D;\sum (sum_{k,dr_{k,i}}-sum_{k,dl_{k,j}-1})[k\ge d\land k\ge met_{i,j}]$，可以预处理 $sum_{k,dr}$ 关于 $k$ 的前缀和 $pr$ 和 $sum_{k,dl}$ 关于 $k$ 的前缀和 $pl$</p>
 <p>接下来只需要预处理 $dl$，$dr$ 和 $met$</p>
 <p>记 $nxt_{i,j}$ 表示<strong>在 $b$ 意义下</strong>可以从 $(i,x)$ 走到 $(i+1,x)$ 中 $x\ge j$ 的最小 $x$，则 $dl_{i+1,j}&#x3D;nxt_{i,dl_{i,j}}$</p>
 <p>记 $pre_{i,j}$ 表示<strong>在 $b$ 意义下</strong>可以从 $(i,x)$ 走到 $(i+1,x)$ 中 $x\le j$ 的最大 $x$，$to_{i,j}$ 为可以从 $(i,j)$ 走到 $(i,x)$ 中最大的 $x$，则有 $dr_{i+1,j}&#x3D;to_{i+1,pre_{i,dr_{i,j}}}$</p>
